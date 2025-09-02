@@ -96,9 +96,12 @@ flutter_launcher_icons:
 
 # 开屏图片
 flutter_native_splash:
-  color: "#ffffff"                # 背景颜色
-  image: resource/images/common/logo.png # 启动页的中心图片
+  color: "#ffffff"
+  fullscreen: true
+  image: resource/images/common/logo-splash.png
   android: true
   ios: true
   web: false
+  android_12:
+    image: resource/images/common/logo-splash.png
 
