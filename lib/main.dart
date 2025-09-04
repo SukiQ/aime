@@ -1,12 +1,11 @@
-import 'package:aime/widget/local/provider.dart';
+import 'package:aime/widget/local/local_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 import 'l10n/app_localizations.dart';
 import 'page/home.dart';
-import 'config/style.dart';
+import 'config/style_config.dart';
 
 void main() {
   runApp(  MultiProvider(
@@ -23,7 +22,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final localeProvider = Provider.of<LocaleProvider>(context);
-    print('==='+localeProvider.locale.hashCode.toString());
     return MaterialApp(
       locale: localeProvider.locale,
       title: 'Aime',
@@ -70,10 +68,10 @@ class MyApp extends StatelessWidget {
           type: BottomNavigationBarType.fixed,
           backgroundColor: AppColors.background,
           selectedItemColor: AppColors.select,
-          selectedLabelStyle: const TextStyle(fontSize: 10,fontWeight: FontWeight.w300),
-          selectedIconTheme: const IconThemeData(size: 30),
-          unselectedIconTheme: const IconThemeData(size: 30),
-          unselectedLabelStyle: const TextStyle(fontSize: 10,fontWeight: FontWeight.w300),
+          selectedLabelStyle: const TextStyle(fontSize: 15,fontWeight: FontWeight.w300),
+          selectedIconTheme: const IconThemeData(size: 35),
+          unselectedIconTheme: const IconThemeData(size: 35),
+          unselectedLabelStyle: const TextStyle(fontSize: 15,fontWeight: FontWeight.w300),
           unselectedItemColor: AppColors.primary.withValues(alpha: 0.9),
         ),
       ),

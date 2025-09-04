@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'package:provider/provider.dart';
 import '../../config/language_config.dart';
-import '../../config/style.dart';
+import '../../config/style_config.dart';
 import '../../l10n/app_localizations.dart';
-import '../../widget/local/provider.dart';
+import '../../widget/local/local_provider.dart';
 
 class LanguagePage extends StatelessWidget {
   const LanguagePage({super.key});
