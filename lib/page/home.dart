@@ -1,36 +1,37 @@
-
-import 'package:aime/page/learn/learn.dart';
-import 'package:aime/page/mall/mall.dart';
+import 'package:aime/page/learning/learning.dart';
 import 'package:aime/page/model/model.dart';
 import 'package:aime/page/search/search.dart';
-import 'package:aime/page/user/user.dart';
+import 'package:aime/page/settings/settings.dart';
+import 'package:aime/page/think/think.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
+
+import '../l10n/app_localizations.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
 
-
-
   @override
-  State<StatefulWidget> createState()=> _MainPage();
+  State<StatefulWidget> createState() => _MainPage();
 }
 
 class _MainPage extends State<MainPage> {
   int _currentIndex = 0;
 
-  final List<Widget> _pages = const [
-    ModelPage(),
-    LearnPage(),
-    SearchPage(),
-    MallPage(),
-    UserPage()
+  final List<Widget> _pages = [
+    const ModelPage(),
+    const ThinkPage(),
+    const SearchPage(),
+    LearningPage(),
+    const SettingsPage(),
   ];
+
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
-      appBar: AppBar(title: Text("示例")),
-      body: SafeArea( child: _pages[_currentIndex],),
+      body: SafeArea(child: _pages[_currentIndex]),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: (index) {
@@ -38,12 +39,27 @@ class _MainPage extends State<MainPage> {
             _currentIndex = index;
           });
         },
-        items: const [
-          BottomNavigationBarItem(icon: Icon(LucideIcons.codesandbox), label: '模型'),
-          BottomNavigationBarItem(icon: Icon(LucideIcons.libraryBig), label: '学习'),
-          BottomNavigationBarItem(icon: Icon(LucideIcons.search), label: '检索'),
-          BottomNavigationBarItem(icon: Icon(LucideIcons.shoppingCart), label: '商城'),
-          BottomNavigationBarItem(icon: Icon(LucideIcons.user), label: '我的'),
+        items: [
+          BottomNavigationBarItem(
+            icon: const Icon(LucideIcons.codesandbox300),
+            label: l10n.model,
+          ),
+          BottomNavigationBarItem(
+            icon: const Icon(LucideIcons.lightbulb300),
+            label: l10n.think,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(LucideIcons.search300),
+            label: l10n.search,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(LucideIcons.libraryBig300),
+            label: l10n.learning,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(LucideIcons.cog300),
+            label: l10n.settings,
+          ),
         ],
       ),
     );

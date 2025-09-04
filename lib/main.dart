@@ -1,11 +1,20 @@
+import 'package:aime/widget/local/provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
+import 'l10n/app_localizations.dart';
 import 'page/home.dart';
 import 'config/style.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(  MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (_) => LocaleProvider()),
+    ],
+    child: const MyApp(),
+  ),);
 }
 
 class MyApp extends StatelessWidget {
@@ -13,9 +22,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final localeProvider = Provider.of<LocaleProvider>(context);
+    print('==='+localeProvider.locale.hashCode.toString());
     return MaterialApp(
-      locale: Locale('zh', 'CN'),
+      locale: localeProvider.locale,
       title: 'Aime',
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
       theme: ThemeData(
         splashFactory: NoSplash.splashFactory,
         textTheme: GoogleFonts.notoSansScTextTheme(Theme.of(context).textTheme)

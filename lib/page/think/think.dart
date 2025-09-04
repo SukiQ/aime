@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
-class MallPage extends StatelessWidget {
-  const MallPage({super.key});
+class ThinkPage extends StatelessWidget {
+  const ThinkPage({super.key});
 
 
   @override

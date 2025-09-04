@@ -1,0 +1,11 @@
+{
+  "@@locale": "en",
+  "helloWorld": "Hello World",
+  "model": "model",
+  "think": "think",
+  "search": "search",
+  "learning": "learning",
+  "settings": "settings",
+  "selectLanguage": "Select Language",
+  "selectLanguageLabel": "Select the preferred operating system language for Aime"
+}
