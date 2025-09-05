@@ -32,4 +32,7 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get selectLanguageLabel =>
       'Select the preferred operating system language for Aime';
+
+  @override
+  String get theme => 'theme';
 }

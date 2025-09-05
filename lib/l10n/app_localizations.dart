@@ -145,6 +145,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Select the preferred operating system language for Aime'**
   String get selectLanguageLabel;
+
+  /// No description provided for @theme.
+  ///
+  /// In en, this message translates to:
+  /// **'theme'**
+  String get theme;
 }
 
 class _AppLocalizationsDelegate

@@ -7,5 +7,6 @@
   "learning": "learning",
   "settings": "settings",
   "selectLanguage": "Select Language",
-  "selectLanguageLabel": "Select the preferred operating system language for Aime"
+  "selectLanguageLabel": "Select the preferred operating system language for Aime",
+  "theme": "theme"
 }

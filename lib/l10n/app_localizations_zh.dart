@@ -31,4 +31,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get selectLanguageLabel => '为 Aime 选择操作系统首选语言';
+
+  @override
+  String get theme => '主题';
 }

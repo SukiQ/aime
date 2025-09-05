@@ -7,5 +7,6 @@
   "learning": "学习",
   "settings": "设置",
   "selectLanguage": "选择语言",
-  "selectLanguageLabel": "为 Aime 选择操作系统首选语言"
+  "selectLanguageLabel": "为 Aime 选择操作系统首选语言",
+  "theme": "主题"
 }

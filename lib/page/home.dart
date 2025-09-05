@@ -1,6 +1,7 @@
 import 'package:aime/page/learning/learning.dart';
 import 'package:aime/page/model/model.dart';
 import 'package:aime/page/search/search.dart';
+import 'package:aime/page/settings/language.dart';
 import 'package:aime/page/settings/settings.dart';
 import 'package:aime/page/think/think.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,7 @@ class _MainPage extends State<MainPage> {
     const ModelPage(),
     const ThinkPage(),
     const SearchPage(),
-    LearningPage(),
+    const LearningPage(),
     const SettingsPage(),
   ];
 
@@ -38,6 +39,7 @@ class _MainPage extends State<MainPage> {
           children: [
             if (isWide)
               NavigationRail(
+                groupAlignment: -0.9,
                 selectedIndex: _currentIndex,
                 onDestinationSelected: (index) {
                   setState(() {
@@ -48,27 +50,39 @@ class _MainPage extends State<MainPage> {
                   NavigationRailDestination(
                     icon: const Icon(LucideIcons.codesandbox300),
                     label: Text(l10n.model),
+                    padding: EdgeInsets.all(5),
                   ),
                   NavigationRailDestination(
                     icon: const Icon(LucideIcons.lightbulb300),
                     label: Text(l10n.think),
+                    padding: EdgeInsets.all(5),
                   ),
                   NavigationRailDestination(
                     icon: const Icon(LucideIcons.search300),
                     label: Text(l10n.search),
+                    padding: EdgeInsets.all(5),
                   ),
                   NavigationRailDestination(
                     icon: const Icon(LucideIcons.libraryBig300),
                     label: Text(l10n.learning),
+                    padding: EdgeInsets.all(5),
                   ),
                   NavigationRailDestination(
                     icon: const Icon(LucideIcons.cog300),
                     label: Text(l10n.settings),
+                    padding: EdgeInsets.all(5),
                   ),
                 ],
               ),
-            Expanded(child: Center(child: _pages[_currentIndex])),
-          ],
+            if (isWide)
+              VerticalDivider(
+                color: Colors.black.withValues(alpha: 0.15),
+                thickness: 1,
+                width: 10,
+                indent: 35,
+                endIndent: 35,
+              ),
+            Expanded(flex: 3, child: Center(child: _pages[_currentIndex]))]
         ),
       ),
       bottomNavigationBar: isWide
