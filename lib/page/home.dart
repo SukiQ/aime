@@ -82,7 +82,7 @@ class _MainPage extends State<MainPage> {
 
   NavigationRail _buildNavigationRail(AppLocalizations l10n) {
     return NavigationRail(
-      groupAlignment: -0.9,
+      groupAlignment: -0.8,
       selectedIndex: _currentIndex,
       onDestinationSelected: (index) {
         setState(() {

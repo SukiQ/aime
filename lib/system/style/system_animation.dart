@@ -7,7 +7,7 @@ PageTransitionsTheme buildPageTransitionsTheme() {
       TargetPlatform.android: FadeForwardsPageTransitionsBuilder(),
       TargetPlatform.iOS: FadeForwardsPageTransitionsBuilder(),
       TargetPlatform.windows: FadeForwardsPageTransitionsBuilder(),
-      TargetPlatform.macOS: FadeForwardsPageTransitionsBuilder(),
+      TargetPlatform.macOS: PredictiveBackFullscreenPageTransitionsBuilder(),
       TargetPlatform.linux: FadeForwardsPageTransitionsBuilder(),
     },
   );

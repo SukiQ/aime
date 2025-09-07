@@ -16,6 +16,8 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPage extends State<SettingsPage> {
+  Widget currentPage = LanguagePage();
+
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
@@ -29,7 +31,7 @@ class _SettingsPage extends State<SettingsPage> {
             flex: 3,
             child: ListView(
               children: [
-                if (isWide) _buildAppBar(l10n),
+                if (isWide) buildWideAppBar(l10n.settings),
                 _buildListTile(
                   context,
                   LucideIcons.languages400,
@@ -46,40 +48,48 @@ class _SettingsPage extends State<SettingsPage> {
             ),
           ),
           if (isWide) buildVerticalDivider(),
-          if (isWide) Expanded(flex: 7, child: Center(child: LanguagePage())),
+          if (isWide) Expanded(flex: 7, child: Center(child: currentPage)),
         ],
       ),
     );
   }
 
-  AppBar _buildAppBar(AppLocalizations l10n) {
-    return AppBar(
-      titleSpacing: 25,
-      toolbarHeight: 100,
-      title: Padding(
-        padding: EdgeInsets.only(top: 50, bottom: 20),
-        child: Align(
-          alignment: Alignment.centerLeft,
-          child: Text(l10n.settings),
-        ),
-      ),
-    );
+  Widget _buildListTile(
+      BuildContext context,
+      IconData icon,
+      String title,
+      Widget page,
+      ) {
+    final isWide = ScreenHelper.isWide(context);
+    return Padding(padding: isWide ? EdgeInsets.only(left: 10) : EdgeInsets.zero,child: ListTile(
+      leading: Icon(icon),
+      title: Text(title),
+      trailing: isWide ? null : Icon(LucideIcons.chevronRight300),
+      onTap: () {
+        if(isWide) {
+          setState(() {
+            currentPage = page;
+          });
+        } else {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => page));
+        }
+      },
+    ),);
   }
 }
 
-ListTile _buildListTile(
-  BuildContext context,
-  IconData icon,
-  String title,
-  Widget page,
-) {
-  final isWide = ScreenHelper.isWide(context);
-  return ListTile(
-    leading: Icon(icon),
-    title: Text(title),
-    trailing: isWide ? null : Icon(LucideIcons.chevronRight300),
-    onTap: () {
-      Navigator.push(context, MaterialPageRoute(builder: (context) => page));
-    },
+Widget buildWideAppBar(String text) {
+  return AppBar(
+    titleSpacing: 25,
+    toolbarHeight: 130,
+    title: Padding(
+      padding: EdgeInsets.only(top: 80, bottom: 20),
+      child: Align(
+        alignment: Alignment.centerLeft,
+        child: Text(text),
+      ),
+    ),
   );
 }
+
+

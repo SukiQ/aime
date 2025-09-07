@@ -31,6 +31,7 @@ ListTileThemeData _buildListTileTheme() {
     tileColor: AppColors.background,
     selectedTileColor: AppColors.select,
     selectedColor: AppColors.select,
+    contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
   );
 }
