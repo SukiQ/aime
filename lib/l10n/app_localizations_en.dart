@@ -35,4 +35,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get theme => 'theme';
+
+  @override
+  String get themeDark => 'Dark mode';
+
+  @override
+  String get themeLight => 'Light mode';
+
+  @override
+  String get themeSystem => 'System mode';
+
+  @override
+  String get themeSystemLabel => 'I\'ll adjust the mode to match your system';
 }

@@ -1,0 +1,65 @@
+import 'package:aime/page/settings/settings.dart';
+import 'package:flutter/material.dart';
+import 'package:lucide_icons_flutter/lucide_icons.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../config/style_config.dart';
+import '../../helper/screen_helper.dart';
+import '../../l10n/app_localizations.dart';
+import '../../widget/local/local_theme.dart';
+
+class ThemePage extends StatelessWidget {
+  const ThemePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final isWide = ScreenHelper.isWide(context);
+
+    return Scaffold(
+      appBar: isWide ? null : AppBar(title: Text(l10n.theme)),
+      body: ListView(
+        children: [
+          if (isWide) buildWideAppBar(l10n.theme),
+          _buildListTile(context, l10n.themeLight, null, ThemeMode.light),
+          _buildListTile(context, l10n.themeDark, null, ThemeMode.dark),
+          _buildListTile(
+            context,
+            l10n.themeSystem,
+            l10n.themeSystemLabel,
+            ThemeMode.system,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildListTile(
+    BuildContext context,
+    String title,
+    String? label,
+    ThemeMode themeMode,
+  ) {
+    final isWide = ScreenHelper.isWide(context);
+    final localeProvider = Provider.of<LocalTheme>(context, listen: false);
+
+    return Padding(
+      padding: isWide ? EdgeInsets.only(left: 10) : EdgeInsets.zero,
+      child: ListTile(
+        title: Text(title),
+        trailing: localeProvider.locale == themeMode
+            ? const Icon(LucideIcons.circleCheck300, color: AppColors.select)
+            : Icon(LucideIcons.circle300),
+        subtitle: label == null ? null : Text(label),
+        onTap: () {
+          localeProvider.setLocalTheme(themeMode);
+          if (isWide) {
+            return;
+          }
+          Navigator.pop(context);
+        },
+      ),
+    );
+  }
+}

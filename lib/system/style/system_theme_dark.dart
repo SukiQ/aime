@@ -4,20 +4,20 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../config/style_config.dart';
 
-ThemeData buildThemeData(BuildContext context) {
+ThemeData buildDarkThemeData(BuildContext context) {
   return ThemeData(
     splashFactory: NoSplash.splashFactory,
     textTheme: _buildTextTheme(context),
-    primaryColor: AppColors.primary,
+    primaryColor: AppColors.primaryDark,
     appBarTheme: _buildAppBarTheme(),
     listTileTheme: _buildListTileTheme(),
     pageTransitionsTheme: buildPageTransitionsTheme(),
-    scaffoldBackgroundColor: AppColors.background,
+    scaffoldBackgroundColor: AppColors.backgroundDark,
     navigationBarTheme: NavigationBarThemeData(
-      backgroundColor: AppColors.background,
+      backgroundColor: AppColors.backgroundDark,
     ),
     navigationDrawerTheme: NavigationDrawerThemeData(
-      backgroundColor: AppColors.background,
+      backgroundColor: AppColors.backgroundDark,
     ),
     bottomNavigationBarTheme: _buildBottomNavigationBarThemeData(),
     navigationRailTheme: _buildNavigationRailThemeData(),
@@ -26,11 +26,11 @@ ThemeData buildThemeData(BuildContext context) {
 
 ListTileThemeData _buildListTileTheme() {
   return ListTileThemeData(
-    iconColor: AppColors.primary,
-    textColor: AppColors.primary,
-    tileColor: AppColors.background,
-    selectedTileColor: AppColors.select,
-    selectedColor: AppColors.select,
+    iconColor: AppColors.primaryDark,
+    textColor: AppColors.primaryDark,
+    tileColor: AppColors.backgroundDark,
+    selectedTileColor: AppColors.selectDark,
+    selectedColor: AppColors.selectDark,
     subtitleTextStyle: const TextStyle(fontSize: 11, fontWeight: FontWeight.w200),
     contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -41,9 +41,9 @@ AppBarTheme _buildAppBarTheme() {
   return AppBarTheme(
     toolbarHeight: 60.0,
     titleSpacing: 40.0,
-    backgroundColor: AppColors.background,
-    titleTextStyle: TextStyle(color: AppColors.primary),
-    iconTheme: IconThemeData(color: AppColors.primary),
+    backgroundColor: AppColors.backgroundDark,
+    titleTextStyle: TextStyle(color: AppColors.primaryDark),
+    iconTheme: IconThemeData(color: AppColors.primaryDark),
   );
 }
 
@@ -83,7 +83,7 @@ NavigationRailThemeData _buildNavigationRailThemeData() {
   return NavigationRailThemeData(
     minWidth: 60,
     labelType: NavigationRailLabelType.all,
-    backgroundColor: AppColors.background,
+    backgroundColor: AppColors.backgroundDark,
     unselectedLabelTextStyle: const TextStyle(
       fontSize: 15,
       fontWeight: FontWeight.w300,
@@ -94,10 +94,10 @@ NavigationRailThemeData _buildNavigationRailThemeData() {
     ),
     unselectedIconTheme: const IconThemeData(size: 28),
     selectedIconTheme: const IconThemeData(
-      color: AppColors.background,
+      color: AppColors.backgroundDark,
       size: 28,
     ),
-    indicatorColor: AppColors.select,
+    indicatorColor: AppColors.selectDark,
     elevation: 0,
   );
 }
@@ -107,8 +107,8 @@ BottomNavigationBarThemeData _buildBottomNavigationBarThemeData() {
     enableFeedback: false,
     elevation: 0,
     type: BottomNavigationBarType.fixed,
-    backgroundColor: AppColors.background,
-    selectedItemColor: AppColors.select,
+    backgroundColor: AppColors.backgroundDark,
+    selectedItemColor: AppColors.selectDark,
     selectedLabelStyle: const TextStyle(
       fontSize: 15,
       fontWeight: FontWeight.w300,
@@ -121,6 +121,6 @@ BottomNavigationBarThemeData _buildBottomNavigationBarThemeData() {
       fontSize: 15,
       fontWeight: FontWeight.w300,
     ),
-    unselectedItemColor: AppColors.primary.withValues(alpha: 0.9),
+    unselectedItemColor: AppColors.primaryDark.withValues(alpha: 0.9),
   );
 }

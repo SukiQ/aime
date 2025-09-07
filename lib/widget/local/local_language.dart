@@ -3,17 +3,17 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../config/language_config.dart';
 
-class LocaleProvider extends ChangeNotifier {
+class LocaleLanguage extends ChangeNotifier {
   static const String _localeKey = "locale_language";
   Locale _locale = languageLocaleMajor;
 
   Locale get locale => _locale;
 
-  LocaleProvider() {
-    _loadLocaleProvider();
+  LocaleLanguage() {
+    _loadLocaleLanguage();
   }
 
-  Future<void> _loadLocaleProvider() async {
+  Future<void> _loadLocaleLanguage() async {
     final prefs = await SharedPreferences.getInstance();
     final code = prefs.getString(_localeKey);
 

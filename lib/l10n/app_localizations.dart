@@ -151,6 +151,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'theme'**
   String get theme;
+
+  /// No description provided for @themeDark.
+  ///
+  /// In en, this message translates to:
+  /// **'Dark mode'**
+  String get themeDark;
+
+  /// No description provided for @themeLight.
+  ///
+  /// In en, this message translates to:
+  /// **'Light mode'**
+  String get themeLight;
+
+  /// No description provided for @themeSystem.
+  ///
+  /// In en, this message translates to:
+  /// **'System mode'**
+  String get themeSystem;
+
+  /// No description provided for @themeSystemLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'I\'ll adjust the mode to match your system'**
+  String get themeSystemLabel;
 }
 
 class _AppLocalizationsDelegate

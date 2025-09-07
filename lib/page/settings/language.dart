@@ -6,7 +6,7 @@ import '../../config/language_config.dart';
 import '../../config/style_config.dart';
 import '../../helper/screen_helper.dart';
 import '../../l10n/app_localizations.dart';
-import '../../widget/local/local_provider.dart';
+import '../../widget/local/local_language.dart';
 
 class LanguagePage extends StatelessWidget {
   const LanguagePage({super.key});
@@ -15,7 +15,7 @@ class LanguagePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final isWide = ScreenHelper.isWide(context);
-    final localeProvider = Provider.of<LocaleProvider>(context, listen: false);
+    final localeProvider = Provider.of<LocaleLanguage>(context, listen: false);
 
     return Scaffold(
       appBar: isWide ? null : AppBar(title: Text(l10n.selectLanguage)),
@@ -29,7 +29,7 @@ class LanguagePage extends StatelessWidget {
 List<Widget> _buildListTiles(
   BuildContext context,
   AppLocalizations l10n,
-  LocaleProvider localeProvider,
+  LocaleLanguage localeProvider,
   bool isWide,
 ) {
   final List<Widget> list = [];
@@ -51,7 +51,7 @@ List<Widget> _buildListTiles(
             if (isWide) {
               return;
             }
-            Navigator.pop(context, lang.locale);
+            Navigator.pop(context);
           },
         ),
       );

@@ -1,4 +1,4 @@
-import 'package:aime/page/settings/theme_switcher_page.dart';
+import 'package:aime/page/settings/theme_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
@@ -42,7 +42,7 @@ class _SettingsPage extends State<SettingsPage> {
                   context,
                   LucideIcons.palette400,
                   l10n.theme,
-                  ThemeSwitcherPage(),
+                  ThemePage(),
                 ),
               ],
             ),

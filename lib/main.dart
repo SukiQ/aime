@@ -1,6 +1,8 @@
 import 'dart:io';
 
-import 'package:aime/widget/local/local_provider.dart';
+import 'package:aime/system/style/system_theme_dark.dart';
+import 'package:aime/widget/local/local_language.dart';
+import 'package:aime/widget/local/local_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:window_manager/window_manager.dart';
@@ -29,7 +31,10 @@ void main() async {
   }
   runApp(
     MultiProvider(
-      providers: [ChangeNotifierProvider(create: (_) => LocaleProvider())],
+      providers: [
+        ChangeNotifierProvider(create: (_) => LocaleLanguage()),
+        ChangeNotifierProvider(create: (_) => LocalTheme()),
+      ],
       child: const MyApp(),
     ),
   );
@@ -40,17 +45,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final localeProvider = Provider.of<LocaleProvider>(context);
+    final localeLanguage = Provider.of<LocaleLanguage>(context);
+    final localeTheme = Provider.of<LocalTheme>(context);
+
     return MaterialApp(
-      locale: localeProvider.locale,
+      locale: localeLanguage.locale,
       title: 'Aime',
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       theme: buildThemeData(context),
       home: MainPage(),
       debugShowCheckedModeBanner: false,
+      darkTheme: buildDarkThemeData(context),
+      themeMode: localeTheme.locale,
     );
   }
-
-
 }

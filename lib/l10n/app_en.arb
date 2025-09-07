@@ -8,5 +8,9 @@
   "settings": "settings",
   "selectLanguage": "Select Language",
   "selectLanguageLabel": "Select the preferred operating system language for Aime",
-  "theme": "theme"
+  "theme": "theme",
+  "themeDark": "Dark mode",
+  "themeLight": "Light mode",
+  "themeSystem": "System mode",
+  "themeSystemLabel": "I'll adjust the mode to match your system"
 }
