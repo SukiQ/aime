@@ -34,6 +34,18 @@ class AppLocalizationsEn extends AppLocalizations {
       'Select the preferred operating system language for Aime';
 
   @override
+  String get english => 'English';
+
+  @override
+  String get chineseSimple => 'Chinese (Simplified)';
+
+  @override
+  String get chineseTraditionalTW => 'Chinese (Traditional,Taiwan)';
+
+  @override
+  String get chineseTraditionalHK => 'Chinese (Traditional,Hong Kong)';
+
+  @override
   String get theme => 'theme';
 
   @override

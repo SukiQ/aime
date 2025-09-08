@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:aime/system/style/system_theme_dark.dart';
 import 'package:aime/widget/local/local_language.dart';
 import 'package:aime/widget/local/local_theme.dart';
 import 'package:flutter/material.dart';
@@ -53,10 +52,10 @@ class MyApp extends StatelessWidget {
       title: 'Aime',
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      theme: buildThemeData(context),
+      theme: buildThemeData(context, ThemeMode.light),
       home: MainPage(),
       debugShowCheckedModeBanner: false,
-      darkTheme: buildDarkThemeData(context),
+      darkTheme: buildThemeData(context, ThemeMode.dark),
       themeMode: localeTheme.locale,
     );
   }

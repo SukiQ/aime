@@ -5,7 +5,7 @@ import '../../config/language_config.dart';
 
 class LocaleLanguage extends ChangeNotifier {
   static const String _localeKey = "locale_language";
-  Locale _locale = languageLocaleMajor;
+  Locale _locale = Languages.chineseSimple.locale;
 
   Locale get locale => _locale;
 

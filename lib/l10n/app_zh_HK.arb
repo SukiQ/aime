@@ -1,0 +1,19 @@
+{
+  "helloWorld": "你好，世界",
+  "model": "模型",
+  "think": "思考",
+  "search": "搜尋",
+  "learning": "學習",
+  "settings": "設定",
+  "selectLanguage": "選擇語言",
+  "selectLanguageLabel": "為 Aime 選擇作業系統首選語言",
+  "english": "英文",
+  "chineseSimple": "中文（簡體）",
+  "chineseTraditionalTW": "中文（繁體，台灣）",
+  "chineseTraditionalHK": "中文（繁體，香港）",
+  "theme": "主題",
+  "themeDark": "深色模式",
+  "themeLight": "淺色模式",
+  "themeSystem": "系統預設",
+  "themeSystemLabel": "我會根據系統切換模式"
+}

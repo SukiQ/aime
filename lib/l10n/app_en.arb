@@ -1,5 +1,4 @@
 {
-  "@@locale": "en",
   "helloWorld": "Hello World",
   "model": "model",
   "think": "think",
@@ -8,6 +7,10 @@
   "settings": "settings",
   "selectLanguage": "Select Language",
   "selectLanguageLabel": "Select the preferred operating system language for Aime",
+  "english": "English",
+  "chineseSimple": "Chinese (Simplified)",
+  "chineseTraditionalTW": "Chinese (Traditional,Taiwan)",
+  "chineseTraditionalHK": "Chinese (Traditional,Hong Kong)",
   "theme": "theme",
   "themeDark": "Dark mode",
   "themeLight": "Light mode",

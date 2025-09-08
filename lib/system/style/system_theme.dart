@@ -4,34 +4,30 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../config/style_config.dart';
 
-ThemeData buildThemeData(BuildContext context) {
+ThemeData buildThemeData(BuildContext context, ThemeMode themeMode) {
   return ThemeData(
+    colorScheme: ColorScheme.fromSeed(
+      seedColor: AppColors.primary,
+      onSurfaceVariant: AppColors.label,
+      brightness: themeMode == ThemeMode.light
+          ? Brightness.light
+          : Brightness.dark,
+    ),
     splashFactory: NoSplash.splashFactory,
     textTheme: _buildTextTheme(context),
-    primaryColor: AppColors.primary,
     appBarTheme: _buildAppBarTheme(),
     listTileTheme: _buildListTileTheme(),
     pageTransitionsTheme: buildPageTransitionsTheme(),
-    scaffoldBackgroundColor: AppColors.background,
-    navigationBarTheme: NavigationBarThemeData(
-      backgroundColor: AppColors.background,
-    ),
-    navigationDrawerTheme: NavigationDrawerThemeData(
-      backgroundColor: AppColors.background,
-    ),
-    bottomNavigationBarTheme: _buildBottomNavigationBarThemeData(),
+    navigationBarTheme: NavigationBarThemeData(),
+    navigationDrawerTheme: NavigationDrawerThemeData(),
+    bottomNavigationBarTheme: _buildBottomNavigationBarThemeData(themeMode),
     navigationRailTheme: _buildNavigationRailThemeData(),
   );
 }
 
 ListTileThemeData _buildListTileTheme() {
   return ListTileThemeData(
-    iconColor: AppColors.primary,
-    textColor: AppColors.primary,
-    tileColor: AppColors.background,
-    selectedTileColor: AppColors.select,
-    selectedColor: AppColors.select,
-    subtitleTextStyle: const TextStyle(fontSize: 11, fontWeight: FontWeight.w200),
+    style: ListTileStyle.list,
     contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
   );
@@ -41,9 +37,6 @@ AppBarTheme _buildAppBarTheme() {
   return AppBarTheme(
     toolbarHeight: 60.0,
     titleSpacing: 40.0,
-    backgroundColor: AppColors.background,
-    titleTextStyle: TextStyle(color: AppColors.primary),
-    iconTheme: IconThemeData(color: AppColors.primary),
   );
 }
 
@@ -55,11 +48,11 @@ TextTheme _buildTextTheme(BuildContext context) {
     ),
     bodyMedium: GoogleFonts.notoSansSc(
       fontWeight: FontWeight.w400,
-      fontSize: 15,
+      fontSize: 14,
     ),
     bodySmall: GoogleFonts.notoSansSc(
       fontWeight: FontWeight.w400,
-      fontSize: 13,
+      fontSize: 11,
     ),
     headlineLarge: GoogleFonts.notoSansSc(fontWeight: FontWeight.w200),
     headlineMedium: GoogleFonts.notoSansSc(fontWeight: FontWeight.w200),
@@ -76,6 +69,18 @@ TextTheme _buildTextTheme(BuildContext context) {
       fontWeight: FontWeight.bold,
       fontSize: 16,
     ),
+    displayLarge: GoogleFonts.notoSansSc(
+      fontWeight: FontWeight.w200,
+      fontSize: 20,
+    ),
+    displayMedium: GoogleFonts.notoSansSc(
+      fontWeight: FontWeight.w200,
+      fontSize: 18,
+    ),
+    displaySmall: GoogleFonts.notoSansSc(
+      fontWeight: FontWeight.w200,
+      fontSize: 16,
+    ),
   );
 }
 
@@ -83,44 +88,38 @@ NavigationRailThemeData _buildNavigationRailThemeData() {
   return NavigationRailThemeData(
     minWidth: 60,
     labelType: NavigationRailLabelType.all,
-    backgroundColor: AppColors.background,
     unselectedLabelTextStyle: const TextStyle(
       fontSize: 15,
-      fontWeight: FontWeight.w300,
+      fontWeight: FontWeight.w400,
     ),
     selectedLabelTextStyle: const TextStyle(
       fontSize: 15,
-      fontWeight: FontWeight.w300,
+      fontWeight: FontWeight.w400,
     ),
     unselectedIconTheme: const IconThemeData(size: 28),
-    selectedIconTheme: const IconThemeData(
-      color: AppColors.background,
-      size: 28,
-    ),
-    indicatorColor: AppColors.select,
+    selectedIconTheme: IconThemeData(size: 28),
     elevation: 0,
   );
 }
 
-BottomNavigationBarThemeData _buildBottomNavigationBarThemeData() {
+BottomNavigationBarThemeData _buildBottomNavigationBarThemeData(
+  ThemeMode themeMode,
+) {
   return BottomNavigationBarThemeData(
     enableFeedback: false,
     elevation: 0,
     type: BottomNavigationBarType.fixed,
-    backgroundColor: AppColors.background,
-    selectedItemColor: AppColors.select,
     selectedLabelStyle: const TextStyle(
-      fontSize: 15,
-      fontWeight: FontWeight.w300,
+      fontSize: 14,
+      fontWeight: FontWeight.w400,
     ),
     showSelectedLabels: true,
     showUnselectedLabels: true,
     selectedIconTheme: const IconThemeData(size: 32),
     unselectedIconTheme: const IconThemeData(size: 32),
     unselectedLabelStyle: const TextStyle(
-      fontSize: 15,
-      fontWeight: FontWeight.w300,
+      fontSize: 14,
+      fontWeight: FontWeight.w400,
     ),
-    unselectedItemColor: AppColors.primary.withValues(alpha: 0.9),
   );
 }

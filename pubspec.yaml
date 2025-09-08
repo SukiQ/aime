@@ -110,4 +110,5 @@ flutter_native_splash:
   web: false
   android_12:
     image: resource/images/config/logo-splash.png
-
+flutter_intl:
+  enabled: true

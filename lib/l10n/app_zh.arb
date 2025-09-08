@@ -1,5 +1,4 @@
 {
-  "@@locale": "zh",
   "helloWorld": "你好，世界",
   "model": "模型",
   "think": "思考",
@@ -8,6 +7,10 @@
   "settings": "设置",
   "selectLanguage": "选择语言",
   "selectLanguageLabel": "为 Aime 选择操作系统首选语言",
+  "english": "英文",
+  "chineseSimple": "中文（简体）",
+  "chineseTraditionalTW": "中文（繁体，台湾）",
+  "chineseTraditionalHK": "中文（繁体，香港）",
   "theme": "主题",
   "themeDark": "深色模式",
   "themeLight": "浅色模式",

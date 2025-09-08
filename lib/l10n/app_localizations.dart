@@ -96,6 +96,8 @@ abstract class AppLocalizations {
   static const List<Locale> supportedLocales = <Locale>[
     Locale('en'),
     Locale('zh'),
+    Locale('zh', 'HK'),
+    Locale('zh', 'TW'),
   ];
 
   /// No description provided for @helloWorld.
@@ -146,6 +148,30 @@ abstract class AppLocalizations {
   /// **'Select the preferred operating system language for Aime'**
   String get selectLanguageLabel;
 
+  /// No description provided for @english.
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get english;
+
+  /// No description provided for @chineseSimple.
+  ///
+  /// In en, this message translates to:
+  /// **'Chinese (Simplified)'**
+  String get chineseSimple;
+
+  /// No description provided for @chineseTraditionalTW.
+  ///
+  /// In en, this message translates to:
+  /// **'Chinese (Traditional,Taiwan)'**
+  String get chineseTraditionalTW;
+
+  /// No description provided for @chineseTraditionalHK.
+  ///
+  /// In en, this message translates to:
+  /// **'Chinese (Traditional,Hong Kong)'**
+  String get chineseTraditionalHK;
+
   /// No description provided for @theme.
   ///
   /// In en, this message translates to:
@@ -195,6 +221,20 @@ class _AppLocalizationsDelegate
 }
 
 AppLocalizations lookupAppLocalizations(Locale locale) {
+  // Lookup logic when language+country codes are specified.
+  switch (locale.languageCode) {
+    case 'zh':
+      {
+        switch (locale.countryCode) {
+          case 'HK':
+            return AppLocalizationsZhHk();
+          case 'TW':
+            return AppLocalizationsZhTw();
+        }
+        break;
+      }
+  }
+
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
     case 'en':

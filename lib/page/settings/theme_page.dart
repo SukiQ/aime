@@ -2,9 +2,7 @@ import 'package:aime/page/settings/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../config/style_config.dart';
 import '../../helper/screen_helper.dart';
 import '../../l10n/app_localizations.dart';
 import '../../widget/local/local_theme.dart';
@@ -42,16 +40,19 @@ class ThemePage extends StatelessWidget {
     ThemeMode themeMode,
   ) {
     final isWide = ScreenHelper.isWide(context);
-    final localeProvider = Provider.of<LocalTheme>(context, listen: false);
+    final localeProvider = Provider.of<LocalTheme>(context);
+    final ColorScheme colorScheme = Theme.of(context).colorScheme;
 
     return Padding(
       padding: isWide ? EdgeInsets.only(left: 10) : EdgeInsets.zero,
       child: ListTile(
         title: Text(title),
         trailing: localeProvider.locale == themeMode
-            ? const Icon(LucideIcons.circleCheck300, color: AppColors.select)
+            ? Icon(LucideIcons.circleCheck300, color: colorScheme.primary)
             : Icon(LucideIcons.circle300),
-        subtitle: label == null ? null : Text(label),
+        subtitle: label == null
+            ? null
+            : Text(label),
         onTap: () {
           localeProvider.setLocalTheme(themeMode);
           if (isWide) {
