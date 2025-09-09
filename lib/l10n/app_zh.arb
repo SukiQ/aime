@@ -15,5 +15,8 @@
   "themeDark": "深色模式",
   "themeLight": "浅色模式",
   "themeSystem": "系统默认",
-  "themeSystemLabel": "我会根据系统切换模式"
+  "themeSystemLabel": "我会根据系统切换模式",
+  "about": "关于",
+  "score": "评分",
+  "aboutMe": "关于我"
 }

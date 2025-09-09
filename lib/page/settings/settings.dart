@@ -1,4 +1,5 @@
-import 'package:aime/page/settings/theme_page.dart';
+import 'package:aime/page/settings/about.dart';
+import 'package:aime/page/settings/theme_setting.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
@@ -6,7 +7,7 @@ import 'package:lucide_icons_flutter/lucide_icons.dart';
 import '../../helper/screen_helper.dart';
 import '../../l10n/app_localizations.dart';
 import '../../system/widget/vertical_widget.dart';
-import 'language.dart';
+import 'language_setting.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -16,7 +17,7 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPage extends State<SettingsPage> {
-  Widget currentPage = LanguagePage();
+  Widget currentPage = LanguageSetting();
 
   @override
   Widget build(BuildContext context) {
@@ -36,13 +37,19 @@ class _SettingsPage extends State<SettingsPage> {
                   context,
                   LucideIcons.languages400,
                   l10n.selectLanguage,
-                  LanguagePage(),
+                  LanguageSetting(),
                 ),
                 _buildListTile(
                   context,
                   LucideIcons.palette400,
                   l10n.theme,
-                  ThemePage(),
+                  ThemeSetting(),
+                ),
+                _buildListTile(
+                  context,
+                  LucideIcons.badgeInfo400,
+                  l10n.about,
+                  About(),
                 ),
               ],
             ),

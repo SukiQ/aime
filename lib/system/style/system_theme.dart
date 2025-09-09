@@ -6,9 +6,16 @@ import '../../config/style_config.dart';
 
 ThemeData buildThemeData(BuildContext context, ThemeMode themeMode) {
   return ThemeData(
+    useMaterial3: true,
     colorScheme: ColorScheme.fromSeed(
-      seedColor: AppColors.primary,
-      onSurfaceVariant: AppColors.label,
+      surface: themeMode == ThemeMode.light
+          ? AppColors.surface
+          : AppColors.surfaceDark,
+      seedColor: AppColors.seedColor,
+      onSurfaceVariant: AppColors.onSurfaceVariant,
+      surfaceContainerHigh: themeMode == ThemeMode.light
+          ? AppColors.surfaceContainerHigh
+          : AppColors.surfaceContainerHighDark,
       brightness: themeMode == ThemeMode.light
           ? Brightness.light
           : Brightness.dark,
@@ -17,11 +24,11 @@ ThemeData buildThemeData(BuildContext context, ThemeMode themeMode) {
     textTheme: _buildTextTheme(context),
     appBarTheme: _buildAppBarTheme(),
     listTileTheme: _buildListTileTheme(),
+    searchBarTheme: _buildSearchBarTheme(context),
     pageTransitionsTheme: buildPageTransitionsTheme(),
-    navigationBarTheme: NavigationBarThemeData(),
-    navigationDrawerTheme: NavigationDrawerThemeData(),
-    bottomNavigationBarTheme: _buildBottomNavigationBarThemeData(themeMode),
+    bottomNavigationBarTheme: _buildBottomNavigationBarThemeData(),
     navigationRailTheme: _buildNavigationRailThemeData(),
+    inputDecorationTheme: _buildInputDecorationTheme(),
   );
 }
 
@@ -34,10 +41,7 @@ ListTileThemeData _buildListTileTheme() {
 }
 
 AppBarTheme _buildAppBarTheme() {
-  return AppBarTheme(
-    toolbarHeight: 60.0,
-    titleSpacing: 40.0,
-  );
+  return AppBarTheme(toolbarHeight: 60.0, titleSpacing: 40.0);
 }
 
 TextTheme _buildTextTheme(BuildContext context) {
@@ -102,9 +106,7 @@ NavigationRailThemeData _buildNavigationRailThemeData() {
   );
 }
 
-BottomNavigationBarThemeData _buildBottomNavigationBarThemeData(
-  ThemeMode themeMode,
-) {
+BottomNavigationBarThemeData _buildBottomNavigationBarThemeData() {
   return BottomNavigationBarThemeData(
     enableFeedback: false,
     elevation: 0,
@@ -120,6 +122,33 @@ BottomNavigationBarThemeData _buildBottomNavigationBarThemeData(
     unselectedLabelStyle: const TextStyle(
       fontSize: 14,
       fontWeight: FontWeight.w400,
+    ),
+  );
+}
+
+SearchBarThemeData? _buildSearchBarTheme(BuildContext context) {
+  return SearchBarThemeData(
+    padding: const WidgetStatePropertyAll(
+      EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+    ),
+    side: const WidgetStatePropertyAll(BorderSide.none),
+    shape: WidgetStateProperty.all(
+      RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+    ),
+    elevation: const WidgetStatePropertyAll(0),
+    constraints: const BoxConstraints(minHeight: 40, maxHeight: 40),
+  );
+}
+
+InputDecorationThemeData? _buildInputDecorationTheme() {
+  return InputDecorationThemeData(
+    filled: true,
+    constraints: const BoxConstraints(minHeight: 40),
+    fillColor: AppColors.surfaceContainerHigh,
+    contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.circular(12),
+      borderSide: BorderSide.none,
     ),
   );
 }

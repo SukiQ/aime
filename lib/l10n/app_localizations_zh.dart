@@ -58,6 +58,15 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get themeSystemLabel => '我会根据系统切换模式';
+
+  @override
+  String get about => '关于';
+
+  @override
+  String get score => '评分';
+
+  @override
+  String get aboutMe => '关于我';
 }
 
 /// The translations for Chinese, as used in Hong Kong (`zh_HK`).
@@ -114,6 +123,15 @@ class AppLocalizationsZhHk extends AppLocalizationsZh {
 
   @override
   String get themeSystemLabel => '我會根據系統切換模式';
+
+  @override
+  String get about => '关于';
+
+  @override
+  String get score => '评分';
+
+  @override
+  String get aboutMe => '关于我';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -170,4 +188,13 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get themeSystemLabel => '我會根據系統切換模式';
+
+  @override
+  String get about => '关于';
+
+  @override
+  String get score => '评分';
+
+  @override
+  String get aboutMe => '关于我';
 }

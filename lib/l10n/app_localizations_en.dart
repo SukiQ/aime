@@ -12,19 +12,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get helloWorld => 'Hello World';
 
   @override
-  String get model => 'model';
+  String get model => 'Model';
 
   @override
-  String get think => 'think';
+  String get think => 'Think';
 
   @override
-  String get search => 'search';
+  String get search => 'Search';
 
   @override
-  String get learning => 'learning';
+  String get learning => 'Learning';
 
   @override
-  String get settings => 'settings';
+  String get settings => 'Settings';
 
   @override
   String get selectLanguage => 'Select Language';
@@ -46,7 +46,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get chineseTraditionalHK => 'Chinese (Traditional,Hong Kong)';
 
   @override
-  String get theme => 'theme';
+  String get theme => 'Theme';
 
   @override
   String get themeDark => 'Dark mode';
@@ -59,4 +59,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get themeSystemLabel => 'I\'ll adjust the mode to match your system';
+
+  @override
+  String get about => 'About';
+
+  @override
+  String get score => 'Score';
+
+  @override
+  String get aboutMe => 'About Me';
 }

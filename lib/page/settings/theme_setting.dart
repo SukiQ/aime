@@ -7,8 +7,8 @@ import '../../helper/screen_helper.dart';
 import '../../l10n/app_localizations.dart';
 import '../../widget/local/local_theme.dart';
 
-class ThemePage extends StatelessWidget {
-  const ThemePage({super.key});
+class ThemeSetting extends StatelessWidget {
+  const ThemeSetting({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +48,7 @@ class ThemePage extends StatelessWidget {
       child: ListTile(
         title: Text(title),
         trailing: localeProvider.locale == themeMode
-            ? Icon(LucideIcons.circleCheck300, color: colorScheme.primary)
+            ? Icon(LucideIcons.circleCheck400, color: colorScheme.primary)
             : Icon(LucideIcons.circle300),
         subtitle: label == null
             ? null

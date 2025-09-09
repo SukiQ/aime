@@ -9,6 +9,6 @@ class ModelPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(child: Icon(LucideIcons.codesandbox200,size: 80,color: AppColors.primary,));
+    return const Center(child: Icon(LucideIcons.codesandbox200,size: 80,color: AppColors.seedColor,));
   }
 }

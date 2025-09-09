@@ -18,7 +18,7 @@ class _LearningPageState extends State<LearningPage> {
       child: Icon(
         LucideIcons.libraryBig200,
         size: 80,
-        color: AppColors.primary,
+        color: AppColors.seedColor,
       ),
     );
   }

@@ -109,31 +109,31 @@ abstract class AppLocalizations {
   /// No description provided for @model.
   ///
   /// In en, this message translates to:
-  /// **'model'**
+  /// **'Model'**
   String get model;
 
   /// No description provided for @think.
   ///
   /// In en, this message translates to:
-  /// **'think'**
+  /// **'Think'**
   String get think;
 
   /// No description provided for @search.
   ///
   /// In en, this message translates to:
-  /// **'search'**
+  /// **'Search'**
   String get search;
 
   /// No description provided for @learning.
   ///
   /// In en, this message translates to:
-  /// **'learning'**
+  /// **'Learning'**
   String get learning;
 
   /// No description provided for @settings.
   ///
   /// In en, this message translates to:
-  /// **'settings'**
+  /// **'Settings'**
   String get settings;
 
   /// No description provided for @selectLanguage.
@@ -175,7 +175,7 @@ abstract class AppLocalizations {
   /// No description provided for @theme.
   ///
   /// In en, this message translates to:
-  /// **'theme'**
+  /// **'Theme'**
   String get theme;
 
   /// No description provided for @themeDark.
@@ -201,6 +201,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'I\'ll adjust the mode to match your system'**
   String get themeSystemLabel;
+
+  /// No description provided for @about.
+  ///
+  /// In en, this message translates to:
+  /// **'About'**
+  String get about;
+
+  /// No description provided for @score.
+  ///
+  /// In en, this message translates to:
+  /// **'Score'**
+  String get score;
+
+  /// No description provided for @aboutMe.
+  ///
+  /// In en, this message translates to:
+  /// **'About Me'**
+  String get aboutMe;
 }
 
 class _AppLocalizationsDelegate
