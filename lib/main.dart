@@ -1,7 +1,8 @@
 import 'dart:io';
 
-import 'package:aime/widget/local/local_language.dart';
-import 'package:aime/widget/local/local_theme.dart';
+import 'package:aime/cache/local/local_language.dart';
+import 'package:aime/cache/local/local_theme.dart';
+import 'package:cbl_flutter/cbl_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:window_manager/window_manager.dart';
@@ -28,6 +29,7 @@ void main() async {
       await windowManager.focus();
     });
   }
+  // await CouchbaseLiteFlutter.init();
   runApp(
     MultiProvider(
       providers: [

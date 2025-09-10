@@ -5,9 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:simple_icons/simple_icons.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../helper/screen_helper.dart';
+import '../../helper/screen.dart';
 import '../../l10n/app_localizations.dart';
 import '../../system/widget/list.dart';
+import '../../system/widget/page.dart';
 
 class SuggestPage extends StatelessWidget {
 
@@ -19,26 +20,26 @@ class SuggestPage extends StatelessWidget {
 
     return Scaffold(
       appBar: isWide ? null : AppBar(title: Text(l10n.suggestAndIdea)),
-      body: Column(
+      body: ViewPage( child:Column(
         children: [
           if (isWide) buildWideAppBar(l10n.suggestAndIdea),
-          buildListTile(context, SimpleIcons.instagram, l10n.instagram, () {
+          buildLevel1ListTile(context, SimpleIcons.instagram, l10n.instagram, () {
             _launchUrl(AppInfo.appAuthorInstagram);
           }),
-          buildListTile(context, SimpleIcons.x, l10n.x, () {
+          buildLevel1ListTile(context, SimpleIcons.x, l10n.x, () {
             _launchUrl(AppInfo.appAuthorX);
           }),
-          buildListTile(context, SimpleIcons.wechat, l10n.weChat, () {
+          buildLevel1ListTile(context, SimpleIcons.wechat, l10n.weChat, () {
             _launchUrl(AppInfo.appAuthorWechat);
           }),
-          buildListTile(context, SimpleIcons.xiaohongshu, l10n.xiaohongshu, () {
+          buildLevel1ListTile(context, SimpleIcons.xiaohongshu, l10n.xiaohongshu, () {
             _launchUrl(AppInfo.appAuthorXiaohongshu);
           }),
-          buildListTile(context, SimpleIcons.sinaweibo, l10n.weibo, () {
+          buildLevel1ListTile(context, SimpleIcons.sinaweibo, l10n.weibo, () {
             _launchUrl(AppInfo.appAuthorWeibo);
           }),
         ]
-      ));
+      )));
   }
 
 

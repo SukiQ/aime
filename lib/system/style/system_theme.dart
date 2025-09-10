@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:aime/helper/screen.dart';
 import 'package:aime/system/style/system_animation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -35,6 +38,9 @@ ThemeData buildThemeData(BuildContext context, ThemeMode themeMode) {
 ListTileThemeData _buildListTileTheme() {
   return ListTileThemeData(
     style: ListTileStyle.list,
+    shape: ScreenHelper.isPhone() ? null : RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(12),
+    ),
     contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
   );
 }
@@ -47,30 +53,30 @@ TextTheme _buildTextTheme(BuildContext context) {
   return GoogleFonts.notoSansScTextTheme(Theme.of(context).textTheme).copyWith(
     bodyLarge: GoogleFonts.notoSansSc(
       fontWeight: FontWeight.w400,
-      fontSize: 17,
+      fontSize: ScreenHelper.isPhone() ? 17 : 15,
     ),
     bodyMedium: GoogleFonts.notoSansSc(
       fontWeight: FontWeight.w400,
-      fontSize: 14,
+      fontSize: ScreenHelper.isPhone() ? 14 : 12,
     ),
     bodySmall: GoogleFonts.notoSansSc(
       fontWeight: FontWeight.w400,
-      fontSize: 11,
+      fontSize: ScreenHelper.isPhone() ? 11 : 9,
     ),
     headlineLarge: GoogleFonts.notoSansSc(fontWeight: FontWeight.w200),
     headlineMedium: GoogleFonts.notoSansSc(fontWeight: FontWeight.w200),
     headlineSmall: GoogleFonts.notoSansSc(fontWeight: FontWeight.w200),
     titleLarge: GoogleFonts.notoSansSc(
       fontWeight: FontWeight.bold,
-      fontSize: 20,
+      fontSize: ScreenHelper.isPhone()? 20 :18,
     ),
     titleMedium: GoogleFonts.notoSansSc(
       fontWeight: FontWeight.bold,
-      fontSize: 18,
+      fontSize: ScreenHelper.isPhone() ? 18 :16,
     ),
     titleSmall: GoogleFonts.notoSansSc(
       fontWeight: FontWeight.bold,
-      fontSize: 16,
+      fontSize: ScreenHelper.isPhone() ? 16 :14,
     ),
     displayLarge: GoogleFonts.notoSansSc(
       fontWeight: FontWeight.w200,

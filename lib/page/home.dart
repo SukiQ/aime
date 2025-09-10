@@ -6,7 +6,7 @@ import 'package:aime/page/think/think.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
-import '../helper/screen_helper.dart';
+import '../helper/screen.dart';
 import '../l10n/app_localizations.dart';
 import '../system/widget/vertical_widget.dart';
 

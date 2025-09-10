@@ -1,4 +1,3 @@
-
 import 'dart:io';
 
 import 'package:aime/page/settings/settings.dart';
@@ -9,9 +8,10 @@ import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../config/app_info.dart';
-import '../../helper/screen_helper.dart';
+import '../../helper/screen.dart';
 import '../../l10n/app_localizations.dart';
 import '../../system/widget/list.dart';
+import '../../system/widget/page.dart';
 
 class About extends StatelessWidget {
   About({super.key});
@@ -42,45 +42,52 @@ class About extends StatelessWidget {
 
     return Scaffold(
       appBar: isWide ? null : AppBar(title: Text(l10n.about)),
-      body: Column(
-        children: [
-          if (isWide) buildWideAppBar(l10n.about),
-          Image.asset(
-            'assets/images/logo-splash-2.png',
-            width: double.infinity,
-            fit: BoxFit.cover,
-          ),
-          Center(
-            child: Text(
-              "$_appName v$_version #Build $_buildVersion",
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.onSurfaceVariant,
+      body: ViewPage(
+        child: Column(
+          children: [
+            if (isWide) buildWideAppBar(l10n.about),
+            Image.asset(
+              'assets/images/logo-splash-2.png',
+              width: double.infinity,
+              fit: BoxFit.cover,
+            ),
+            Center(
+              child: Text(
+                "$_appName v$_version #Build $_buildVersion",
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.onSurfaceVariant,
+                ),
               ),
             ),
-          ),
-          SizedBox(
-            height: 30,
-          ),
-          buildListTile(context, LucideIcons.star400, l10n.rating, () {
-            _requestReview();
-          }),
-          buildListTile(context, LucideIcons.link, l10n.suggestAndIdea, () {
-            Navigator.push(context, MaterialPageRoute(
-                builder: (context) => SuggestPage()));
-          }),
-        ],
+            SizedBox(height: 30),
+            buildLevel2ListTile(context, LucideIcons.star400, l10n.rating, () {
+              _requestReview();
+            }),
+            buildLevel2ListTile(
+              context,
+              LucideIcons.link,
+              l10n.suggestAndIdea,
+              () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SuggestPage()),
+                );
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
 }
 
-BottomSheet _ContactAuthorBottomSheet(context){
+BottomSheet _ContactAuthorBottomSheet(context) {
   return BottomSheet(
-    onClosing: (){
+    onClosing: () {
       print("closed");
     },
 
-    builder: (context){
+    builder: (context) {
       return Container(
         height: 300,
         color: Colors.yellow,

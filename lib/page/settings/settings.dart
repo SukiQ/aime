@@ -1,14 +1,15 @@
 import 'package:aime/page/settings/about.dart';
-import 'package:aime/page/settings/theme_setting.dart';
+import 'package:aime/page/settings/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
-import '../../helper/screen_helper.dart';
+import '../../helper/screen.dart';
 import '../../l10n/app_localizations.dart';
 import '../../system/widget/list.dart';
+import '../../system/widget/page.dart';
 import '../../system/widget/vertical_widget.dart';
-import 'language_setting.dart';
+import 'language.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -27,14 +28,14 @@ class _SettingsPage extends State<SettingsPage> {
 
     return Scaffold(
       appBar: isWide ? null : AppBar(title: Text(l10n.settings)),
-      body: Row(
+      body: ViewPage( child:Row(
         children: [
           Expanded(
             flex: 3,
             child: ListView(
               children: [
                 if (isWide) buildWideAppBar(l10n.settings),
-                buildListTile(
+                buildLevel1ListTile(
                     context,
                     LucideIcons.languages400,
                     l10n.selectLanguage,
@@ -49,7 +50,7 @@ class _SettingsPage extends State<SettingsPage> {
                           builder: (context) => LanguageSetting()));
                     }
                 ),
-                buildListTile(
+                buildLevel1ListTile(
                     context,
                     LucideIcons.palette400,
                     l10n.theme,
@@ -64,7 +65,7 @@ class _SettingsPage extends State<SettingsPage> {
                           builder: (context) => ThemeSetting()));
                     }
                 ),
-                buildListTile(
+                buildLevel1ListTile(
                     context,
                     LucideIcons.badgeInfo400,
                     l10n.about,
@@ -83,9 +84,9 @@ class _SettingsPage extends State<SettingsPage> {
             ),
           ),
           if (isWide) buildVerticalDivider(),
-          if (isWide) Expanded(flex: 7, child: Center(child: _currentPage)),
+          if (isWide) Expanded(flex: 7, child:  _currentPage),
         ],
-      ),
+      ))
     );
   }
 }

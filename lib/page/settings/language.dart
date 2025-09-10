@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'package:provider/provider.dart';
 import '../../config/language_config.dart';
-import '../../helper/screen_helper.dart';
+import '../../helper/screen.dart';
 import '../../l10n/app_localizations.dart';
-import '../../widget/local/local_language.dart';
+import '../../cache/local/local_language.dart';
+import '../../system/widget/page.dart';
 
 class LanguageSetting extends StatefulWidget {
   const LanguageSetting({super.key});
@@ -26,7 +27,7 @@ class _LearningPageState extends State<LanguageSetting> {
 
     return Scaffold(
       appBar: isWide ? null : AppBar(title: Text(l10n.selectLanguage)),
-      body: Column(
+      body: ViewPage( child:Column(
         children: [
           if (isWide) buildWideAppBar(l10n.selectLanguage),
           Padding(
@@ -73,7 +74,7 @@ class _LearningPageState extends State<LanguageSetting> {
             ),
           ),
         ],
-      ),
+      ))
     );
   }
 }

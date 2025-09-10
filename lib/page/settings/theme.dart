@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'package:provider/provider.dart';
 
-import '../../helper/screen_helper.dart';
+import '../../helper/screen.dart';
 import '../../l10n/app_localizations.dart';
-import '../../widget/local/local_theme.dart';
+import '../../cache/local/local_theme.dart';
+import '../../system/widget/page.dart';
 
 class ThemeSetting extends StatelessWidget {
   const ThemeSetting({super.key});
@@ -17,18 +18,20 @@ class ThemeSetting extends StatelessWidget {
 
     return Scaffold(
       appBar: isWide ? null : AppBar(title: Text(l10n.theme)),
-      body: ListView(
-        children: [
-          if (isWide) buildWideAppBar(l10n.theme),
-          _buildListTile(context, l10n.themeLight, null, ThemeMode.light),
-          _buildListTile(context, l10n.themeDark, null, ThemeMode.dark),
-          _buildListTile(
-            context,
-            l10n.themeSystem,
-            l10n.themeSystemLabel,
-            ThemeMode.system,
-          ),
-        ],
+      body: ViewPage(
+        child: ListView(
+          children: [
+            if (isWide) buildWideAppBar(l10n.theme),
+            _buildListTile(context, l10n.themeLight, null, ThemeMode.light),
+            _buildListTile(context, l10n.themeDark, null, ThemeMode.dark),
+            _buildListTile(
+              context,
+              l10n.themeSystem,
+              l10n.themeSystemLabel,
+              ThemeMode.system,
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -50,9 +53,7 @@ class ThemeSetting extends StatelessWidget {
         trailing: localeProvider.locale == themeMode
             ? Icon(LucideIcons.circleCheck400, color: colorScheme.primary)
             : Icon(LucideIcons.circle300),
-        subtitle: label == null
-            ? null
-            : Text(label),
+        subtitle: label == null ? null : Text(label),
         onTap: () {
           localeProvider.setLocalTheme(themeMode);
           if (isWide) {

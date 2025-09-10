@@ -1,19 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
-import '../../helper/screen_helper.dart';
+import '../../helper/screen.dart';
 
-Widget buildListTile(
-    BuildContext context,
-    IconData icon,
-    String title,
-    GestureTapCallback onTap
-    ) {
+Widget buildLevel1ListTile(
+  BuildContext context,
+  IconData icon,
+  String title,
+  GestureTapCallback onTap,
+) {
   final isWide = ScreenHelper.isWide(context);
-  return Padding(padding: isWide ? EdgeInsets.only(left: 10) : EdgeInsets.zero,child: ListTile(
+  return ListTile(
     leading: Icon(icon),
     title: Text(title),
     trailing: isWide ? null : Icon(LucideIcons.chevronRight300),
     onTap: onTap,
-  ),);
+  );
+}
+
+Widget buildLevel2ListTile(
+  BuildContext context,
+  IconData icon,
+  String title,
+  GestureTapCallback onTap,
+) {
+  return ListTile(
+    leading: Icon(icon),
+    title: Text(title),
+    trailing: Icon(LucideIcons.chevronRight300),
+    onTap: onTap,
+  );
 }

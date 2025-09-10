@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 class ScreenHelper {
@@ -13,5 +15,9 @@ class ScreenHelper {
   /// 是否为窄屏（< 600）
   static bool isNarrow(BuildContext context, {double? breakpoint}) {
     return !isWide(context, breakpoint: breakpoint);
+  }
+
+  static bool isPhone() {
+    return Platform.isAndroid || Platform.isIOS;
   }
 }
