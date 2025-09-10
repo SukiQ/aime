@@ -16,7 +16,13 @@
   "themeLight": "淺色模式",
   "themeSystem": "系統預設",
   "themeSystemLabel": "我會根據系統切換模式",
-  "about": "关于",
-  "score": "评分",
-  "aboutMe": "关于我"
+  "about": "關於",
+  "rating": "評分",
+  "aboutMe": "關於我",
+  "suggestAndIdea": "建議 & 靈感",
+  "weChat": "微信",
+  "xiaohongshu": "小紅書",
+  "weibo": "微博",
+  "instagram": "Instagram",
+  "x": "X"
 }

@@ -36,7 +36,6 @@ ListTileThemeData _buildListTileTheme() {
   return ListTileThemeData(
     style: ListTileStyle.list,
     contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
   );
 }
 
@@ -91,7 +90,7 @@ TextTheme _buildTextTheme(BuildContext context) {
 NavigationRailThemeData _buildNavigationRailThemeData() {
   return NavigationRailThemeData(
     minWidth: 60,
-    labelType: NavigationRailLabelType.all,
+    labelType: NavigationRailLabelType.none,
     unselectedLabelTextStyle: const TextStyle(
       fontSize: 15,
       fontWeight: FontWeight.w400,
@@ -144,7 +143,6 @@ InputDecorationThemeData? _buildInputDecorationTheme() {
   return InputDecorationThemeData(
     filled: true,
     constraints: const BoxConstraints(minHeight: 40),
-    fillColor: AppColors.surfaceContainerHigh,
     contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(12),

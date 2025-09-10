@@ -17,6 +17,12 @@
   "themeSystem": "系统默认",
   "themeSystemLabel": "我会根据系统切换模式",
   "about": "关于",
-  "score": "评分",
-  "aboutMe": "关于我"
+  "rating": "评分",
+  "aboutMe": "关于我",
+  "suggestAndIdea": "建议 & 灵感",
+  "weChat": "微信",
+  "xiaohongshu": "小红书",
+  "weibo": "微博",
+  "instagram": "Instagram",
+  "x": "X"
 }

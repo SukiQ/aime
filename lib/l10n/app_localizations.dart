@@ -208,17 +208,53 @@ abstract class AppLocalizations {
   /// **'About'**
   String get about;
 
-  /// No description provided for @score.
+  /// No description provided for @rating.
   ///
   /// In en, this message translates to:
-  /// **'Score'**
-  String get score;
+  /// **'Rating'**
+  String get rating;
 
   /// No description provided for @aboutMe.
   ///
   /// In en, this message translates to:
   /// **'About Me'**
   String get aboutMe;
+
+  /// No description provided for @suggestAndIdea.
+  ///
+  /// In en, this message translates to:
+  /// **'Suggest & Idea'**
+  String get suggestAndIdea;
+
+  /// No description provided for @weChat.
+  ///
+  /// In en, this message translates to:
+  /// **'WeChat'**
+  String get weChat;
+
+  /// No description provided for @xiaohongshu.
+  ///
+  /// In en, this message translates to:
+  /// **'Xiaohongshu'**
+  String get xiaohongshu;
+
+  /// No description provided for @weibo.
+  ///
+  /// In en, this message translates to:
+  /// **'Weibo'**
+  String get weibo;
+
+  /// No description provided for @instagram.
+  ///
+  /// In en, this message translates to:
+  /// **'Instagram'**
+  String get instagram;
+
+  /// No description provided for @x.
+  ///
+  /// In en, this message translates to:
+  /// **'X'**
+  String get x;
 }
 
 class _AppLocalizationsDelegate

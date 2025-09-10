@@ -25,7 +25,7 @@ class _MainPage extends State<MainPage> {
     const ThinkPage(),
     const SearchPage(),
     const LearningPage(),
-    const SettingsPage(),
+    SettingsPage(),
   ];
 
   @override

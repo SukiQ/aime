@@ -64,8 +64,26 @@ class AppLocalizationsEn extends AppLocalizations {
   String get about => 'About';
 
   @override
-  String get score => 'Score';
+  String get rating => 'Rating';
 
   @override
   String get aboutMe => 'About Me';
+
+  @override
+  String get suggestAndIdea => 'Suggest & Idea';
+
+  @override
+  String get weChat => 'WeChat';
+
+  @override
+  String get xiaohongshu => 'Xiaohongshu';
+
+  @override
+  String get weibo => 'Weibo';
+
+  @override
+  String get instagram => 'Instagram';
+
+  @override
+  String get x => 'X';
 }

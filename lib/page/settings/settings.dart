@@ -6,6 +6,7 @@ import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 import '../../helper/screen_helper.dart';
 import '../../l10n/app_localizations.dart';
+import '../../system/widget/list.dart';
 import '../../system/widget/vertical_widget.dart';
 import 'language_setting.dart';
 
@@ -17,7 +18,7 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPage extends State<SettingsPage> {
-  Widget currentPage = LanguageSetting();
+  Widget _currentPage = About();
 
   @override
   Widget build(BuildContext context) {
@@ -33,55 +34,59 @@ class _SettingsPage extends State<SettingsPage> {
             child: ListView(
               children: [
                 if (isWide) buildWideAppBar(l10n.settings),
-                _buildListTile(
-                  context,
-                  LucideIcons.languages400,
-                  l10n.selectLanguage,
-                  LanguageSetting(),
+                buildListTile(
+                    context,
+                    LucideIcons.languages400,
+                    l10n.selectLanguage,
+                        () {
+                      if (isWide) {
+                        setState(() {
+                          _currentPage = LanguageSetting();
+                        });
+                        return;
+                      }
+                      Navigator.push(context, MaterialPageRoute(
+                          builder: (context) => LanguageSetting()));
+                    }
                 ),
-                _buildListTile(
-                  context,
-                  LucideIcons.palette400,
-                  l10n.theme,
-                  ThemeSetting(),
+                buildListTile(
+                    context,
+                    LucideIcons.palette400,
+                    l10n.theme,
+                        () {
+                      if (isWide) {
+                        setState(() {
+                          _currentPage = ThemeSetting();
+                        });
+                        return;
+                      }
+                      Navigator.push(context, MaterialPageRoute(
+                          builder: (context) => ThemeSetting()));
+                    }
                 ),
-                _buildListTile(
-                  context,
-                  LucideIcons.badgeInfo400,
-                  l10n.about,
-                  About(),
-                ),
+                buildListTile(
+                    context,
+                    LucideIcons.badgeInfo400,
+                    l10n.about,
+                        () {
+                      if (isWide) {
+                        setState(() {
+                          _currentPage = About();
+                        });
+                        return;
+                      }
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => About()));
+                    }
+                )
               ],
             ),
           ),
           if (isWide) buildVerticalDivider(),
-          if (isWide) Expanded(flex: 7, child: Center(child: currentPage)),
+          if (isWide) Expanded(flex: 7, child: Center(child: _currentPage)),
         ],
       ),
     );
-  }
-
-  Widget _buildListTile(
-      BuildContext context,
-      IconData icon,
-      String title,
-      Widget page,
-      ) {
-    final isWide = ScreenHelper.isWide(context);
-    return Padding(padding: isWide ? EdgeInsets.only(left: 10) : EdgeInsets.zero,child: ListTile(
-      leading: Icon(icon),
-      title: Text(title),
-      trailing: isWide ? null : Icon(LucideIcons.chevronRight300),
-      onTap: () {
-        if(isWide) {
-          setState(() {
-            currentPage = page;
-          });
-        } else {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => page));
-        }
-      },
-    ),);
   }
 }
 
@@ -91,12 +96,7 @@ Widget buildWideAppBar(String text) {
     toolbarHeight: 130,
     title: Padding(
       padding: EdgeInsets.only(top: 80, bottom: 20),
-      child: Align(
-        alignment: Alignment.centerLeft,
-        child: Text(text),
-      ),
+      child: Align(alignment: Alignment.centerLeft, child: Text(text)),
     ),
   );
 }
-
-

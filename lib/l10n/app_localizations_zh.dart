@@ -63,10 +63,28 @@ class AppLocalizationsZh extends AppLocalizations {
   String get about => '关于';
 
   @override
-  String get score => '评分';
+  String get rating => '评分';
 
   @override
   String get aboutMe => '关于我';
+
+  @override
+  String get suggestAndIdea => '建议 & 灵感';
+
+  @override
+  String get weChat => '微信';
+
+  @override
+  String get xiaohongshu => '小红书';
+
+  @override
+  String get weibo => '微博';
+
+  @override
+  String get instagram => 'Instagram';
+
+  @override
+  String get x => 'X';
 }
 
 /// The translations for Chinese, as used in Hong Kong (`zh_HK`).
@@ -125,13 +143,31 @@ class AppLocalizationsZhHk extends AppLocalizationsZh {
   String get themeSystemLabel => '我會根據系統切換模式';
 
   @override
-  String get about => '关于';
+  String get about => '關於';
 
   @override
-  String get score => '评分';
+  String get rating => '評分';
 
   @override
-  String get aboutMe => '关于我';
+  String get aboutMe => '關於我';
+
+  @override
+  String get suggestAndIdea => '建議 & 靈感';
+
+  @override
+  String get weChat => '微信';
+
+  @override
+  String get xiaohongshu => '小紅書';
+
+  @override
+  String get weibo => '微博';
+
+  @override
+  String get instagram => 'Instagram';
+
+  @override
+  String get x => 'X';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -190,11 +226,29 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get themeSystemLabel => '我會根據系統切換模式';
 
   @override
-  String get about => '关于';
+  String get about => '關於';
 
   @override
-  String get score => '评分';
+  String get rating => '評分';
 
   @override
-  String get aboutMe => '关于我';
+  String get aboutMe => '關於我';
+
+  @override
+  String get suggestAndIdea => '建議 & 靈感';
+
+  @override
+  String get weChat => '微信';
+
+  @override
+  String get xiaohongshu => '小紅書';
+
+  @override
+  String get weibo => '微博';
+
+  @override
+  String get instagram => 'Instagram';
+
+  @override
+  String get x => 'X';
 }

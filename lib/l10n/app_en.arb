@@ -17,6 +17,12 @@
   "themeSystem": "System mode",
   "themeSystemLabel": "I'll adjust the mode to match your system",
   "about": "About",
-  "score": "Score",
-  "aboutMe": "About Me"
+  "rating": "Rating",
+  "aboutMe": "About Me",
+  "suggestAndIdea": "Suggest & Idea",
+  "weChat": "WeChat",
+  "xiaohongshu": "Xiaohongshu",
+  "weibo": "Weibo",
+  "instagram": "Instagram",
+  "x": "X"
 }
