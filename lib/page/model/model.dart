@@ -22,17 +22,33 @@ class _ModelPageState extends State<ModelPage>{
 
   @override
   void initState() {
+    super.initState();
     _dao = FirepowerDao();
     _dao.load(context);
   }
 
   @override
   Widget build(BuildContext context) {
-    // _dao.add(Firepower(id: 1, name: 'aaa'));
-    _dao.getAll().then((value) {
-      print(value);
-    });
-    return const Center(child: Text("模型", style: TextStyle(fontSize: 24)));
+    return Column(
+      children:   [IconButton(
+        icon: const Icon(Icons.language),
+        onPressed: (){
+          Future<List<String>>  c = _dao.getAll();
+          c.then(
+            (value) {
+              print(value);
+            }
+          );
+        },
+      ),
+        IconButton(
+          icon: const Icon(Icons.abc),
+          onPressed: (){
+            _dao.add(Firepower(id: 1, name: '2222'));
+          },
+        )
+      ]
+    );
   }
 
 }
