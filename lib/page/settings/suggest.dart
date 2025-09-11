@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:simple_icons/simple_icons.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../helper/screen.dart';
-import '../../l10n/app_localizations.dart';
-import '../../system/widget/list.dart';
-import '../../system/widget/page.dart';
+import 'package:aime/helper/screen.dart';
+import 'package:aime/l10n/app_localizations.dart';
+import 'package:aime/system/widget/list.dart';
+import 'package:aime/system/widget/page.dart';
 
 class SuggestPage extends StatelessWidget {
 

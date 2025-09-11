@@ -45,6 +45,8 @@ dependencies:
   in_app_review: ^2.0.11
   url_launcher: ^6.3.2
   simple_icons: ^14.6.1
+  cbl_flutter_ce: ^3.5.1
+  cbl: ^3.6.0+2
   cbl_flutter: ^3.3.5
 dev_dependencies:
   flutter_launcher_icons: "^0.14.4"

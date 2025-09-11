@@ -7,13 +7,14 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:window_manager/window_manager.dart';
 
+import 'cache/local/database.dart';
 import 'l10n/app_localizations.dart';
 import 'page/home.dart';
 import 'system/style/system_theme.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
-    WidgetsFlutterBinding.ensureInitialized();
     await windowManager.ensureInitialized();
 
     WindowOptions windowOptions = const WindowOptions(
@@ -29,12 +30,16 @@ void main() async {
       await windowManager.focus();
     });
   }
-  // await CouchbaseLiteFlutter.init();
+  await CouchbaseLiteFlutter.init();
   runApp(
     MultiProvider(
+      // providers: locals
+      //     .map((provider) => ChangeNotifierProvider(create: (_) => provider))
+      //     .toList(),
       providers: [
         ChangeNotifierProvider(create: (_) => LocaleLanguage()),
         ChangeNotifierProvider(create: (_) => LocalTheme()),
+        ChangeNotifierProvider(create: (_) => LocalDatabase()),
       ],
       child: const MyApp(),
     ),

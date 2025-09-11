@@ -5,7 +5,7 @@ import 'package:aime/system/style/system_animation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../config/style_config.dart';
+import 'package:aime/config/style_config.dart';
 
 ThemeData buildThemeData(BuildContext context, ThemeMode themeMode) {
   return ThemeData(

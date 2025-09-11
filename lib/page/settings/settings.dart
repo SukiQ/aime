@@ -4,11 +4,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
-import '../../helper/screen.dart';
-import '../../l10n/app_localizations.dart';
-import '../../system/widget/list.dart';
-import '../../system/widget/page.dart';
-import '../../system/widget/vertical_widget.dart';
+import 'package:aime/helper/screen.dart';
+import 'package:aime/l10n/app_localizations.dart';
+import 'package:aime/system/widget/list.dart';
+import 'package:aime/system/widget/page.dart';
+import 'package:aime/system/widget/vertical_widget.dart';
 import 'language.dart';
 
 class SettingsPage extends StatefulWidget {

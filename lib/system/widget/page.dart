@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../helper/screen.dart';
+import 'package:aime/helper/screen.dart';
 
 class ViewPage extends StatelessWidget {
   ViewPage({super.key, required this.child});

@@ -7,11 +7,11 @@ import 'package:in_app_review/in_app_review.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../../config/app_info.dart';
-import '../../helper/screen.dart';
-import '../../l10n/app_localizations.dart';
-import '../../system/widget/list.dart';
-import '../../system/widget/page.dart';
+import 'package:aime/config/app_info.dart';
+import 'package:aime/helper/screen.dart';
+import 'package:aime/l10n/app_localizations.dart';
+import 'package:aime/system/widget/list.dart';
+import 'package:aime/system/widget/page.dart';
 
 class About extends StatelessWidget {
   About({super.key});

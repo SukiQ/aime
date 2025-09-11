@@ -5,6 +5,7 @@
 import FlutterMacOS
 import Foundation
 
+import cbl_flutter_ce
 import in_app_review
 import path_provider_foundation
 import screen_retriever_macos
@@ -13,6 +14,7 @@ import url_launcher_macos
 import window_manager
 
 func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
+  CblFlutterCe.register(with: registry.registrar(forPlugin: "CblFlutterCe"))
   InAppReviewPlugin.register(with: registry.registrar(forPlugin: "InAppReviewPlugin"))
   PathProviderPlugin.register(with: registry.registrar(forPlugin: "PathProviderPlugin"))
   ScreenRetrieverMacosPlugin.register(with: registry.registrar(forPlugin: "ScreenRetrieverMacosPlugin"))

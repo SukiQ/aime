@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
-import '../../helper/screen.dart';
+import 'package:aime/helper/screen.dart';
 
 Widget buildLevel1ListTile(
   BuildContext context,

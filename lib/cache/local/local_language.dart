@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../config/language_config.dart';
+import 'package:aime/config/language_config.dart';
 
 class LocaleLanguage extends ChangeNotifier {
   static const String _localeKey = "locale_language";

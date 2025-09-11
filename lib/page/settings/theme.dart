@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'package:provider/provider.dart';
 
-import '../../helper/screen.dart';
-import '../../l10n/app_localizations.dart';
-import '../../cache/local/local_theme.dart';
-import '../../system/widget/page.dart';
+import 'package:aime/helper/screen.dart';
+import 'package:aime/l10n/app_localizations.dart';
+import 'package:aime/cache/local/local_theme.dart';
+import 'package:aime/system/widget/page.dart';
 
 class ThemeSetting extends StatelessWidget {
   const ThemeSetting({super.key});

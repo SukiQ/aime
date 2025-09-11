@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
-import '../../config/style_config.dart';
+import 'package:aime/config/style_config.dart';
 
 class LearningPage extends StatefulWidget {
   const LearningPage({super.key});
