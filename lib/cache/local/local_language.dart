@@ -10,10 +10,10 @@ class LocaleLanguage extends ChangeNotifier {
   Locale get locale => _locale;
 
   LocaleLanguage() {
-    _loadLocaleLanguage();
+    _load();
   }
 
-  Future<void> _loadLocaleLanguage() async {
+  Future<void> _load() async {
     final prefs = await SharedPreferences.getInstance();
     final code = prefs.getString(_localeKey);
 

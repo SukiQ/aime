@@ -8,7 +8,7 @@ class LocalTheme extends ChangeNotifier {
   ThemeMode get locale => _locale;
 
   LocalTheme() {
-    _loadLocalTheme();
+    _load();
   }
 
   // 切换主题并保存
@@ -20,7 +20,7 @@ class LocalTheme extends ChangeNotifier {
   }
 
   // 从 SharedPreferences 加载主题
-  Future<void> _loadLocalTheme() async {
+  Future<void> _load() async {
     final prefs = await SharedPreferences.getInstance();
     final index = prefs.getInt(_localeKey) ?? ThemeMode.system.index;
     _locale = ThemeMode.values[index];

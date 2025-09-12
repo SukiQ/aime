@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 import 'package:window_manager/window_manager.dart';
 
 import 'cache/local/database.dart';
+import 'cache/local/local.dart';
 import 'l10n/app_localizations.dart';
 import 'page/home.dart';
 import 'system/style/system_theme.dart';

@@ -2,15 +2,15 @@ import 'package:cbl/cbl.dart';
 import 'package:flutter/material.dart';
 
 class LocalDatabase extends ChangeNotifier {
-  late Database _locale;
+  late Future<Database> _locale;
 
-  Database get locale => _locale;
+  Future<Database> get locale => _locale;
 
   LocalDatabase() {
-    _loadLocalDatabase();
+    _load();
   }
 
-  Future<void> _loadLocalDatabase() async {
-    _locale = await Database.openAsync('aime');
+  void _load() {
+    _locale = Database.openAsync('aime');
   }
 }

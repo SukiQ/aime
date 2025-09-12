@@ -46,7 +46,18 @@ class _ModelPageState extends State<ModelPage>{
           onPressed: (){
             _dao.add(Firepower(id: 1, name: '2222'));
           },
-        )
+        ),
+        IconButton(
+          icon: const Icon(Icons.abc),
+          onPressed: (){
+            Future<List<String>>  c =  _dao.delete(Firepower(id: 1, name: '2222'));
+            c.then(
+                    (value) {
+                  print(value);
+                }
+            );
+          },
+        ),
       ]
     );
   }
