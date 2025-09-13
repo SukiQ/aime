@@ -27,54 +27,56 @@ class _LearningPageState extends State<LanguageSetting> {
 
     return Scaffold(
       appBar: isWide ? null : AppBar(title: Text(l10n.selectLanguage)),
-      body: ViewPage( child:Column(
-        children: [
-          if (isWide) buildWideAppBar(l10n.selectLanguage),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10),
-            child: TextField(
-              decoration: InputDecoration(
-                hintText: l10n.search,
-                prefixIcon: const Icon(Icons.search),
-                suffixIcon: _query.isNotEmpty
-                    ? IconButton(
-                        icon: const Icon(Icons.clear),
-                        onPressed: () {
-                          setState(() => _query = "");
-                        },
-                      )
-                    : null,
+      body: ViewPage(
+        child: Column(
+          children: [
+            if (isWide) buildWideAppBar(l10n.selectLanguage),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: l10n.search,
+                  prefixIcon: const Icon(Icons.search),
+                  suffixIcon: _query.isNotEmpty
+                      ? IconButton(
+                          icon: const Icon(Icons.clear),
+                          onPressed: () {
+                            setState(() => _query = "");
+                          },
+                        )
+                      : null,
+                ),
+                onChanged: (value) => setState(() => _query = value),
               ),
-              onChanged: (value) => setState(() => _query = value),
             ),
-          ),
-          Expanded(
-            child: ListView(
-              children: Languages.values
-                  .where(
-                    (lang) =>
-                        lang.label.toLowerCase().contains(
-                          _query.toLowerCase(),
-                        ) ||
-                        lang
-                            .getDisplayName(context)
-                            .toLowerCase()
-                            .contains(_query.toLowerCase()),
-                  )
-                  .map((lang) {
-                    return _buildLanguageTile(
-                      lang,
-                      context,
-                      isWide,
-                      colorScheme,
-                      localeProvider,
-                    );
-                  })
-                  .toList(),
+            Expanded(
+              child: ListView(
+                children: Languages.values
+                    .where(
+                      (lang) =>
+                          lang.label.toLowerCase().contains(
+                            _query.toLowerCase(),
+                          ) ||
+                          lang
+                              .getDisplayName(context)
+                              .toLowerCase()
+                              .contains(_query.toLowerCase()),
+                    )
+                    .map((lang) {
+                      return _buildLanguageTile(
+                        lang,
+                        context,
+                        isWide,
+                        colorScheme,
+                        localeProvider,
+                      );
+                    })
+                    .toList(),
+              ),
             ),
-          ),
-        ],
-      ))
+          ],
+        ),
+      ),
     );
   }
 }

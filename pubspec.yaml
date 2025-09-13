@@ -48,6 +48,7 @@ dependencies:
   cbl_flutter_ce: ^3.5.1
   cbl: ^3.6.0+2
   cbl_flutter: ^3.3.5
+  json_annotation: ^4.9.0
 dev_dependencies:
   flutter_launcher_icons: "^0.14.4"
   flutter_test:
@@ -59,6 +60,8 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^5.0.0
+  json_serializable: ^6.11.1
+  build_runner: ^2.7.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

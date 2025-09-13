@@ -6,7 +6,7 @@ import 'package:cbl_flutter/cbl_flutter.dart';
 
 import 'package:aime/config/style_config.dart';
 
-import '../../cache/db/firepower.dart';
+import '../../cache/db/combat_power.dart';
 
 class ModelPage extends StatefulWidget {
   const ModelPage({super.key});
@@ -17,50 +17,43 @@ class ModelPage extends StatefulWidget {
   }
 }
 
-class _ModelPageState extends State<ModelPage>{
-  late FirepowerDao _dao;
+class _ModelPageState extends State<ModelPage> {
+  late CombatPowerDao _dao;
 
   @override
   void initState() {
     super.initState();
-    _dao = FirepowerDao();
-    _dao.load(context);
+    _dao = CombatPowerDao(context);
   }
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      children:   [IconButton(
-        icon: const Icon(Icons.language),
-        onPressed: (){
-          Future<List<String>>  c = _dao.getAll();
-          c.then(
-            (value) {
-              print(value);
-            }
-          );
-        },
-      ),
+      children: [
         IconButton(
-          icon: const Icon(Icons.abc),
-          onPressed: (){
-            _dao.add(Firepower(id: 1, name: '2222'));
+          icon: const Icon(Icons.language),
+          onPressed: () {
+            Future<List<CombatPower>> c = _dao.all();
+            c.then((value) {
+              for (var value1 in value) {
+                print(value1);
+              }
+            });
           },
         ),
         IconButton(
           icon: const Icon(Icons.abc),
-          onPressed: (){
-            Future<List<String>>  c =  _dao.delete(Firepower(id: 1, name: '2222'));
-            c.then(
-                    (value) {
-                  print(value);
-                }
-            );
+          onPressed: () {
+            _dao.add(CombatPower(username: '花小琪', firepower: 10));
           },
         ),
-      ]
+        IconButton(
+          icon: const Icon(Icons.abc),
+          onPressed: () {
+            _dao.delete("--2eUo7RWsASZR3kLJ7e6en");
+          },
+        ),
+      ],
     );
   }
-
 }
-

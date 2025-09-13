@@ -28,65 +28,75 @@ class _SettingsPage extends State<SettingsPage> {
 
     return Scaffold(
       appBar: isWide ? null : AppBar(title: Text(l10n.settings)),
-      body: ViewPage( child:Row(
-        children: [
-          Expanded(
-            flex: 3,
-            child: ListView(
-              children: [
-                if (isWide) buildWideAppBar(l10n.settings),
-                buildLevel1ListTile(
+      body: ViewPage(
+        child: Row(
+          children: [
+            Expanded(
+              flex: 3,
+              child: ListView(
+                children: [
+                  if (isWide) buildWideAppBar(l10n.settings),
+                  buildLevel1ListTile(
                     context,
                     LucideIcons.languages400,
                     l10n.selectLanguage,
-                        () {
+                    () {
                       if (isWide) {
                         setState(() {
                           _currentPage = LanguageSetting();
                         });
                         return;
                       }
-                      Navigator.push(context, MaterialPageRoute(
-                          builder: (context) => LanguageSetting()));
-                    }
-                ),
-                buildLevel1ListTile(
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => LanguageSetting(),
+                        ),
+                      );
+                    },
+                  ),
+                  buildLevel1ListTile(
                     context,
                     LucideIcons.palette400,
                     l10n.theme,
-                        () {
+                    () {
                       if (isWide) {
                         setState(() {
                           _currentPage = ThemeSetting();
                         });
                         return;
                       }
-                      Navigator.push(context, MaterialPageRoute(
-                          builder: (context) => ThemeSetting()));
-                    }
-                ),
-                buildLevel1ListTile(
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ThemeSetting()),
+                      );
+                    },
+                  ),
+                  buildLevel1ListTile(
                     context,
                     LucideIcons.badgeInfo400,
                     l10n.about,
-                        () {
+                    () {
                       if (isWide) {
                         setState(() {
                           _currentPage = About();
                         });
                         return;
                       }
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => About()));
-                    }
-                )
-              ],
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => About()),
+                      );
+                    },
+                  ),
+                ],
+              ),
             ),
-          ),
-          if (isWide) buildVerticalDivider(),
-          if (isWide) Expanded(flex: 7, child:  _currentPage),
-        ],
-      ))
+            if (isWide) buildVerticalDivider(),
+            if (isWide) Expanded(flex: 7, child: _currentPage),
+          ],
+        ),
+      ),
     );
   }
 }

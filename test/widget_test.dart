@@ -1,7 +1,6 @@
 import 'package:aime/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
-
 void main() {
   runApp(const MyApp());
 }
@@ -57,7 +56,7 @@ class _HomePageState extends State<HomePage> {
           IconButton(
             icon: const Icon(Icons.language),
             onPressed: widget.onToggleLocale,
-          )
+          ),
         ],
       ),
       body: Center(
