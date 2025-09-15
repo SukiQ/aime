@@ -92,4 +92,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get modelRemoveLabel => 'Remove model';
+
+  @override
+  String get combatPower => 'Combat Power';
+
+  @override
+  String get combatPowerLabel => 'Record target information and combat power.';
 }

@@ -267,6 +267,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Remove model'**
   String get modelRemoveLabel;
+
+  /// No description provided for @combatPower.
+  ///
+  /// In en, this message translates to:
+  /// **'Combat Power'**
+  String get combatPower;
+
+  /// No description provided for @combatPowerLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Record target information and combat power.'**
+  String get combatPowerLabel;
 }
 
 class _AppLocalizationsDelegate

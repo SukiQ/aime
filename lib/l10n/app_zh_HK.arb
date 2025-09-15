@@ -26,5 +26,7 @@
   "instagram": "Instagram",
   "x": "X",
   "modelAddLabel": "添加模型",
-  "modelRemoveLabel": "删除模型"
+  "modelRemoveLabel": "删除模型",
+  "combatPower": "戰力",
+  "combatPowerLabel": "記錄目標信息和戰力"
 }

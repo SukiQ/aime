@@ -91,6 +91,12 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get modelRemoveLabel => '删除模型';
+
+  @override
+  String get combatPower => '战力';
+
+  @override
+  String get combatPowerLabel => '记录目标信息和战力';
 }
 
 /// The translations for Chinese, as used in Hong Kong (`zh_HK`).
@@ -180,6 +186,12 @@ class AppLocalizationsZhHk extends AppLocalizationsZh {
 
   @override
   String get modelRemoveLabel => '删除模型';
+
+  @override
+  String get combatPower => '戰力';
+
+  @override
+  String get combatPowerLabel => '記錄目標信息和戰力';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -269,4 +281,10 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get modelRemoveLabel => '删除模型';
+
+  @override
+  String get combatPower => '戰力';
+
+  @override
+  String get combatPowerLabel => '記錄目標信息和戰力';
 }

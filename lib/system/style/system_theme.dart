@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:aime/helper/screen.dart';
 import 'package:aime/system/style/system_animation.dart';
@@ -22,6 +21,7 @@ ThemeData buildThemeData(BuildContext context, ThemeMode themeMode) {
       brightness: themeMode == ThemeMode.light
           ? Brightness.light
           : Brightness.dark,
+      surfaceTint: Colors.transparent
     ),
     splashFactory: NoSplash.splashFactory,
     textTheme: _buildTextTheme(context),
@@ -46,7 +46,11 @@ ListTileThemeData _buildListTileTheme() {
 }
 
 AppBarTheme _buildAppBarTheme() {
-  return AppBarTheme(toolbarHeight: 60.0, titleSpacing: 40.0);
+  return AppBarTheme(
+      backgroundColor: Colors.transparent,
+      toolbarHeight: 60.0,
+      titleSpacing: 40.0
+  );
 }
 
 TextTheme _buildTextTheme(BuildContext context) {

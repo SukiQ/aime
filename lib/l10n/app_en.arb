@@ -26,5 +26,7 @@
   "instagram": "Instagram",
   "x": "X",
   "modelAddLabel": "Add model",
-  "modelRemoveLabel": "Remove model"
+  "modelRemoveLabel": "Remove model",
+  "combatPower": "Combat Power",
+  "combatPowerLabel": "Record target information and combat power."
 }

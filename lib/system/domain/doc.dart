@@ -1,5 +1,5 @@
 abstract class Doc {
-  late String id;
+  String? id;
 
   Doc();
 
