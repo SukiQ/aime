@@ -85,6 +85,12 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get x => 'X';
+
+  @override
+  String get modelAddLabel => '添加模型';
+
+  @override
+  String get modelRemoveLabel => '删除模型';
 }
 
 /// The translations for Chinese, as used in Hong Kong (`zh_HK`).
@@ -168,6 +174,12 @@ class AppLocalizationsZhHk extends AppLocalizationsZh {
 
   @override
   String get x => 'X';
+
+  @override
+  String get modelAddLabel => '添加模型';
+
+  @override
+  String get modelRemoveLabel => '删除模型';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -251,4 +263,10 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get x => 'X';
+
+  @override
+  String get modelAddLabel => '添加模型';
+
+  @override
+  String get modelRemoveLabel => '删除模型';
 }

@@ -24,5 +24,7 @@
   "xiaohongshu": "小紅書",
   "weibo": "微博",
   "instagram": "Instagram",
-  "x": "X"
+  "x": "X",
+  "modelAddLabel": "添加模型",
+  "modelRemoveLabel": "删除模型"
 }

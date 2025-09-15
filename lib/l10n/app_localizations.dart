@@ -255,6 +255,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'X'**
   String get x;
+
+  /// No description provided for @modelAddLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Add model'**
+  String get modelAddLabel;
+
+  /// No description provided for @modelRemoveLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove model'**
+  String get modelRemoveLabel;
 }
 
 class _AppLocalizationsDelegate

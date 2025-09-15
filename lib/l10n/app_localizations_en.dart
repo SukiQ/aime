@@ -86,4 +86,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get x => 'X';
+
+  @override
+  String get modelAddLabel => 'Add model';
+
+  @override
+  String get modelRemoveLabel => 'Remove model';
 }

@@ -24,5 +24,7 @@
   "xiaohongshu": "Xiaohongshu",
   "weibo": "Weibo",
   "instagram": "Instagram",
-  "x": "X"
+  "x": "X",
+  "modelAddLabel": "Add model",
+  "modelRemoveLabel": "Remove model"
 }

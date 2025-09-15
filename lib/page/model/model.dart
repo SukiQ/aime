@@ -1,59 +1,53 @@
-import 'package:flutter/cupertino.dart';
+import 'package:aime/helper/screen.dart';
+import 'package:aime/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
-import 'package:cbl/cbl.dart';
-import 'package:cbl_flutter/cbl_flutter.dart';
 
-import 'package:aime/config/style_config.dart';
-
-import '../../cache/db/combat_power.dart';
-
-class ModelPage extends StatefulWidget {
+class ModelPage extends StatelessWidget{
   const ModelPage({super.key});
 
   @override
-  State<StatefulWidget> createState() {
-    return _ModelPageState();
-  }
-}
-
-class _ModelPageState extends State<ModelPage> {
-  late CombatPowerDao _dao;
-
-  @override
-  void initState() {
-    super.initState();
-    _dao = CombatPowerDao(context);
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        IconButton(
-          icon: const Icon(Icons.language),
-          onPressed: () {
-            Future<List<CombatPower>> c = _dao.all();
-            c.then((value) {
-              for (var value1 in value) {
-                print(value1);
-              }
-            });
-          },
+    final l10n = AppLocalizations.of(context)!;
+    final isWide = ScreenHelper.isWide(context);
+
+    return Scaffold(
+      appBar: AppBar(
+        actions: [
+          IconButton(
+            icon: const Icon(LucideIcons.plus400),
+            tooltip: l10n.modelAddLabel,
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text("点击了添加")),
+              );
+            },
+          ),
+          IconButton(
+            icon: const Icon(LucideIcons.minus400),
+            tooltip: l10n.modelRemoveLabel,
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text("点击了删除")),
+              );
+            },
+          ),
+        ],
+      ),
+      body: GridView.custom(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3,
         ),
-        IconButton(
-          icon: const Icon(Icons.abc),
-          onPressed: () {
-            _dao.add(CombatPower(username: '花小琪', firepower: 10));
+        childrenDelegate: SliverChildBuilderDelegate(
+              (context, index) {
+            return Card(
+              child: Center(child: Text('Item $index')),
+            );
           },
+          childCount: 20, // 数据的数量
         ),
-        IconButton(
-          icon: const Icon(Icons.abc),
-          onPressed: () {
-            _dao.delete("--2eUo7RWsASZR3kLJ7e6en");
-          },
-        ),
-      ],
+      ),
     );
   }
+
 }
