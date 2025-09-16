@@ -112,11 +112,11 @@ abstract class AppLocalizations {
   /// **'Model'**
   String get model;
 
-  /// No description provided for @think.
+  /// No description provided for @reasoning.
   ///
   /// In en, this message translates to:
-  /// **'Think'**
-  String get think;
+  /// **'Reasoning'**
+  String get reasoning;
 
   /// No description provided for @search.
   ///
@@ -267,6 +267,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Remove model'**
   String get modelRemoveLabel;
+
+  /// No description provided for @users.
+  ///
+  /// In en, this message translates to:
+  /// **'Users'**
+  String get users;
+
+  /// No description provided for @usersLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Record detailed user information.'**
+  String get usersLabel;
 
   /// No description provided for @combatPower.
   ///

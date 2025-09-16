@@ -1,7 +1,7 @@
 {
   "helloWorld": "你好，世界",
   "model": "模型",
-  "think": "思考",
+  "reasoning": "推理",
   "search": "搜索",
   "learning": "学习",
   "settings": "设置",
@@ -27,6 +27,11 @@
   "x": "X",
   "modelAddLabel": "添加模型",
   "modelRemoveLabel": "删除模型",
+  "users": "用户",
+  "usersLabel": "记录用户的详细信息",
+  "birthday": "生日",
+  "age": "年龄",
+  "email": "电子邮箱",
   "combatPower": "战力",
   "combatPowerLabel": "记录目标信息和战力"
 }

@@ -51,7 +51,7 @@ class _CombatPowerPageState extends State<CombatPowerPage> {
           IconButton(
             icon: const Icon(Icons.abc),
             onPressed: () {
-              _dao.delete("--2eUo7RWsASZR3kLJ7e6en");
+              _dao.delete("-3L608APCeclAurVkLBJC4Y");
             },
           ),
         ],

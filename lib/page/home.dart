@@ -64,7 +64,7 @@ class _MainPage extends State<MainPage> {
         BottomNavigationBarItem(
           activeIcon: const Icon(LucideIcons.lightbulb400),
           icon: const Icon(LucideIcons.lightbulb300),
-          label: l10n.think,
+          label: l10n.reasoning,
         ),
         BottomNavigationBarItem(
           activeIcon: const Icon(LucideIcons.search400),
@@ -102,7 +102,7 @@ class _MainPage extends State<MainPage> {
         ),
         NavigationRailDestination(
           icon: const Icon(LucideIcons.lightbulb300),
-          label: Text(l10n.think),
+          label: Text(l10n.reasoning),
           padding: EdgeInsets.all(5),
         ),
         NavigationRailDestination(

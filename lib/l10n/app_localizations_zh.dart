@@ -15,7 +15,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get model => '模型';
 
   @override
-  String get think => '思考';
+  String get reasoning => '推理';
 
   @override
   String get search => '搜索';
@@ -93,6 +93,12 @@ class AppLocalizationsZh extends AppLocalizations {
   String get modelRemoveLabel => '删除模型';
 
   @override
+  String get users => '用户';
+
+  @override
+  String get usersLabel => '记录用户的详细信息';
+
+  @override
   String get combatPower => '战力';
 
   @override
@@ -110,7 +116,7 @@ class AppLocalizationsZhHk extends AppLocalizationsZh {
   String get model => '模型';
 
   @override
-  String get think => '思考';
+  String get reasoning => '推理';
 
   @override
   String get search => '搜尋';
@@ -186,6 +192,12 @@ class AppLocalizationsZhHk extends AppLocalizationsZh {
 
   @override
   String get modelRemoveLabel => '删除模型';
+
+  @override
+  String get users => '用戶';
+
+  @override
+  String get usersLabel => '記錄用戶的詳細信息';
 
   @override
   String get combatPower => '戰力';
@@ -205,7 +217,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get model => '模型';
 
   @override
-  String get think => '思考';
+  String get reasoning => '推理';
 
   @override
   String get search => '搜尋';
@@ -281,6 +293,12 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get modelRemoveLabel => '删除模型';
+
+  @override
+  String get users => '用戶';
+
+  @override
+  String get usersLabel => '記錄用戶的詳細信息';
 
   @override
   String get combatPower => '戰力';

@@ -41,15 +41,42 @@ class ModelPage extends StatelessWidget {
           crossAxisCount: 3,
         ),
         children: ModelEnum.values.map((model) {
-          return Card(
-            child: InkWell(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => model.widget),
-                );
-              },
-              child: Icon(model.icon),
+          return ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+              backgroundColor: Theme.of(context).colorScheme.surface,
+            ),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => model.widget),
+              );
+            },
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Expanded(
+                  flex: 7,
+                  child: Icon(
+                    model.icon,
+                    size: 60,
+                    color: Theme.of(context).colorScheme.onSurfaceVariant,
+                  ),
+                ),
+
+                Expanded(
+                  flex: 3,
+                  child: Text(
+                    model.name(context),
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Theme.of(context).colorScheme.onSurfaceVariant,
+                    ),
+                  ),
+                ),
+              ],
             ),
           );
         }).toList(),

@@ -1,7 +1,7 @@
 {
   "helloWorld": "Hello World",
   "model": "Model",
-  "think": "Think",
+  "reasoning": "Reasoning",
   "search": "Search",
   "learning": "Learning",
   "settings": "Settings",
@@ -27,6 +27,8 @@
   "x": "X",
   "modelAddLabel": "Add model",
   "modelRemoveLabel": "Remove model",
+  "users": "Users",
+  "usersLabel": "Record detailed user information.",
   "combatPower": "Combat Power",
   "combatPowerLabel": "Record target information and combat power."
 }

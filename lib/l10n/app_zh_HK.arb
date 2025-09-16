@@ -1,7 +1,7 @@
 {
   "helloWorld": "你好，世界",
   "model": "模型",
-  "think": "思考",
+  "reasoning": "推理",
   "search": "搜尋",
   "learning": "學習",
   "settings": "設定",
@@ -27,6 +27,8 @@
   "x": "X",
   "modelAddLabel": "添加模型",
   "modelRemoveLabel": "删除模型",
+  "users": "用戶",
+  "usersLabel": "記錄用戶的詳細信息",
   "combatPower": "戰力",
   "combatPowerLabel": "記錄目標信息和戰力"
 }

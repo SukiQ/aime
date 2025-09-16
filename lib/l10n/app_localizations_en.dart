@@ -15,7 +15,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get model => 'Model';
 
   @override
-  String get think => 'Think';
+  String get reasoning => 'Reasoning';
 
   @override
   String get search => 'Search';
@@ -92,6 +92,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get modelRemoveLabel => 'Remove model';
+
+  @override
+  String get users => 'Users';
+
+  @override
+  String get usersLabel => 'Record detailed user information.';
 
   @override
   String get combatPower => 'Combat Power';
