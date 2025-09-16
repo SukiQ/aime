@@ -18,18 +18,21 @@ class UsersDetailPage extends StatelessWidget {
       appBar: AppBar(),
       body: ListView(
         children: [
-          _buildUserDetailTile(LucideIcons.cake300, l10n.username, users.username)
+          _buildUserDetailTile(
+            LucideIcons.cake300,
+            l10n.birthday,
+            users.birthday?.timeZoneName,
+          ),
         ],
       ),
     );
   }
 
-  Widget _buildUserDetailTile(IconData icon, String title, String subtitle){
+  Widget _buildUserDetailTile(IconData icon, String title, String? subtitle) {
     return ListTile(
       leading: Icon(icon),
       title: Text(title),
-      subtitle: Text(subtitle),
+      subtitle: subtitle == null ? null : Text(subtitle),
     );
   }
-
 }

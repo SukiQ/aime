@@ -31,6 +31,7 @@
   "usersLabel": "记录用户的详细信息",
   "birthday": "生日",
   "age": "年龄",
+  "contact": "联络",
   "email": "电子邮箱",
   "combatPower": "战力",
   "combatPowerLabel": "记录目标信息和战力"

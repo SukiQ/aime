@@ -99,6 +99,18 @@ class AppLocalizationsZh extends AppLocalizations {
   String get usersLabel => '记录用户的详细信息';
 
   @override
+  String get birthday => '生日';
+
+  @override
+  String get age => '年龄';
+
+  @override
+  String get contact => '联络';
+
+  @override
+  String get email => '电子邮箱';
+
+  @override
   String get combatPower => '战力';
 
   @override
@@ -200,6 +212,18 @@ class AppLocalizationsZhHk extends AppLocalizationsZh {
   String get usersLabel => '記錄用戶的詳細信息';
 
   @override
+  String get birthday => '生日';
+
+  @override
+  String get age => '年齡';
+
+  @override
+  String get contact => '聯絡';
+
+  @override
+  String get email => '電子郵箱';
+
+  @override
   String get combatPower => '戰力';
 
   @override
@@ -299,6 +323,18 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get usersLabel => '記錄用戶的詳細信息';
+
+  @override
+  String get birthday => '生日';
+
+  @override
+  String get age => '年龄';
+
+  @override
+  String get contact => '联络';
+
+  @override
+  String get email => '电子邮箱';
 
   @override
   String get combatPower => '戰力';

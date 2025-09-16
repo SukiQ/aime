@@ -29,6 +29,10 @@
   "modelRemoveLabel": "删除模型",
   "users": "用戶",
   "usersLabel": "記錄用戶的詳細信息",
+  "birthday": "生日",
+  "age": "年齡",
+  "contact": "聯絡",
+  "email": "電子郵箱",
   "combatPower": "戰力",
   "combatPowerLabel": "記錄目標信息和戰力"
 }

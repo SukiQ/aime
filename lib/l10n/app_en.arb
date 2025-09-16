@@ -29,6 +29,10 @@
   "modelRemoveLabel": "Remove model",
   "users": "Users",
   "usersLabel": "Record detailed user information.",
+  "birthday": "Birthday",
+  "age": "Age",
+  "contact": "Contact",
+  "email": "Email",
   "combatPower": "Combat Power",
   "combatPowerLabel": "Record target information and combat power."
 }

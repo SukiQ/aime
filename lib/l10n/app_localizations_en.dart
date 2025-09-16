@@ -100,6 +100,18 @@ class AppLocalizationsEn extends AppLocalizations {
   String get usersLabel => 'Record detailed user information.';
 
   @override
+  String get birthday => 'Birthday';
+
+  @override
+  String get age => 'Age';
+
+  @override
+  String get contact => 'Contact';
+
+  @override
+  String get email => 'Email';
+
+  @override
   String get combatPower => 'Combat Power';
 
   @override
