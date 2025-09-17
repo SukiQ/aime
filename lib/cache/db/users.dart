@@ -10,9 +10,10 @@ part 'users.g.dart';
 
 @JsonSerializable()
 class Users extends Doc {
-  Users(this.username, {this.phone,this.birthday});
+  Users(this.username, {this.nickname,this.phone,this.birthday});
 
   final String username;
+  final String? nickname;
   final String? phone;
   final DateTime? birthday;
 
@@ -24,28 +25,25 @@ class Users extends Doc {
 
   @override
   String toString() {
-    return 'Users{$username, phone: $phone, birthday: $birthday, id: $id}';
+    return 'Users{$username, nickname: $nickname, phone: $phone, birthday: $birthday, id: $id}';
   }
 }
 
 class UsersDao {
-  late Database _database;
-  late Collection _collection;
+  late final Collection _collection;
 
-  UsersDao(BuildContext context) {
-    final locale = context.read<LocalDatabase>().locale;
-    locale.then((database) async {
-      _database = database;
-      _collection = await _database.createCollection("m_users");
-    });
+  UsersDao._(this._collection);
+
+  static Future<UsersDao> build(BuildContext context) async {
+    final database = await context.read<LocalDatabase>().locale;
+    return UsersDao._(await database.createCollection("m_users"));
   }
 
   Future<List<Users>> all() async {
     final List<SelectResultInterface> distinct = [];
     distinct.add(SelectResult.expression(Meta.id).as('id'));
     distinct.add(SelectResult.expression(Expression.property("username")));
-    distinct.add(SelectResult.expression(Expression.property("phone")));
-    distinct.add(SelectResult.expression(Expression.property("birthday")));
+    distinct.add(SelectResult.expression(Expression.property("nickname")));
 
     final query = const QueryBuilder()
         .selectAllDistinct(distinct)
@@ -56,6 +54,26 @@ class UsersDao {
     return await resultSet.asStream().map((result) {
       return Users.fromJson(result.toPlainMap());
     }).toList();
+  }
+
+  Future<Users> details(String id) async {
+    final List<SelectResultInterface> distinct = [];
+    distinct.add(SelectResult.expression(Meta.id).as('id'));
+    distinct.add(SelectResult.expression(Expression.property("username")));
+    distinct.add(SelectResult.expression(Expression.property("nickname")));
+    distinct.add(SelectResult.expression(Expression.property("phone")));
+    distinct.add(SelectResult.expression(Expression.property("birthday")));
+
+    final query = const QueryBuilder()
+        .selectAllDistinct(distinct)
+        .from(DataSource.collection(_collection))
+        .where(Expression.property('id').equalTo(Expression.string(id)));
+
+    final resultSet = await query.execute();
+
+    return await resultSet.asStream().map((result) {
+      return Users.fromJson(result.toPlainMap());
+    }).first;
   }
 
   Future<void> add(Users users) async {

@@ -102,6 +102,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get birthday => '生日';
 
   @override
+  String get phone => '电话';
+
+  @override
   String get age => '年龄';
 
   @override
@@ -215,6 +218,9 @@ class AppLocalizationsZhHk extends AppLocalizationsZh {
   String get birthday => '生日';
 
   @override
+  String get phone => '電話';
+
+  @override
   String get age => '年齡';
 
   @override
@@ -326,6 +332,9 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get birthday => '生日';
+
+  @override
+  String get phone => '電話';
 
   @override
   String get age => '年龄';

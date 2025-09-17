@@ -1,13 +1,32 @@
+
 import 'package:aime/cache/db/users.dart';
 import 'package:aime/helper/screen.dart';
 import 'package:aime/l10n/app_localizations.dart';
+import 'package:aime/system/widget/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
-class UsersDetailPage extends StatelessWidget {
-  final Users users;
+class UsersDetailPage extends StatefulWidget {
+  const UsersDetailPage(this.id, {super.key});
 
-  const UsersDetailPage({super.key, required this.users});
+  final String id;
+
+  @override
+  State<StatefulWidget> createState() {
+    return _UsersDetailPageState();
+  }
+}
+
+class _UsersDetailPageState extends State<UsersDetailPage> {
+  late Users _user;
+  late UsersDao _dao;
+  bool _loading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _load();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,14 +34,48 @@ class UsersDetailPage extends StatelessWidget {
     final isWide = ScreenHelper.isWide(context);
 
     return Scaffold(
-      appBar: AppBar(),
-      body: ListView(
+      appBar: AppBar(
+        actions: [
+          IconButton(
+            icon: const Icon(LucideIcons.ellipsisVertical300),
+            tooltip: l10n.modelAddLabel,
+            onPressed: () async {
+               await showModalBottomSheet<String>(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return ListView(
+                      children: [
+                        ListTile(
+                          leading: Icon(LucideIcons.userRoundPlus400),
+                          title: Text(l10n.modelAddLabel),
+                          onTap: () {
+                            Navigator.pop(context, "add");
+                          },
+                        ),
+                        ListTile(
+                          leading: Icon(LucideIcons.userRoundMinus400),
+                          title: Text(l10n.users),
+                          onTap: () {}
+                        )
+                      ]
+                    );
+                  });
+            },
+          ),
+        ],
+      ),
+      body: _loading ? LoadingWidget() : ListView(
         children: [
+          ListTile(
+            title: Text(_user.username),
+            subtitle: _user.nickname == null ? null : Text(_user.nickname!),
+          ),
           _buildUserDetailTile(
             LucideIcons.cake300,
             l10n.birthday,
-            users.birthday?.timeZoneName,
+            _user.birthday?.timeZoneName,
           ),
+          _buildUserDetailTile(LucideIcons.phone300, l10n.phone, _user.phone),
         ],
       ),
     );
@@ -35,4 +88,21 @@ class UsersDetailPage extends StatelessWidget {
       subtitle: subtitle == null ? null : Text(subtitle),
     );
   }
+
+  Future<void> _load() async {
+    UsersDao.build(context)
+        .then((dao) {
+          _dao = dao;
+          return _dao.details(widget.id);
+        })
+        .then((user) {
+          setState(() {
+            _user = user;
+            _loading = false;
+          });
+        });
+  }
+
 }
+
+

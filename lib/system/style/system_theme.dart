@@ -15,6 +15,7 @@ ThemeData buildThemeData(BuildContext context, ThemeMode themeMode) {
           : AppColors.surfaceDark,
       seedColor: AppColors.seedColor,
       onSurfaceVariant: AppColors.onSurfaceVariant,
+      error: AppColors.error,
       surfaceContainerHigh: themeMode == ThemeMode.light
           ? AppColors.surfaceContainerHigh
           : AppColors.surfaceContainerHighDark,
@@ -42,6 +43,7 @@ ListTileThemeData _buildListTileTheme() {
         ? null
         : RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
     contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
+
   );
 }
 
@@ -49,7 +51,8 @@ AppBarTheme _buildAppBarTheme() {
   return AppBarTheme(
       backgroundColor: Colors.transparent,
       toolbarHeight: 60.0,
-      titleSpacing: 40.0
+      titleSpacing: 40.0,
+      actionsPadding: const EdgeInsets.symmetric(horizontal: 10.0),
   );
 }
 

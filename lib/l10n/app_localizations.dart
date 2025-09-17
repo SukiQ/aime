@@ -286,6 +286,12 @@ abstract class AppLocalizations {
   /// **'Birthday'**
   String get birthday;
 
+  /// No description provided for @phone.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone'**
+  String get phone;
+
   /// No description provided for @age.
   ///
   /// In en, this message translates to:

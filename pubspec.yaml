@@ -49,6 +49,7 @@ dependencies:
   cbl: ^3.6.0+2
   cbl_flutter: ^3.3.5
   json_annotation: ^4.9.0
+  flutter_spinkit: ^5.2.2
 dev_dependencies:
   flutter_launcher_icons: "^0.14.4"
   flutter_test:

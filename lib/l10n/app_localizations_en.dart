@@ -103,6 +103,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get birthday => 'Birthday';
 
   @override
+  String get phone => 'Phone';
+
+  @override
   String get age => 'Age';
 
   @override
