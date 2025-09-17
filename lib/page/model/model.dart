@@ -41,11 +41,12 @@ class ModelPage extends StatelessWidget {
           crossAxisCount: 3,
         ),
         children: ModelEnum.values.map((model) {
-          return ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
+          return OutlinedButton(
+            style: OutlinedButton.styleFrom(
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.zero,
               ),
+              side: BorderSide.none,
               backgroundColor: Theme.of(context).colorScheme.surface,
             ),
             onPressed: () {
@@ -57,25 +58,21 @@ class ModelPage extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Expanded(
-                  flex: 7,
-                  child: Icon(
-                    model.icon,
-                    size: 60,
+                Icon(
+                  model.icon,
+                  size: 50,
+                  color: Theme.of(context).colorScheme.onSurfaceVariant,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  model.name(context),
+                  style: TextStyle(
+                    fontSize: 13,
                     color: Theme.of(context).colorScheme.onSurfaceVariant,
                   ),
-                ),
-
-                Expanded(
-                  flex: 3,
-                  child: Text(
-                    model.name(context),
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Theme.of(context).colorScheme.onSurfaceVariant,
-                    ),
-                  ),
-                ),
+                )
               ],
             ),
           );

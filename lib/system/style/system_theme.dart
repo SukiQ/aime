@@ -22,7 +22,10 @@ ThemeData buildThemeData(BuildContext context, ThemeMode themeMode) {
       brightness: themeMode == ThemeMode.light
           ? Brightness.light
           : Brightness.dark,
-      surfaceTint: Colors.transparent
+      surfaceTint: Colors.transparent,
+      surfaceContainerLow: themeMode == ThemeMode.light
+          ? AppColors.surface
+          : AppColors.surfaceDark,
     ),
     splashFactory: NoSplash.splashFactory,
     textTheme: _buildTextTheme(context),

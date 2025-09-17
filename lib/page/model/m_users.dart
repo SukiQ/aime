@@ -41,9 +41,8 @@ class _UsersPageState extends State<UsersPage> {
                   icon: const Icon(LucideIcons.userRoundPlus400),
                   tooltip: l10n.modelAddLabel,
                   onPressed: () {
-                    ScaffoldMessenger.of(
-                      context,
-                    ).showSnackBar(const SnackBar(content: Text("点击了添加")));
+                    _dao.add(Users('花小琪',nickname: "戚小花",phone: '18706768036',
+                        birthday: DateTime.now()));
                   },
                 ),
               ],
