@@ -99,6 +99,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get usersLabel => '记录用户的详细信息';
 
   @override
+  String get addUser => '添加用户';
+
+  @override
   String get birthday => '生日';
 
   @override
@@ -215,6 +218,9 @@ class AppLocalizationsZhHk extends AppLocalizationsZh {
   String get usersLabel => '記錄用戶的詳細信息';
 
   @override
+  String get addUser => '添加用戶';
+
+  @override
   String get birthday => '生日';
 
   @override
@@ -329,6 +335,9 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get usersLabel => '記錄用戶的詳細信息';
+
+  @override
+  String get addUser => '添加用戶';
 
   @override
   String get birthday => '生日';

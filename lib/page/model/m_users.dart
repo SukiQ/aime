@@ -1,6 +1,7 @@
 import 'package:aime/cache/db/users.dart';
 import 'package:aime/helper/screen.dart';
 import 'package:aime/l10n/app_localizations.dart';
+import 'package:aime/page/model/m_users_add.dart';
 import 'package:aime/page/model/m_users_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
@@ -41,8 +42,10 @@ class _UsersPageState extends State<UsersPage> {
                   icon: const Icon(LucideIcons.userRoundPlus400),
                   tooltip: l10n.modelAddLabel,
                   onPressed: () {
-                    _dao.add(Users('花小琪',nickname: "戚小花",phone: '18706768036',
-                        birthday: DateTime.now()));
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => UsersAddPage()),
+                    );
                   },
                 ),
               ],
@@ -112,7 +115,7 @@ class _UsersPageState extends State<UsersPage> {
       },
       child: ListTile(
         leading: Icon(LucideIcons.user300),
-        title: Text(users.nickname ?? users.username),
+        title: Text(users.nickname ?? users.username!),
         onTap: () {
           Navigator.push(
             context,

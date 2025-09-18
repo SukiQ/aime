@@ -67,7 +67,7 @@ class _UsersDetailPageState extends State<UsersDetailPage> {
       body: _loading ? LoadingWidget() : ListView(
         children: [
           ListTile(
-            title: Text(_user.username,textAlign: TextAlign.center,style: TextStyle(fontSize: 30)),
+            title: Text(_user.username!,textAlign: TextAlign.center,style: TextStyle(fontSize: 30)),
             subtitle: Text(_user.nickname ?? "",textAlign: TextAlign.center),
           ),
           _buildUserDetailTile(

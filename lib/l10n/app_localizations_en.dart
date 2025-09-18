@@ -100,6 +100,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get usersLabel => 'Record detailed user information.';
 
   @override
+  String get addUser => 'Add User';
+
+  @override
   String get birthday => 'Birthday';
 
   @override

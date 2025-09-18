@@ -10,12 +10,12 @@ part 'users.g.dart';
 
 @JsonSerializable()
 class Users extends Doc {
-  Users(this.username, {this.nickname,this.phone,this.birthday});
+  Users( {this.username,this.nickname,this.phone,this.birthday});
 
-  final String username;
-  final String? nickname;
-  final String? phone;
-  final DateTime? birthday;
+  String? username;
+  String? nickname;
+  String? phone;
+  DateTime? birthday;
 
   @override
   factory Users.fromJson(Map<String, dynamic> json) => _$UsersFromJson(json);

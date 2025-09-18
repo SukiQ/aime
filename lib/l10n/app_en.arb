@@ -29,6 +29,7 @@
   "modelRemoveLabel": "Remove model",
   "users": "Users",
   "usersLabel": "Record detailed user information.",
+  "addUser": "Add User",
   "birthday": "Birthday",
   "phone": "Phone",
   "age": "Age",

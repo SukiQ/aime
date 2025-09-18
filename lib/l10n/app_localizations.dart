@@ -280,6 +280,12 @@ abstract class AppLocalizations {
   /// **'Record detailed user information.'**
   String get usersLabel;
 
+  /// No description provided for @addUser.
+  ///
+  /// In en, this message translates to:
+  /// **'Add User'**
+  String get addUser;
+
   /// No description provided for @birthday.
   ///
   /// In en, this message translates to:

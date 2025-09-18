@@ -29,6 +29,7 @@
   "modelRemoveLabel": "删除模型",
   "users": "用戶",
   "usersLabel": "記錄用戶的詳細信息",
+  "addUser": "添加用戶",
   "birthday": "生日",
   "phone": "電話",
   "age": "年龄",
