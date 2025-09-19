@@ -36,47 +36,39 @@ class ModelPage extends StatelessWidget {
           ),
         ],
       ),
-      body: GridView(
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 3,
-        ),
-        children: ModelEnum.values.map((model) {
-          return OutlinedButton(
-            style: OutlinedButton.styleFrom(
-              shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.zero,
-              ),
-              side: BorderSide.none,
-              backgroundColor: Theme.of(context).colorScheme.surface,
-            ),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => model.widget),
-              );
-            },
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(
-                  model.icon,
-                  size: 50,
-                  color: Theme.of(context).colorScheme.onSurfaceVariant,
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  model.name(context),
-                  style: TextStyle(
-                    fontSize: 13,
+      body: Padding(
+        padding: EdgeInsets.all(isWide ? 10 : 0 ),
+        child: GridView.extent(
+          maxCrossAxisExtent: 150,
+          children: ModelEnum.values.map((model) {
+            return ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => model.widget),
+                );
+              },
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(
+                    model.icon,
+                    size: 50,
                     color: Theme.of(context).colorScheme.onSurfaceVariant,
                   ),
-                )
-              ],
-            ),
-          );
-        }).toList(),
+                  SizedBox(height: 10),
+                  Text(
+                    model.name(context),
+                    style: TextStyle(
+                      fontSize: 13,
+                      color: Theme.of(context).colorScheme.onSurfaceVariant,
+                    ),
+                  ),
+                ],
+              ),
+            );
+          }).toList(),
+        ),
       ),
     );
   }

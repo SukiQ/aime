@@ -1,4 +1,3 @@
-
 import 'package:aime/helper/screen.dart';
 import 'package:aime/system/style/system_animation.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +8,9 @@ import 'package:aime/config/style_config.dart';
 ThemeData buildThemeData(BuildContext context, ThemeMode themeMode) {
   return ThemeData(
     useMaterial3: true,
+    elevatedButtonTheme: _buildElevatedButtonTheme(),
+    outlinedButtonTheme: _buildOutlinedButtonTheme(),
+    buttonTheme: _buildButtonThemeData(),
     colorScheme: ColorScheme.fromSeed(
       surface: themeMode == ThemeMode.light
           ? AppColors.surface
@@ -39,6 +41,44 @@ ThemeData buildThemeData(BuildContext context, ThemeMode themeMode) {
   );
 }
 
+ElevatedButtonThemeData? _buildElevatedButtonTheme() {
+  return ElevatedButtonThemeData(
+    style: ButtonStyle(
+      shape: ScreenHelper.isPhone()
+          ? null
+          : WidgetStatePropertyAll(
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            ),
+      overlayColor: WidgetStatePropertyAll(AppColors.surfaceContainerHigh),
+    ),
+  );
+}
+
+OutlinedButtonThemeData? _buildOutlinedButtonTheme() {
+  return OutlinedButtonThemeData(
+    style: ButtonStyle(
+      side: WidgetStatePropertyAll(BorderSide.none),
+      shape: ScreenHelper.isPhone()
+          ? null
+          : WidgetStatePropertyAll(
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            ),
+      overlayColor: WidgetStatePropertyAll(AppColors.surfaceContainerHigh),
+    ),
+  );
+}
+
+ButtonThemeData? _buildButtonThemeData() {
+  return ButtonThemeData(
+    hoverColor: Colors.amber,
+    buttonColor: Colors.amber,
+    shape: ScreenHelper.isPhone()
+        ? null
+        : RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+  );
+}
+
 ListTileThemeData _buildListTileTheme() {
   return ListTileThemeData(
     style: ListTileStyle.list,
@@ -46,16 +86,15 @@ ListTileThemeData _buildListTileTheme() {
         ? null
         : RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
     contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
-
   );
 }
 
 AppBarTheme _buildAppBarTheme() {
   return AppBarTheme(
-      backgroundColor: Colors.transparent,
-      toolbarHeight: 60.0,
-      titleSpacing: 40.0,
-      actionsPadding: const EdgeInsets.symmetric(horizontal: 10.0),
+    backgroundColor: Colors.transparent,
+    toolbarHeight: 60.0,
+    titleSpacing: 40.0,
+    actionsPadding: const EdgeInsets.symmetric(horizontal: 10.0),
   );
 }
 
@@ -117,6 +156,7 @@ NavigationRailThemeData _buildNavigationRailThemeData() {
     ),
     unselectedIconTheme: const IconThemeData(size: 28),
     selectedIconTheme: IconThemeData(size: 28),
+    indicatorColor: Colors.transparent,
     elevation: 0,
   );
 }
