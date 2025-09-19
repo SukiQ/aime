@@ -12,6 +12,9 @@ ThemeData buildThemeData(BuildContext context, ThemeMode themeMode) {
     outlinedButtonTheme: _buildOutlinedButtonTheme(),
     buttonTheme: _buildButtonThemeData(),
     colorScheme: ColorScheme.fromSeed(
+      surfaceContainerHighest: themeMode == ThemeMode.light
+          ? AppColors.surfaceContainerHigh
+          : AppColors.surfaceContainerHighDark,
       surface: themeMode == ThemeMode.light
           ? AppColors.surface
           : AppColors.surfaceDark,
@@ -44,11 +47,9 @@ ThemeData buildThemeData(BuildContext context, ThemeMode themeMode) {
 ElevatedButtonThemeData? _buildElevatedButtonTheme() {
   return ElevatedButtonThemeData(
     style: ButtonStyle(
-      shape: ScreenHelper.isPhone()
-          ? null
-          : WidgetStatePropertyAll(
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-            ),
+      shape: WidgetStatePropertyAll(
+        RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      ),
       overlayColor: WidgetStatePropertyAll(AppColors.surfaceContainerHigh),
     ),
   );
@@ -58,11 +59,9 @@ OutlinedButtonThemeData? _buildOutlinedButtonTheme() {
   return OutlinedButtonThemeData(
     style: ButtonStyle(
       side: WidgetStatePropertyAll(BorderSide.none),
-      shape: ScreenHelper.isPhone()
-          ? null
-          : WidgetStatePropertyAll(
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-            ),
+      shape: WidgetStatePropertyAll(
+        RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      ),
       overlayColor: WidgetStatePropertyAll(AppColors.surfaceContainerHigh),
     ),
   );
@@ -70,11 +69,7 @@ OutlinedButtonThemeData? _buildOutlinedButtonTheme() {
 
 ButtonThemeData? _buildButtonThemeData() {
   return ButtonThemeData(
-    hoverColor: Colors.amber,
-    buttonColor: Colors.amber,
-    shape: ScreenHelper.isPhone()
-        ? null
-        : RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
     padding: const EdgeInsets.symmetric(horizontal: 16.0),
   );
 }

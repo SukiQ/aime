@@ -9,5 +9,5 @@ class AppColors {
   static const Color surfaceContainerHighDark = Color(0xFF3C3C3C);
   static const Color surface = Color(0xFFFFFFFF);
   static const Color surfaceDark = Color(0xFF000000);
-  static const Color error = Color(0xFFF15224);
+  static const Color error = Color(0xFF8F1515);
 }

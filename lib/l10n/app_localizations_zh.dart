@@ -96,6 +96,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get users => '用户';
 
   @override
+  String get username => '用户名';
+
+  @override
   String get usersLabel => '记录用户的详细信息';
 
   @override
@@ -103,6 +106,9 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get birthday => '生日';
+
+  @override
+  String get errorDateFormat => '日期格式错误';
 
   @override
   String get phone => '电话';
@@ -215,6 +221,9 @@ class AppLocalizationsZhHk extends AppLocalizationsZh {
   String get users => '用戶';
 
   @override
+  String get username => '用戶名';
+
+  @override
   String get usersLabel => '記錄用戶的詳細信息';
 
   @override
@@ -222,6 +231,9 @@ class AppLocalizationsZhHk extends AppLocalizationsZh {
 
   @override
   String get birthday => '生日';
+
+  @override
+  String get errorDateFormat => '日期格式錯誤';
 
   @override
   String get phone => '電話';
@@ -334,6 +346,9 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get users => '用戶';
 
   @override
+  String get username => '用戶名';
+
+  @override
   String get usersLabel => '記錄用戶的詳細信息';
 
   @override
@@ -341,6 +356,9 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get birthday => '生日';
+
+  @override
+  String get errorDateFormat => '日期格式錯誤';
 
   @override
   String get phone => '電話';

@@ -1,5 +1,5 @@
 import 'package:aime/l10n/app_localizations.dart';
-import 'package:aime/page/model/m_users.dart';
+import 'package:aime/page/model/users/m_users.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 

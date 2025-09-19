@@ -274,6 +274,12 @@ abstract class AppLocalizations {
   /// **'Users'**
   String get users;
 
+  /// No description provided for @username.
+  ///
+  /// In en, this message translates to:
+  /// **'Username'**
+  String get username;
+
   /// No description provided for @usersLabel.
   ///
   /// In en, this message translates to:
@@ -291,6 +297,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Birthday'**
   String get birthday;
+
+  /// No description provided for @errorDateFormat.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid date format.'**
+  String get errorDateFormat;
 
   /// No description provided for @phone.
   ///

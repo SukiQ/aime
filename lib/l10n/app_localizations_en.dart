@@ -97,6 +97,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get users => 'Users';
 
   @override
+  String get username => 'Username';
+
+  @override
   String get usersLabel => 'Record detailed user information.';
 
   @override
@@ -104,6 +107,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get birthday => 'Birthday';
+
+  @override
+  String get errorDateFormat => 'Invalid date format.';
 
   @override
   String get phone => 'Phone';

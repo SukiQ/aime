@@ -1,8 +1,8 @@
 import 'package:aime/cache/db/users.dart';
 import 'package:aime/helper/screen.dart';
 import 'package:aime/l10n/app_localizations.dart';
-import 'package:aime/page/model/m_users_add.dart';
-import 'package:aime/page/model/m_users_detail.dart';
+import 'package:aime/page/model/users/m_users_add.dart';
+import 'package:aime/page/model/users/m_users_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
