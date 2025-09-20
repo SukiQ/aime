@@ -29,6 +29,7 @@
   "modelRemoveLabel": "删除模型",
   "users": "用戶",
   "username": "用戶名",
+  "usernameRequired": "用戶名不能為空",
   "usersLabel": "記錄用戶的詳細信息",
   "addUser": "添加用戶",
   "birthday": "生日",

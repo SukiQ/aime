@@ -280,6 +280,12 @@ abstract class AppLocalizations {
   /// **'Username'**
   String get username;
 
+  /// No description provided for @usernameRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Username is required.'**
+  String get usernameRequired;
+
   /// No description provided for @usersLabel.
   ///
   /// In en, this message translates to:

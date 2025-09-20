@@ -33,9 +33,7 @@ class _UsersPageState extends State<UsersPage> {
     final isWide = ScreenHelper.isWide(context);
 
     return Scaffold(
-      appBar: isWide
-          ? null
-          : AppBar(
+      appBar: AppBar(
               title: Text(l10n.users),
               actions: [
                 IconButton(

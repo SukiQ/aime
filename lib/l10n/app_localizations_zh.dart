@@ -99,6 +99,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get username => '用户名';
 
   @override
+  String get usernameRequired => '用户名不能为空';
+
+  @override
   String get usersLabel => '记录用户的详细信息';
 
   @override
@@ -224,6 +227,9 @@ class AppLocalizationsZhHk extends AppLocalizationsZh {
   String get username => '用戶名';
 
   @override
+  String get usernameRequired => '用戶名不能為空';
+
+  @override
   String get usersLabel => '記錄用戶的詳細信息';
 
   @override
@@ -347,6 +353,9 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get username => '用戶名';
+
+  @override
+  String get usernameRequired => '用戶名不能為空';
 
   @override
   String get usersLabel => '記錄用戶的詳細信息';

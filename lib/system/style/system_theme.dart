@@ -97,42 +97,42 @@ TextTheme _buildTextTheme(BuildContext context) {
   return GoogleFonts.notoSansScTextTheme(Theme.of(context).textTheme).copyWith(
     bodyLarge: GoogleFonts.notoSansSc(
       fontWeight: FontWeight.w400,
-      fontSize: ScreenHelper.isPhone() ? 17 : 15,
+      fontSize: ScreenHelper.isPhone() ? 17 : 13,
     ),
     bodyMedium: GoogleFonts.notoSansSc(
       fontWeight: FontWeight.w400,
-      fontSize: ScreenHelper.isPhone() ? 14 : 12,
+      fontSize: ScreenHelper.isPhone() ? 14 : 10,
     ),
     bodySmall: GoogleFonts.notoSansSc(
       fontWeight: FontWeight.w400,
-      fontSize: ScreenHelper.isPhone() ? 11 : 9,
+      fontSize: ScreenHelper.isPhone() ? 11 : 7,
     ),
     headlineLarge: GoogleFonts.notoSansSc(fontWeight: FontWeight.w200),
     headlineMedium: GoogleFonts.notoSansSc(fontWeight: FontWeight.w200),
     headlineSmall: GoogleFonts.notoSansSc(fontWeight: FontWeight.w200),
     titleLarge: GoogleFonts.notoSansSc(
       fontWeight: FontWeight.bold,
-      fontSize: ScreenHelper.isPhone() ? 20 : 18,
+      fontSize: ScreenHelper.isPhone() ? 20 : 16,
     ),
     titleMedium: GoogleFonts.notoSansSc(
       fontWeight: FontWeight.bold,
-      fontSize: ScreenHelper.isPhone() ? 18 : 16,
+      fontSize: ScreenHelper.isPhone() ? 18 : 14,
     ),
     titleSmall: GoogleFonts.notoSansSc(
       fontWeight: FontWeight.bold,
-      fontSize: ScreenHelper.isPhone() ? 16 : 14,
+      fontSize: ScreenHelper.isPhone() ? 16 : 12,
     ),
     displayLarge: GoogleFonts.notoSansSc(
       fontWeight: FontWeight.w200,
-      fontSize: 20,
+      fontSize: ScreenHelper.isPhone() ? 20 : 16,
     ),
     displayMedium: GoogleFonts.notoSansSc(
       fontWeight: FontWeight.w200,
-      fontSize: 18,
+      fontSize: ScreenHelper.isPhone() ? 18 : 14,
     ),
     displaySmall: GoogleFonts.notoSansSc(
       fontWeight: FontWeight.w200,
-      fontSize: 16,
+      fontSize: ScreenHelper.isPhone() ? 16 : 12,
     ),
   );
 }
@@ -193,8 +193,13 @@ SearchBarThemeData? _buildSearchBarTheme(BuildContext context) {
 InputDecorationThemeData? _buildInputDecorationTheme() {
   return InputDecorationThemeData(
     filled: true,
+    fillColor: Colors.transparent,
     constraints: const BoxConstraints(minHeight: 40),
     contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+    focusedBorder: const OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(12)),
+      borderSide: BorderSide(width: 1)
+    ),
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(12),
       borderSide: BorderSide.none,
