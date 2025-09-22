@@ -1,5 +1,5 @@
 import 'package:aime/helper/screen.dart';
-import 'package:aime/system/style/system_animation.dart';
+import 'package:aime/system/style/animation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -71,7 +71,7 @@ ListTileThemeData _buildListTileTheme() {
     shape: ScreenHelper.isPhone()
         ? null
         : RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-    contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
+    contentPadding: const EdgeInsets.symmetric(horizontal: 16.0,vertical: 0),
   );
 }
 
@@ -87,16 +87,16 @@ AppBarTheme _buildAppBarTheme() {
 TextTheme _buildTextTheme(BuildContext context) {
   return GoogleFonts.notoSansScTextTheme(Theme.of(context).textTheme).copyWith(
     bodyLarge: GoogleFonts.notoSansSc(
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.w500,
       fontSize: ScreenHelper.isPhone() ? 17 : 13,
     ),
     bodyMedium: GoogleFonts.notoSansSc(
       fontWeight: FontWeight.w400,
-      fontSize: ScreenHelper.isPhone() ? 14 : 10,
+      fontSize: ScreenHelper.isPhone() ? 12 : 8,
     ),
     bodySmall: GoogleFonts.notoSansSc(
       fontWeight: FontWeight.w400,
-      fontSize: ScreenHelper.isPhone() ? 11 : 7,
+      fontSize: ScreenHelper.isPhone() ? 9 : 5,
     ),
     headlineLarge: GoogleFonts.notoSansSc(fontWeight: FontWeight.w200),
     headlineMedium: GoogleFonts.notoSansSc(fontWeight: FontWeight.w200),

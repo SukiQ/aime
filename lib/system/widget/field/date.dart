@@ -1,4 +1,4 @@
-import 'package:aime/cache/local/local_language.dart';
+import 'package:aime/cache/local/language.dart';
 import 'package:aime/config/format.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

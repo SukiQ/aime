@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 
 import 'package:aime/helper/screen.dart';
 import 'package:aime/l10n/app_localizations.dart';
-import 'package:aime/cache/local/local_theme.dart';
+import 'package:aime/cache/local/theme.dart';
 import 'package:aime/system/widget/page.dart';
 
 class ThemeSetting extends StatelessWidget {

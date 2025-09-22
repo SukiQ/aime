@@ -1,7 +1,5 @@
 import 'dart:io';
 
-import 'package:aime/cache/local/local_language.dart';
-import 'package:aime/cache/local/local_theme.dart';
 import 'package:cbl_flutter/cbl_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -42,11 +40,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final localeLanguage = Provider.of<LocaleLanguage>(context);
-    final localeTheme = Provider.of<LocalTheme>(context);
 
     return MaterialApp(
-      locale: localeLanguage.locale,
+      locale: LocaleInitializer.language(context).locale,
       title: 'Aime',
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
@@ -54,7 +50,7 @@ class MyApp extends StatelessWidget {
       home: MainPage(),
       debugShowCheckedModeBanner: false,
       darkTheme: buildThemeData(context, Brightness.dark),
-      themeMode: localeTheme.locale,
+      themeMode: LocaleInitializer.theme(context).locale,
     );
   }
 

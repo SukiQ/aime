@@ -8,7 +8,7 @@ import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 import '../helper/screen.dart';
 import '../l10n/app_localizations.dart';
-import '../system/widget/vertical.dart';
+import '../system/widget/divider.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -37,8 +37,8 @@ class _MainPage extends State<MainPage> {
       body: SafeArea(
         child: Row(
           children: [
-            if (isWide) _buildNavigationRail(l10n),
-            if (isWide) buildVerticalDivider(),
+            if (isWide) _buildNavigationRail(AppLocalizations.of(context)!),
+            if (isWide) PageDivider(),
             Expanded(flex: 3, child: Center(child: _pages[_currentIndex])),
           ],
         ),

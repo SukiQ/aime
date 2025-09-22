@@ -2,6 +2,7 @@ import 'dart:ffi';
 
 import 'package:aime/cache/db/users.dart';
 import 'package:aime/helper/screen.dart';
+import 'package:aime/helper/string.dart';
 import 'package:aime/l10n/app_localizations.dart';
 import 'package:aime/page/model/users/m_users_add.dart';
 import 'package:aime/page/model/users/m_users_detail.dart';
@@ -60,7 +61,7 @@ class _UsersPageState extends State<UsersPage> {
           Expanded(
             child: ListView.builder(
               controller: _controller,
-              itemCount: _users.length, // 多加 1 用于底部加载动画
+              itemCount: _users.length,
               itemBuilder: (context, index) {
                 return _buildUserTile(index, _users[index]);
               },
@@ -101,12 +102,17 @@ class _UsersPageState extends State<UsersPage> {
         });
       },
       child: ListTile(
-        leading: Icon(LucideIcons.user300),
-        title: Text(users.nickname ?? users.username!),
+        leading: Icon(LucideIcons.userRound300),
+        title: Text(StringHelper.isBlank(users.nickname) ? users.username! : users.nickname!),
+        subtitle: StringHelper.isNotBlank(users.nickname)
+            ? Text(users.username!)
+            : null,
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => UsersDetailPage(users.id!)),
+            MaterialPageRoute(
+              builder: (context) => UsersDetailPage(users.id!),
+            ),
           );
         },
       ),
