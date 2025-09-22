@@ -286,6 +286,24 @@ abstract class AppLocalizations {
   /// **'Username is required.'**
   String get usernameRequired;
 
+  /// No description provided for @usernameErrorFormat.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid username format.'**
+  String get usernameErrorFormat;
+
+  /// No description provided for @nickname.
+  ///
+  /// In en, this message translates to:
+  /// **'Nickname'**
+  String get nickname;
+
+  /// No description provided for @nicknameErrorFormat.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid nickname format.'**
+  String get nicknameErrorFormat;
+
   /// No description provided for @usersLabel.
   ///
   /// In en, this message translates to:

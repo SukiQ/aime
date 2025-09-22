@@ -3,34 +3,25 @@ import 'package:aime/system/style/system_animation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:aime/config/style_config.dart';
+import 'package:aime/config/colors.dart';
 
-ThemeData buildThemeData(BuildContext context, ThemeMode themeMode) {
+ThemeData buildThemeData(BuildContext context, Brightness brightness) {
   return ThemeData(
     useMaterial3: true,
     elevatedButtonTheme: _buildElevatedButtonTheme(),
     outlinedButtonTheme: _buildOutlinedButtonTheme(),
     buttonTheme: _buildButtonThemeData(),
-    colorScheme: ColorScheme.fromSeed(
-      surfaceContainerHighest: themeMode == ThemeMode.light
-          ? AppColors.surfaceContainerHigh
-          : AppColors.surfaceContainerHighDark,
-      surface: themeMode == ThemeMode.light
-          ? AppColors.surface
-          : AppColors.surfaceDark,
-      seedColor: AppColors.seedColor,
-      onSurfaceVariant: AppColors.onSurfaceVariant,
-      error: AppColors.error,
-      surfaceContainerHigh: themeMode == ThemeMode.light
-          ? AppColors.surfaceContainerHigh
-          : AppColors.surfaceContainerHighDark,
-      brightness: themeMode == ThemeMode.light
-          ? Brightness.light
-          : Brightness.dark,
-      surfaceTint: Colors.transparent,
-      surfaceContainerLow: themeMode == ThemeMode.light
-          ? AppColors.surface
-          : AppColors.surfaceDark,
+    colorScheme: ColorScheme(
+      brightness: brightness,
+      primary: ColorsConfig.primary.color(brightness),
+      onPrimary: ColorsConfig.onPrimary.color(brightness),
+      secondary: ColorsConfig.secondary.color(brightness),
+      onSecondary: ColorsConfig.onSecondary.color(brightness),
+      error: ColorsConfig.error.color(brightness),
+      onError: ColorsConfig.onError.color(brightness),
+      surface: ColorsConfig.surface.color(brightness),
+      onSurface: ColorsConfig.onSurface.color(brightness),
+      scrim: ColorsConfig.scrim.color(brightness),
     ),
     splashFactory: NoSplash.splashFactory,
     textTheme: _buildTextTheme(context),
@@ -40,7 +31,7 @@ ThemeData buildThemeData(BuildContext context, ThemeMode themeMode) {
     pageTransitionsTheme: buildPageTransitionsTheme(),
     bottomNavigationBarTheme: _buildBottomNavigationBarThemeData(),
     navigationRailTheme: _buildNavigationRailThemeData(),
-    inputDecorationTheme: _buildInputDecorationTheme(),
+    inputDecorationTheme: _buildInputDecorationTheme(brightness),
   );
 }
 
@@ -50,7 +41,7 @@ ElevatedButtonThemeData? _buildElevatedButtonTheme() {
       shape: WidgetStatePropertyAll(
         RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       ),
-      overlayColor: WidgetStatePropertyAll(AppColors.surfaceContainerHigh),
+      // overlayColor: WidgetStatePropertyAll(AppColors.surfaceContainerHigh),
     ),
   );
 }
@@ -62,7 +53,7 @@ OutlinedButtonThemeData? _buildOutlinedButtonTheme() {
       shape: WidgetStatePropertyAll(
         RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       ),
-      overlayColor: WidgetStatePropertyAll(AppColors.surfaceContainerHigh),
+      // overlayColor: WidgetStatePropertyAll(AppColors.surfaceContainerHigh),
     ),
   );
 }
@@ -190,15 +181,34 @@ SearchBarThemeData? _buildSearchBarTheme(BuildContext context) {
   );
 }
 
-InputDecorationThemeData? _buildInputDecorationTheme() {
+InputDecorationThemeData? _buildInputDecorationTheme(Brightness brightness) {
   return InputDecorationThemeData(
-    filled: true,
-    fillColor: Colors.transparent,
+    filled: false,
+    floatingLabelStyle: WidgetStateTextStyle.resolveWith((states) {
+      if (states.contains(WidgetState.error)) {
+        return TextStyle(color: ColorsConfig.error.color(brightness),);
+      }
+      return TextStyle(color: ColorsConfig.secondary.color(brightness));
+    }),
     constraints: const BoxConstraints(minHeight: 40),
     contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
-    focusedBorder: const OutlineInputBorder(
+    focusedErrorBorder: OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(12)),
-      borderSide: BorderSide(width: 1)
+      borderSide: BorderSide(
+        width: 1,
+        color: ColorsConfig.error.color(brightness),
+      ),
+    ),
+    errorStyle: TextStyle(
+      color: ColorsConfig.error.color(brightness),
+    ),
+    focusColor: ColorsConfig.secondary.color(brightness),
+    focusedBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(12)),
+      borderSide: BorderSide(
+        width: 1,
+        color: ColorsConfig.secondary.color(brightness),
+      ),
     ),
     border: OutlineInputBorder(
       borderRadius: BorderRadius.circular(12),

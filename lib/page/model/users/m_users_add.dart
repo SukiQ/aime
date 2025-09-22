@@ -4,7 +4,7 @@ import 'package:aime/helper/screen.dart';
 import 'package:aime/helper/string.dart';
 import 'package:aime/l10n/app_localizations.dart';
 import 'package:aime/system/widget/field/date.dart';
-import 'package:aime/system/widget/field/str.dart';
+import 'package:aime/system/widget/field/input.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
@@ -32,13 +32,66 @@ class _UsersAddPageState extends State<UsersAddPage> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final isWide = ScreenHelper.isWide(context);
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(l10n.addUser),
+        actions: [
+          IconButton(
+            icon: const Icon(LucideIcons.check300),
+            tooltip: l10n.modelAddLabel,
+            onPressed: () {
+              if (!_formKey.currentState!.validate()) {
+                return;
+              }
+              _formKey.currentState!.save();
+              _dao.add(_user);
+              Navigator.pop(context, true);
+            },
+          ),
+        ],
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: Form(key: _formKey, child: _buildUserTile(_items(l10n))),
+          ),
+        ],
+      ),
+    );
+  }
+
+  List<Widget> _items(AppLocalizations l10n) {
     final List<Widget> items = [
-      TextFieldStr(
+      InputTextField(
         label: l10n.username,
-        validator: (value) =>
-        StringHelper.isBlank(value)
-            ? l10n.usernameRequired
-            : null,
+        validator: (value) {
+          if (StringHelper.isBlank(value)) {
+            return l10n.usernameRequired;
+          }
+          if (!FormatConfig.usernameFormat.hasMatch(value!)) {
+            return l10n.usernameErrorFormat;
+          }
+          return null;
+        },
+        onSaved: (value) => _user.username = value,
+      ),
+      InputTextField(
+        label: l10n.nickname,
+        validator: (value) {
+          if (StringHelper.isBlank(value)) {
+            return null;
+          }
+          if (!FormatConfig.usernameFormat.hasMatch(value!)) {
+            return l10n.nicknameErrorFormat;
+          }
+          return null;
+        },
+        onSaved: (value) {
+          if (value != null) {
+            _user.nickname = value;
+          }
+        },
       ),
       TextFieldDate(
         label: l10n.birthday,
@@ -53,54 +106,28 @@ class _UsersAddPageState extends State<UsersAddPage> {
           }
           return null;
         },
+        onSaved: (value) {
+          if (StringHelper.isNotBlank(value)) {
+            _user.birthday = FormatConfig.dateFormat.parseStrict(value!);
+          }
+        },
       ),
     ];
-
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(l10n.addUser),
-        actions: [
-          IconButton(
-            icon: const Icon(LucideIcons.check300),
-            tooltip: l10n.modelAddLabel,
-            onPressed: () {
-              if (!_formKey.currentState!.validate()) {
-                return;
-              }
-              print('===$_user');
-              // _dao.add(_user);
-            },
-          ),
-        ],
-      ),
-      body: Column(
-        children: [
-          Expanded(
-            child: Form(
-              key: _formKey,
-              child: _buildUserTile(items),
-            ),
-          ),
-        ],
-      ),
-    );
+    return items;
   }
+
   Widget _buildUserTile(List<Widget> items) {
     return ListView(
-      children: items.map(
-        (item) {
-          return Padding(
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-            child: item,
-          );
-        },
-      ).toList(),
+      children: items.map((item) {
+        return Padding(
+          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+          child: item,
+        );
+      }).toList(),
     );
   }
 
   Future<void> _load() async {
     _dao = await UsersDao.build(context);
   }
-
 }
-

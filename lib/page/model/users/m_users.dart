@@ -1,8 +1,11 @@
+import 'dart:ffi';
+
 import 'package:aime/cache/db/users.dart';
 import 'package:aime/helper/screen.dart';
 import 'package:aime/l10n/app_localizations.dart';
 import 'package:aime/page/model/users/m_users_add.dart';
 import 'package:aime/page/model/users/m_users_detail.dart';
+import 'package:aime/system/widget/field/search.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
@@ -17,8 +20,8 @@ class UsersPage extends StatefulWidget {
 
 class _UsersPageState extends State<UsersPage> {
   final ScrollController _controller = ScrollController();
+  final TextEditingController _queryController = TextEditingController();
   late UsersDao _dao;
-  String _query = "";
   List<Users> _users = [];
 
   @override
@@ -34,40 +37,26 @@ class _UsersPageState extends State<UsersPage> {
 
     return Scaffold(
       appBar: AppBar(
-              title: Text(l10n.users),
-              actions: [
-                IconButton(
-                  icon: const Icon(LucideIcons.userRoundPlus400),
-                  tooltip: l10n.modelAddLabel,
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => UsersAddPage()),
-                    );
-                  },
-                ),
-              ],
-            ),
+        title: Text(l10n.users),
+        actions: [
+          IconButton(
+            icon: const Icon(LucideIcons.userRoundPlus400),
+            tooltip: l10n.modelAddLabel,
+            onPressed: () async {
+              bool? result = await Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => UsersAddPage()),
+              );
+              if (result != null && result) {
+                _load();
+              }
+            },
+          ),
+        ],
+      ),
       body: Column(
         children: [
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10),
-            child: TextField(
-              decoration: InputDecoration(
-                hintText: l10n.search,
-                prefixIcon: const Icon(LucideIcons.search300),
-                suffixIcon: _query.isNotEmpty
-                    ? IconButton(
-                        icon: const Icon(Icons.clear),
-                        onPressed: () {
-                          setState(() => _query = "");
-                        },
-                      )
-                    : null,
-              ),
-              onChanged: (value) => setState(() => _query = value),
-            ),
-          ),
+          SearchTextField(controller: _queryController),
           Expanded(
             child: ListView.builder(
               controller: _controller,

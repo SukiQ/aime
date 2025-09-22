@@ -103,6 +103,15 @@ class AppLocalizationsEn extends AppLocalizations {
   String get usernameRequired => 'Username is required.';
 
   @override
+  String get usernameErrorFormat => 'Invalid username format.';
+
+  @override
+  String get nickname => 'Nickname';
+
+  @override
+  String get nicknameErrorFormat => 'Invalid nickname format.';
+
+  @override
   String get usersLabel => 'Record detailed user information.';
 
   @override

@@ -11,7 +11,7 @@ import 'cache/local/database.dart';
 import 'cache/local/local.dart';
 import 'l10n/app_localizations.dart';
 import 'page/home.dart';
-import 'system/style/system_theme.dart';
+import 'system/style/theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -60,10 +60,10 @@ class MyApp extends StatelessWidget {
       title: 'Aime',
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      theme: buildThemeData(context, ThemeMode.light),
+      theme: buildThemeData(context, Brightness.light),
       home: MainPage(),
       debugShowCheckedModeBanner: false,
-      darkTheme: buildThemeData(context, ThemeMode.dark),
+      darkTheme: buildThemeData(context, Brightness.dark),
       themeMode: localeTheme.locale,
     );
   }
