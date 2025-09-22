@@ -8,7 +8,7 @@ import 'package:aime/helper/screen.dart';
 import 'package:aime/l10n/app_localizations.dart';
 import 'package:aime/system/widget/list.dart';
 import 'package:aime/system/widget/page.dart';
-import 'package:aime/system/widget/vertical_widget.dart';
+import 'package:aime/system/widget/vertical.dart';
 import 'language.dart';
 
 class SettingsPage extends StatefulWidget {

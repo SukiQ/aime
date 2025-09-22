@@ -1,4 +1,5 @@
 import 'package:aime/page/settings/settings.dart';
+import 'package:aime/system/widget/field/search.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'package:provider/provider.dart';
@@ -16,7 +17,21 @@ class LanguageSetting extends StatefulWidget {
 }
 
 class _LearningPageState extends State<LanguageSetting> {
-  String _query = "";
+  final TextEditingController _queryController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    _queryController.addListener(() {
+      setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    _queryController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,36 +46,19 @@ class _LearningPageState extends State<LanguageSetting> {
         child: Column(
           children: [
             if (isWide) buildWideAppBar(l10n.selectLanguage),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: l10n.search,
-                  prefixIcon: const Icon(Icons.search),
-                  suffixIcon: _query.isNotEmpty
-                      ? IconButton(
-                          icon: const Icon(Icons.clear),
-                          onPressed: () {
-                            setState(() => _query = "");
-                          },
-                        )
-                      : null,
-                ),
-                onChanged: (value) => setState(() => _query = value),
-              ),
-            ),
+            SearchTextField(controller: _queryController),
             Expanded(
               child: ListView(
                 children: Languages.values
                     .where(
                       (lang) =>
                           lang.label.toLowerCase().contains(
-                            _query.toLowerCase(),
+                            _queryController.text.toLowerCase(),
                           ) ||
                           lang
                               .getDisplayName(context)
                               .toLowerCase()
-                              .contains(_query.toLowerCase()),
+                              .contains(_queryController.text.toLowerCase()),
                     )
                     .map((lang) {
                       return _buildLanguageTile(

@@ -10,7 +10,7 @@ import 'package:window_manager/window_manager.dart';
 import 'cache/local/local.dart';
 import 'l10n/app_localizations.dart';
 import 'page/home.dart';
-import 'system/style/system_theme.dart';
+import 'system/style/theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,7 +18,7 @@ void main() async {
     await windowManager.ensureInitialized();
 
     WindowOptions windowOptions = const WindowOptions(
-      size: Size(1100, 800),
+      size: Size(1000, 800),
       center: true,
       backgroundColor: Colors.transparent,
       titleBarStyle: TitleBarStyle.hidden,
@@ -50,10 +50,10 @@ class MyApp extends StatelessWidget {
       title: 'Aime',
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      theme: buildThemeData(context, ThemeMode.light),
+      theme: buildThemeData(context, Brightness.light),
       home: MainPage(),
       debugShowCheckedModeBanner: false,
-      darkTheme: buildThemeData(context, ThemeMode.dark),
+      darkTheme: buildThemeData(context, Brightness.dark),
       themeMode: localeTheme.locale,
     );
   }

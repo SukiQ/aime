@@ -1,10 +1,11 @@
 import 'package:aime/cache/db/users.dart';
+import 'package:aime/config/format.dart';
 import 'package:aime/helper/screen.dart';
 import 'package:aime/helper/string.dart';
 import 'package:aime/l10n/app_localizations.dart';
-import 'package:aime/system/widget/field/text_field.dart';
+import 'package:aime/system/widget/field/date.dart';
+import 'package:aime/system/widget/field/input.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 class UsersAddPage extends StatefulWidget {
@@ -19,8 +20,7 @@ class UsersAddPage extends StatefulWidget {
 class _UsersAddPageState extends State<UsersAddPage> {
   late UsersDao _dao;
   final Users _user = Users();
-  final TextEditingController _dateController = TextEditingController();
-  final DateFormat _formatter = DateFormat('yyyy-MM-dd');
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -34,70 +34,97 @@ class _UsersAddPageState extends State<UsersAddPage> {
     final isWide = ScreenHelper.isWide(context);
 
     return Scaffold(
-      appBar: isWide
-          ? null
-          : AppBar(
-              title: Text(l10n.addUser),
-              actions: [
-                IconButton(
-                  icon: const Icon(LucideIcons.check300),
-                  tooltip: l10n.modelAddLabel,
-                  onPressed: () {
-                    if (StringHelper.isNotBlank(_user.username)) {
-                      _dao.add(_user);
-                    }
-                    ;
-                  },
-                ),
-              ],
-            ),
+      appBar: AppBar(
+        title: Text(l10n.addUser),
+        actions: [
+          IconButton(
+            icon: const Icon(LucideIcons.check300),
+            tooltip: l10n.modelAddLabel,
+            onPressed: () {
+              if (!_formKey.currentState!.validate()) {
+                return;
+              }
+              _formKey.currentState!.save();
+              _dao.add(_user);
+              Navigator.pop(context, true);
+            },
+          ),
+        ],
+      ),
       body: Column(
         children: [
           Expanded(
-            child: ListView(
-              children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      fillColor: Colors.transparent,
-                      labelText: l10n.username,
-                    ),
-                    onChanged: (value) {
-                      setState(() {
-                        _user.username = value;
-                      });
-                    },
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                  child: TextFieldDatePicker(
-                    onInput: (value) {
-                      setState(() {
-                        _user.birthday = value;
-                      });
-                    },
-                  ),
-                ),
-              ],
-            ),
+            child: Form(key: _formKey, child: _buildUserTile(_items(l10n))),
           ),
         ],
       ),
     );
   }
 
-  void _validateInput(String value) {
-    try {
-      final date = _formatter.parseStrict(value);
-      _dateController.text = _formatter.format(date);
-    } catch (_) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("请输入正确的日期格式：yyyy-MM-dd")),
-      );
-    }
+  List<Widget> _items(AppLocalizations l10n) {
+    final List<Widget> items = [
+      InputTextField(
+        label: l10n.username,
+        validator: (value) {
+          if (StringHelper.isBlank(value)) {
+            return l10n.usernameRequired;
+          }
+          if (!FormatConfig.usernameFormat.hasMatch(value!)) {
+            return l10n.usernameErrorFormat;
+          }
+          return null;
+        },
+        onSaved: (value) => _user.username = value,
+      ),
+      InputTextField(
+        label: l10n.nickname,
+        validator: (value) {
+          if (StringHelper.isBlank(value)) {
+            return null;
+          }
+          if (!FormatConfig.usernameFormat.hasMatch(value!)) {
+            return l10n.nicknameErrorFormat;
+          }
+          return null;
+        },
+        onSaved: (value) {
+          if (value != null) {
+            _user.nickname = value;
+          }
+        },
+      ),
+      TextFieldDate(
+        label: l10n.birthday,
+        validator: (value) {
+          if (StringHelper.isBlank(value)) {
+            return null;
+          }
+          try {
+            FormatConfig.dateFormat.parseStrict(value!);
+          } catch (e) {
+            return l10n.errorDateFormat;
+          }
+          return null;
+        },
+        onSaved: (value) {
+          if (StringHelper.isNotBlank(value)) {
+            _user.birthday = FormatConfig.dateFormat.parseStrict(value!);
+          }
+        },
+      ),
+    ];
+    return items;
+  }
+
+  Widget _buildUserTile(List<Widget> items) {
+    return ListView(
+      children: items.map((item) {
+        return Padding(
+          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+          child: item,
+        );
+      }).toList(),
+    );
   }
 
   Future<void> _load() async {

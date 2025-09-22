@@ -8,7 +8,7 @@ import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 import '../helper/screen.dart';
 import '../l10n/app_localizations.dart';
-import '../system/widget/vertical_widget.dart';
+import '../system/widget/vertical.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
