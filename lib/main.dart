@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:window_manager/window_manager.dart';
 
-import 'cache/local/database.dart';
 import 'cache/local/local.dart';
 import 'l10n/app_localizations.dart';
 import 'page/home.dart';
@@ -33,19 +32,10 @@ void main() async {
   }
   await CouchbaseLiteFlutter.init();
   runApp(
-    MultiProvider(
-      // providers: locals
-      //     .map((provider) => ChangeNotifierProvider(create: (_) => provider))
-      //     .toList(),
-      providers: [
-        ChangeNotifierProvider(create: (_) => LocaleLanguage()),
-        ChangeNotifierProvider(create: (_) => LocalTheme()),
-        ChangeNotifierProvider(create: (_) => LocalDatabase()),
-      ],
-      child: const MyApp(),
-    ),
+    MultiProvider(providers: LocaleInitializer.providers, child: const MyApp()),
   );
 }
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -67,4 +57,6 @@ class MyApp extends StatelessWidget {
       themeMode: localeTheme.locale,
     );
   }
+
+
 }
