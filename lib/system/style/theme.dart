@@ -67,6 +67,7 @@ ButtonThemeData? _buildButtonThemeData() {
 
 ListTileThemeData _buildListTileTheme() {
   return ListTileThemeData(
+    titleAlignment: ListTileTitleAlignment.center,
     style: ListTileStyle.list,
     shape: ScreenHelper.isPhone()
         ? null
@@ -183,6 +184,7 @@ SearchBarThemeData? _buildSearchBarTheme(BuildContext context) {
 
 InputDecorationThemeData? _buildInputDecorationTheme(Brightness brightness) {
   return InputDecorationThemeData(
+    isCollapsed: false,
     filled: false,
     floatingLabelStyle: WidgetStateTextStyle.resolveWith((states) {
       if (states.contains(WidgetState.error)) {

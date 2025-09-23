@@ -21,7 +21,7 @@ class _SearchTextFieldState extends State<SearchTextField> {
     final l10n = AppLocalizations.of(context)!;
 
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10),
+      padding: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
       child: TextField(
         controller: widget.controller,
         decoration: InputDecoration(

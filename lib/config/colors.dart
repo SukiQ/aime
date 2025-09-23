@@ -13,7 +13,7 @@ enum ColorsConfig {
   /// 背景色
   surface(Color(0xFFFFFFFF), Color(0xFF3C3C3C)),
   onSurface(Color(0xFF6C6C6C), Color(0xFFFFFFFF)),
-  scrim(Color(0xFFE4E4E4), Color(0xFF686868));
+  scrim(Color(0xFFEDEDED), Color(0xFF686868));
 
   final Color light;
   final Color dark;

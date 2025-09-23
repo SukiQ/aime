@@ -6,6 +6,7 @@ import 'package:aime/helper/string.dart';
 import 'package:aime/l10n/app_localizations.dart';
 import 'package:aime/page/model/users/m_users_add.dart';
 import 'package:aime/page/model/users/m_users_detail.dart';
+import 'package:aime/system/widget/divider.dart';
 import 'package:aime/system/widget/field/search.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
@@ -59,7 +60,10 @@ class _UsersPageState extends State<UsersPage> {
         children: [
           SearchTextField(controller: _queryController),
           Expanded(
-            child: ListView.builder(
+            child: ListView.separated(
+              separatorBuilder: (context, index) {
+                return const ListTileDivider();
+              },
               controller: _controller,
               itemCount: _users.length,
               itemBuilder: (context, index) {
@@ -107,6 +111,7 @@ class _UsersPageState extends State<UsersPage> {
         subtitle: StringHelper.isNotBlank(users.nickname)
             ? Text(users.username!)
             : null,
+        visualDensity: VisualDensity(vertical: StringHelper.isNotBlank(users.nickname) ? -2 : 2),
         onTap: () {
           Navigator.push(
             context,

@@ -21,7 +21,7 @@ class ListTileDivider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Divider(
-      color: Colors.black.withValues(alpha: 0.15),
+      color: Theme.of(context).colorScheme.scrim,
       thickness: 1,
       height: 1,
     );
