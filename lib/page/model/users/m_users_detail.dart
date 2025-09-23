@@ -1,7 +1,7 @@
-
 import 'package:aime/cache/db/users.dart';
 import 'package:aime/helper/screen.dart';
 import 'package:aime/l10n/app_localizations.dart';
+import 'package:aime/page/model/users/m_users_add.dart';
 import 'package:aime/system/widget/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
@@ -32,53 +32,76 @@ class _UsersDetailPageState extends State<UsersDetailPage> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final isWide = ScreenHelper.isWide(context);
+    print('===');
 
     return Scaffold(
-      appBar: AppBar(
-        actions: [
-          IconButton(
-            icon: const Icon(LucideIcons.ellipsisVertical300),
-            tooltip: l10n.modelAddLabel,
-            onPressed: () async {
-               await showModalBottomSheet<String>(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return ListView(
-                      children: [
-                        ListTile(
-                          leading: Icon(LucideIcons.userRoundPlus400),
-                          title: Text(l10n.modelAddLabel),
-                          onTap: () {
-                            Navigator.pop(context, "add");
+      body: _loading
+          ? LoadingWidget()
+          :
+      //
+
+      DefaultTabController(
+        length: 3, // Tab 数量
+        child: Scaffold(
+          body: NestedScrollView(
+            headerSliverBuilder: (context, innerBoxIsScrolled) {
+              return [
+                SliverAppBar(
+                  actions: [
+                    IconButton(
+                      icon: const Icon(LucideIcons.ellipsisVertical300),
+                      tooltip: l10n.modelAddLabel,
+                      onPressed: () async {
+                        await showModalBottomSheet<String>(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return ListView(
+                              children: [
+                                ListTile(
+                                  leading: Icon(LucideIcons.userRoundPlus400),
+                                  title: Text(l10n.modelAddLabel),
+                                  onTap: () {
+                                    Navigator.pop(context, "add");
+                                  },
+                                ),
+                                ListTile(
+                                  leading: Icon(LucideIcons.userRoundMinus400),
+                                  title: Text(l10n.users),
+                                  onTap: () {},
+                                ),
+                              ],
+                            );
                           },
-                        ),
-                        ListTile(
-                          leading: Icon(LucideIcons.userRoundMinus400),
-                          title: Text(l10n.users),
-                          onTap: () {}
-                        )
-                      ]
-                    );
-                  });
+                        );
+                      },
+                    ),
+                  ],
+                  expandedHeight: 100,
+                  pinned: true,
+                  flexibleSpace: FlexibleSpaceBar(
+                    title: Text(_user.username!)
+                  ),
+                ),
+                SliverToBoxAdapter(
+                  child: Text(_user.nickname ?? "",textAlign: TextAlign.center),
+                ),
+              ];
             },
+            body: ListView(
+              padding: const EdgeInsets.all(8),
+              physics: const BouncingScrollPhysics(),
+              children: [
+                _buildUserDetailTile(
+                  LucideIcons.cake300,
+                  l10n.birthday,
+                  _user.birthday?.timeZoneName,
+                ),
+                _buildUserDetailTile(LucideIcons.phone300, l10n.phone, _user.phone),
+              ]
+            ),
           ),
-        ],
-      ),
-      body: _loading ? LoadingWidget() : ListView(
-        children: [
-          ListTile(
-            title: Text(_user.username!,textAlign: TextAlign.center,style: TextStyle(fontSize: 30)),
-            subtitle: Text(_user.nickname ?? "",textAlign: TextAlign.center),
-          ),
-          _buildUserDetailTile(
-            LucideIcons.cake300,
-            l10n.birthday,
-            _user.birthday?.timeZoneName,
-          ),
-          _buildUserDetailTile(LucideIcons.phone300, l10n.phone, _user.phone),
-        ],
-      ),
-    );
+        ),
+    ));
   }
 
   Widget _buildUserDetailTile(IconData icon, String title, String? subtitle) {
@@ -102,7 +125,4 @@ class _UsersDetailPageState extends State<UsersDetailPage> {
           });
         });
   }
-
 }
-
-

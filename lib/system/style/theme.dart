@@ -22,6 +22,7 @@ ThemeData buildThemeData(BuildContext context, Brightness brightness) {
       surface: ColorsConfig.surface.color(brightness),
       onSurface: ColorsConfig.onSurface.color(brightness),
       scrim: ColorsConfig.scrim.color(brightness),
+      surfaceTint: ColorsConfig.onPrimary.color(brightness),
     ),
     splashFactory: NoSplash.splashFactory,
     textTheme: _buildTextTheme(context),
@@ -78,7 +79,6 @@ ListTileThemeData _buildListTileTheme() {
 
 AppBarTheme _buildAppBarTheme() {
   return AppBarTheme(
-    backgroundColor: Colors.transparent,
     toolbarHeight: 60.0,
     titleSpacing: 40.0,
     actionsPadding: const EdgeInsets.symmetric(horizontal: 10.0),
