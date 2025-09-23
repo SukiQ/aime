@@ -6,26 +6,22 @@ class InputTextField extends StatelessWidget {
   final TextInputType? keyboardType;
   final FormFieldValidator<String>? validator;
   final FormFieldSetter<String>? onSaved;
-  final TextEditingController _textController = TextEditingController();
+  final TextEditingController controller;
 
-  InputTextField({
+  const InputTextField({
     super.key,
     required this.label,
+    required this.controller,
     this.keyboardType,
     this.validator,
     this.onSaved,
   });
 
-  // @override
-  // State<StatefulWidget> createState() {
-  //   return _InputTextFieldState();
-  // }
-
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       autovalidateMode: AutovalidateMode.onUnfocus,
-      controller: _textController,
+      controller: controller,
       decoration: InputDecoration(labelText: label),
       keyboardType: keyboardType,
       validator: validator,

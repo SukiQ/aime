@@ -8,8 +8,8 @@ class ScreenHelper {
 
   /// 是否为宽屏（>= 600）
   static bool isWide(BuildContext context, {double? breakpoint}) {
-    final width = MediaQuery.of(context).size.width;
-    return width >= (breakpoint ?? wideScreenBreakpoint);
+    Size size = MediaQuery.sizeOf(context);
+    return size.width >= (breakpoint ?? wideScreenBreakpoint);
   }
 
   /// 是否为窄屏（< 600）

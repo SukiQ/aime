@@ -21,6 +21,10 @@ class _UsersAddPageState extends State<UsersAddPage> {
   late UsersDao _dao;
   final Users _user = Users();
   final _formKey = GlobalKey<FormState>();
+  final _usernameController = TextEditingController();
+  final _nicknameController = TextEditingController();
+  final _birthdayController = TextEditingController();
+
 
   @override
   void initState() {
@@ -29,9 +33,18 @@ class _UsersAddPageState extends State<UsersAddPage> {
   }
 
   @override
+  void dispose() {
+    _usernameController.dispose();
+    _nicknameController.dispose();
+    _birthdayController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final isWide = ScreenHelper.isWide(context);
+    print('=============');
 
     return Scaffold(
       appBar: AppBar(
@@ -65,6 +78,7 @@ class _UsersAddPageState extends State<UsersAddPage> {
     final List<Widget> items = [
       InputTextField(
         label: l10n.username,
+        controller: _usernameController,
         validator: (value) {
           if (StringHelper.isBlank(value)) {
             return l10n.usernameRequired;
@@ -78,6 +92,7 @@ class _UsersAddPageState extends State<UsersAddPage> {
       ),
       InputTextField(
         label: l10n.nickname,
+        controller: _nicknameController,
         validator: (value) {
           if (StringHelper.isBlank(value)) {
             return null;
@@ -95,6 +110,7 @@ class _UsersAddPageState extends State<UsersAddPage> {
       ),
       TextFieldDate(
         label: l10n.birthday,
+        controller: _birthdayController,
         validator: (value) {
           if (StringHelper.isBlank(value)) {
             return null;

@@ -6,52 +6,43 @@ import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'package:provider/provider.dart';
 
 /// 日期选择器
-class TextFieldDate extends StatefulWidget {
+class TextFieldDate extends StatelessWidget {
   String label;
+  final TextEditingController controller;
   FormFieldValidator<String>? validator;
   FormFieldSetter<String>? onSaved;
 
-  TextFieldDate({super.key, required this.label, this.validator, this.onSaved});
-
-  @override
-  State<StatefulWidget> createState() {
-    return _TextFieldDateState();
-  }
-}
-
-class _TextFieldDateState extends State<TextFieldDate> {
-  final TextEditingController _textController = TextEditingController();
-
+  TextFieldDate({super.key, required this.label, required this.controller , this.validator, this.onSaved});
 
   @override
   Widget build(BuildContext context) {
     final locale = Provider.of<LocaleLanguage>(context).locale;
 
     return TextFormField(
-      autovalidateMode: AutovalidateMode.onUnfocus,
-      controller: _textController,
-      decoration: InputDecoration(
-        labelText: widget.label,
-        suffixIcon: IconButton(
-          icon: const Icon(LucideIcons.calendar300),
-          onPressed: () => selectDate(locale),
+        autovalidateMode: AutovalidateMode.onUnfocus,
+        controller: controller,
+        decoration: InputDecoration(
+          labelText: label,
+          suffixIcon: IconButton(
+            icon: const Icon(LucideIcons.calendar300),
+            onPressed: () => selectDate(context , locale),
+          ),
         ),
-      ),
-      keyboardType: TextInputType.datetime,
-      validator: widget.validator,
-      inputFormatters: [
-        _DateTextFormatter(),
-        LengthLimitingTextInputFormatter(10),    // 限制 8 位数字
-      ],
-      onSaved: widget.onSaved
+        keyboardType: TextInputType.datetime,
+        validator: validator,
+        inputFormatters: [
+          _DateTextFormatter(),
+          LengthLimitingTextInputFormatter(10),    // 限制 8 位数字
+        ],
+        onSaved: onSaved
     );
   }
 
   /// 选择日期
-  Future<void> selectDate(Locale locale) async {
+  Future<void> selectDate(BuildContext context,Locale locale) async {
     DateTime initialDate;
     try {
-      initialDate = FormatConfig.dateFormat.parse(_textController.text);
+      initialDate = FormatConfig.dateFormat.parse(controller.text);
     } catch (_) {
       initialDate = DateTime.now();
     }
@@ -66,12 +57,11 @@ class _TextFieldDateState extends State<TextFieldDate> {
     );
 
     if (picked != null) {
-      setState(() {
-        _textController.text = FormatConfig.dateFormat.format(picked);
-      });
+        controller.text = FormatConfig.dateFormat.format(picked);
     }
   }
 }
+
 
 class _DateTextFormatter extends TextInputFormatter {
   @override
