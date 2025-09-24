@@ -33,6 +33,7 @@ ThemeData buildThemeData(BuildContext context, Brightness brightness) {
     bottomNavigationBarTheme: _buildBottomNavigationBarThemeData(),
     navigationRailTheme: _buildNavigationRailThemeData(),
     inputDecorationTheme: _buildInputDecorationTheme(brightness),
+    bottomSheetTheme: _buildBottomSheetTheme(),
   );
 }
 
@@ -73,7 +74,7 @@ ListTileThemeData _buildListTileTheme() {
     shape: ScreenHelper.isPhone()
         ? null
         : RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-    contentPadding: const EdgeInsets.symmetric(horizontal: 16.0,vertical: 0),
+    contentPadding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 0),
   );
 }
 
@@ -188,7 +189,7 @@ InputDecorationThemeData? _buildInputDecorationTheme(Brightness brightness) {
     filled: false,
     floatingLabelStyle: WidgetStateTextStyle.resolveWith((states) {
       if (states.contains(WidgetState.error)) {
-        return TextStyle(color: ColorsConfig.error.color(brightness),);
+        return TextStyle(color: ColorsConfig.error.color(brightness));
       }
       return TextStyle(color: ColorsConfig.secondary.color(brightness));
     }),
@@ -201,9 +202,7 @@ InputDecorationThemeData? _buildInputDecorationTheme(Brightness brightness) {
         color: ColorsConfig.error.color(brightness),
       ),
     ),
-    errorStyle: TextStyle(
-      color: ColorsConfig.error.color(brightness),
-    ),
+    errorStyle: TextStyle(color: ColorsConfig.error.color(brightness)),
     focusColor: ColorsConfig.secondary.color(brightness),
     focusedBorder: OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -216,5 +215,11 @@ InputDecorationThemeData? _buildInputDecorationTheme(Brightness brightness) {
       borderRadius: BorderRadius.circular(12),
       borderSide: BorderSide.none,
     ),
+  );
+}
+
+BottomSheetThemeData? _buildBottomSheetTheme() {
+  return BottomSheetThemeData(
+    // showDragHandle:  true,
   );
 }

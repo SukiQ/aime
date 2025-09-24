@@ -35,6 +35,8 @@
   "nicknameErrorFormat": "暱稱格式錯誤",
   "usersLabel": "記錄用戶的詳細信息",
   "addUser": "添加用戶",
+  "remove": "刪除",
+  "edit": "編輯",
   "birthday": "生日",
   "errorDateFormat": "日期格式錯誤",
   "phone": "電話",

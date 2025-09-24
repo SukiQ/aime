@@ -313,8 +313,20 @@ abstract class AppLocalizations {
   /// No description provided for @addUser.
   ///
   /// In en, this message translates to:
-  /// **'Add User'**
+  /// **'Add user'**
   String get addUser;
+
+  /// No description provided for @remove.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove'**
+  String get remove;
+
+  /// No description provided for @edit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit'**
+  String get edit;
 
   /// No description provided for @birthday.
   ///
@@ -355,7 +367,7 @@ abstract class AppLocalizations {
   /// No description provided for @combatPower.
   ///
   /// In en, this message translates to:
-  /// **'Combat Power'**
+  /// **'Combat power'**
   String get combatPower;
 
   /// No description provided for @combatPowerLabel.

@@ -115,7 +115,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get usersLabel => 'Record detailed user information.';
 
   @override
-  String get addUser => 'Add User';
+  String get addUser => 'Add user';
+
+  @override
+  String get remove => 'Remove';
+
+  @override
+  String get edit => 'Edit';
 
   @override
   String get birthday => 'Birthday';
@@ -136,7 +142,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get email => 'Email';
 
   @override
-  String get combatPower => 'Combat Power';
+  String get combatPower => 'Combat power';
 
   @override
   String get combatPowerLabel => 'Record target information and combat power.';

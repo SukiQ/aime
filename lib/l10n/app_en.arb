@@ -34,13 +34,15 @@
   "nickname": "Nickname",
   "nicknameErrorFormat": "Invalid nickname format.",
   "usersLabel": "Record detailed user information.",
-  "addUser": "Add User",
+  "addUser": "Add user",
+  "remove": "Remove",
+  "edit": "Edit",
   "birthday": "Birthday",
   "errorDateFormat": "Invalid date format.",
   "phone": "Phone",
   "age": "Age",
   "contact": "Contact",
   "email": "Email",
-  "combatPower": "Combat Power",
+  "combatPower": "Combat power",
   "combatPowerLabel": "Record target information and combat power."
 }

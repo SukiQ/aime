@@ -117,6 +117,12 @@ class AppLocalizationsZh extends AppLocalizations {
   String get addUser => '添加用户';
 
   @override
+  String get remove => '删除';
+
+  @override
+  String get edit => '编辑';
+
+  @override
   String get birthday => '生日';
 
   @override
@@ -254,6 +260,12 @@ class AppLocalizationsZhHk extends AppLocalizationsZh {
   String get addUser => '添加用戶';
 
   @override
+  String get remove => '刪除';
+
+  @override
+  String get edit => '編輯';
+
+  @override
   String get birthday => '生日';
 
   @override
@@ -389,6 +401,12 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get addUser => '添加用戶';
+
+  @override
+  String get remove => '刪除';
+
+  @override
+  String get edit => '編輯';
 
   @override
   String get birthday => '生日';
