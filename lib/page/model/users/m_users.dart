@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:aime/cache/db/users.dart';
 import 'package:aime/helper/screen.dart';
 import 'package:aime/helper/string.dart';
@@ -35,7 +33,7 @@ class _UsersPageState extends State<UsersPage> {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
-    final isWide = ScreenHelper.isWide(context);
+    final _ = ScreenHelper.isWide(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -107,18 +105,27 @@ class _UsersPageState extends State<UsersPage> {
       },
       child: ListTile(
         leading: Icon(LucideIcons.userRound300),
-        title: Text(StringHelper.isBlank(users.nickname) ? users.username! : users.nickname!),
+        title: Text(
+          StringHelper.isBlank(users.nickname)
+              ? users.username!
+              : users.nickname!,
+        ),
         subtitle: StringHelper.isNotBlank(users.nickname)
             ? Text(users.username!)
             : null,
-        visualDensity: VisualDensity(vertical: StringHelper.isNotBlank(users.nickname) ? -2 : 2),
-        onTap: () {
-          Navigator.push(
+        visualDensity: VisualDensity(
+          vertical: StringHelper.isNotBlank(users.nickname) ? -2 : 2,
+        ),
+        onTap: () async {
+          bool? result = await Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => UsersDetailPage(users.id!),
+              builder: (context) => UsersDetailPage(id: users.id!),
             ),
           );
+          if (result != null && result) {
+            _load();
+          }
         },
       ),
     );

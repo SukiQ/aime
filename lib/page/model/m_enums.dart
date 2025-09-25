@@ -6,14 +6,8 @@ import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'm_combat_power.dart';
 
 enum ModelEnum {
-  combatPower(
-    LucideIcons.sword300,
-    CombatPowerPage(),
-  ),
-  users(
-    LucideIcons.users300,
-    UsersPage(),
-  );
+  combatPower(LucideIcons.sword300, CombatPowerPage()),
+  users(LucideIcons.users300, UsersPage());
 
   final IconData icon;
   final Widget widget;
@@ -22,7 +16,6 @@ enum ModelEnum {
 }
 
 extension ModelEnumExtension on ModelEnum {
-
   String name(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
 

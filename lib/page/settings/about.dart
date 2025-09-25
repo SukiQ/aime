@@ -7,7 +7,7 @@ import 'package:in_app_review/in_app_review.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'package:aime/config/app_info.dart';
+import 'package:aime/setting/app_info.dart';
 import 'package:aime/helper/screen.dart';
 import 'package:aime/l10n/app_localizations.dart';
 import 'package:aime/system/widget/list.dart';

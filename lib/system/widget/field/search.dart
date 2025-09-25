@@ -14,24 +14,20 @@ class SearchTextField extends StatefulWidget {
 }
 
 class _SearchTextFieldState extends State<SearchTextField> {
-
-
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
 
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
+      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       child: TextField(
         controller: widget.controller,
         decoration: InputDecoration(
-          filled:  true,
+          filled: true,
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(12)),
-            borderSide: BorderSide(
-              width: 1,
-              color: Colors.transparent,
-            )),
+            borderSide: BorderSide(width: 1, color: Colors.transparent),
+          ),
           fillColor: Theme.of(context).colorScheme.scrim,
           floatingLabelBehavior: FloatingLabelBehavior.never,
           hintText: l10n.search,

@@ -33,6 +33,7 @@
   "usernameErrorFormat": "Invalid username format.",
   "nickname": "Nickname",
   "nicknameErrorFormat": "Invalid nickname format.",
+  "phoneErrorFormat": "Invalid phone number format.",
   "usersLabel": "Record detailed user information.",
   "addUser": "Add user",
   "remove": "Remove",

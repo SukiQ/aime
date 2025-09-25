@@ -3,7 +3,7 @@ import 'package:aime/system/style/animation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:aime/config/colors.dart';
+import 'package:aime/setting/colors.dart';
 
 ThemeData buildThemeData(BuildContext context, Brightness brightness) {
   return ThemeData(
@@ -34,6 +34,7 @@ ThemeData buildThemeData(BuildContext context, Brightness brightness) {
     navigationRailTheme: _buildNavigationRailThemeData(),
     inputDecorationTheme: _buildInputDecorationTheme(brightness),
     bottomSheetTheme: _buildBottomSheetTheme(),
+    sliderTheme: _buildSliderTheme(),
   );
 }
 
@@ -220,6 +221,13 @@ InputDecorationThemeData? _buildInputDecorationTheme(Brightness brightness) {
 
 BottomSheetThemeData? _buildBottomSheetTheme() {
   return BottomSheetThemeData(
-    // showDragHandle:  true,
+    showDragHandle: true,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(12)),
+    ),
   );
+}
+
+SliderThemeData? _buildSliderTheme() {
+  return SliderThemeData();
 }

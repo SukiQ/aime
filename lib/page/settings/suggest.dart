@@ -1,4 +1,4 @@
-import 'package:aime/config/app_info.dart';
+import 'package:aime/setting/app_info.dart';
 import 'package:aime/page/settings/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_icons/simple_icons.dart';

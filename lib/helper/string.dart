@@ -1,5 +1,4 @@
 class StringHelper {
-
   static bool isBlank(String? value) {
     return value == null || value.trim().isEmpty;
   }

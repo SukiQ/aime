@@ -37,7 +37,7 @@ class ModelPage extends StatelessWidget {
         ],
       ),
       body: Padding(
-        padding: EdgeInsets.all(isWide ? 10 : 0 ),
+        padding: EdgeInsets.all(isWide ? 10 : 0),
         child: GridView.extent(
           maxCrossAxisExtent: 150,
           children: ModelEnum.values.map((model) {

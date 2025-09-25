@@ -10,7 +10,7 @@ part 'users.g.dart';
 
 @JsonSerializable()
 class Users extends Doc {
-  Users( {this.username,this.nickname,this.phone,this.birthday});
+  Users({this.username, this.nickname, this.phone, this.birthday});
 
   String? username;
   String? nickname;
@@ -82,19 +82,17 @@ class UsersDao {
     await _collection.saveDocument(doc);
   }
 
-  // Future<void> update(Firepower firepower) async {
-  //   final query = const QueryBuilder()
-  //       .select(SelectResult.all())
-  //       .from(DataSource.collection(_collection))
-  //       .where(Expression.property('id').equalTo(firepower.id));
-  //
-  //   final resultSet = await query.execute();
-  //   final results = await resultSet
-  //       .asStream()
-  //       .map((result) => result.toJson())
-  //       .toList();
-  //   final doc = MutableDocument.withId()
-  // }
+  Future<void> update(Users users) async {
+    final doc = await _collection.document(users.id!);
+    final mutableDoc = doc!.toMutable();
+    users.toJson().forEach((key, value) {
+      if (value == null) {
+        return;
+      }
+      mutableDoc.setValue(value, key: key);
+    });
+    await _collection.saveDocument(mutableDoc);
+  }
 
   void delete(String id) async {
     final doc = await _collection.document(id);

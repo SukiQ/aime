@@ -1,5 +1,5 @@
 import 'package:aime/cache/local/language.dart';
-import 'package:aime/config/format.dart';
+import 'package:aime/setting/format.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
@@ -12,34 +12,40 @@ class TextFieldDate extends StatelessWidget {
   FormFieldValidator<String>? validator;
   FormFieldSetter<String>? onSaved;
 
-  TextFieldDate({super.key, required this.label, required this.controller , this.validator, this.onSaved});
+  TextFieldDate({
+    super.key,
+    required this.label,
+    required this.controller,
+    this.validator,
+    this.onSaved,
+  });
 
   @override
   Widget build(BuildContext context) {
     final locale = Provider.of<LocaleLanguage>(context).locale;
 
     return TextFormField(
-        autovalidateMode: AutovalidateMode.onUnfocus,
-        controller: controller,
-        decoration: InputDecoration(
-          labelText: label,
-          suffixIcon: IconButton(
-            icon: const Icon(LucideIcons.calendar300),
-            onPressed: () => selectDate(context , locale),
-          ),
+      autovalidateMode: AutovalidateMode.onUnfocus,
+      controller: controller,
+      decoration: InputDecoration(
+        labelText: label,
+        suffixIcon: IconButton(
+          icon: const Icon(LucideIcons.calendar300),
+          onPressed: () => selectDate(context, locale),
         ),
-        keyboardType: TextInputType.datetime,
-        validator: validator,
-        inputFormatters: [
-          _DateTextFormatter(),
-          LengthLimitingTextInputFormatter(10),    // 限制 8 位数字
-        ],
-        onSaved: onSaved
+      ),
+      keyboardType: TextInputType.datetime,
+      validator: validator,
+      inputFormatters: [
+        _DateTextFormatter(),
+        LengthLimitingTextInputFormatter(10), // 限制 8 位数字
+      ],
+      onSaved: onSaved,
     );
   }
 
   /// 选择日期
-  Future<void> selectDate(BuildContext context,Locale locale) async {
+  Future<void> selectDate(BuildContext context, Locale locale) async {
     DateTime initialDate;
     try {
       initialDate = FormatConfig.dateFormat.parse(controller.text);
@@ -57,20 +63,21 @@ class TextFieldDate extends StatelessWidget {
     );
 
     if (picked != null) {
-        controller.text = FormatConfig.dateFormat.format(picked);
+      controller.text = FormatConfig.dateFormat.format(picked);
     }
   }
 }
 
-
 class _DateTextFormatter extends TextInputFormatter {
   @override
   TextEditingValue formatEditUpdate(
-      TextEditingValue oldValue, TextEditingValue newValue) {
+    TextEditingValue oldValue,
+    TextEditingValue newValue,
+  ) {
     var oldText = oldValue.text;
     var newText = newValue.text;
-    if (oldText.length > newText.length){
-      if ((!oldText.endsWith('/')) && newText.endsWith('/')){
+    if (oldText.length > newText.length) {
+      if ((!oldText.endsWith('/')) && newText.endsWith('/')) {
         newText = newText.substring(0, newText.length - 1);
         return TextEditingValue(
           text: newText.toString(),

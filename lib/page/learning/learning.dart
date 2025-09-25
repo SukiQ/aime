@@ -12,11 +12,6 @@ class LearningPage extends StatefulWidget {
 class _LearningPageState extends State<LearningPage> {
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Icon(
-        LucideIcons.libraryBig200,
-        size: 80,
-      ),
-    );
+    return const Center(child: Icon(LucideIcons.libraryBig200, size: 80));
   }
 }

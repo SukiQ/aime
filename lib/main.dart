@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:aime/setting/app_routes.dart';
 import 'package:cbl_flutter/cbl_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -34,13 +35,11 @@ void main() async {
   );
 }
 
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
       locale: LocaleInitializer.language(context).locale,
       title: 'Aime',
@@ -51,8 +50,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       darkTheme: buildThemeData(context, Brightness.dark),
       themeMode: LocaleInitializer.theme(context).locale,
+      initialRoute: AppRoutes.main,
+      onGenerateRoute: AppRoutes.generateRoute,
     );
   }
-
-
 }

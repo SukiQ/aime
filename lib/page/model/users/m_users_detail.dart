@@ -1,14 +1,15 @@
 import 'package:aime/cache/db/users.dart';
 import 'package:aime/helper/screen.dart';
 import 'package:aime/l10n/app_localizations.dart';
-import 'package:aime/page/model/users/m_users.dart';
-import 'package:aime/page/model/users/m_users_add.dart';
+import 'package:aime/setting/app_routes.dart';
+import 'package:aime/setting/format.dart';
 import 'package:aime/system/widget/loading.dart';
+import 'package:aime/system/widget/sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 class UsersDetailPage extends StatefulWidget {
-  const UsersDetailPage(this.id, {super.key});
+  const UsersDetailPage({super.key, required this.id});
 
   final String id;
 
@@ -19,9 +20,9 @@ class UsersDetailPage extends StatefulWidget {
 }
 
 class _UsersDetailPageState extends State<UsersDetailPage> {
-  late Users _user;
-  late UsersDao _dao;
   bool _loading = true;
+  late Users _user;
+  late final UsersDao _dao;
 
   @override
   void initState() {
@@ -34,114 +35,95 @@ class _UsersDetailPageState extends State<UsersDetailPage> {
     final l10n = AppLocalizations.of(context)!;
     final isWide = ScreenHelper.isWide(context);
 
-    return Scaffold(
-      body: _loading
-          ? LoadingWidget()
-          :
-            //
-            DefaultTabController(
-              length: 3, // Tab 数量
-              child: Scaffold(
-                body: NestedScrollView(
-                  headerSliverBuilder: (context, innerBoxIsScrolled) {
-                    return [
-                      SliverAppBar(
-                        actions: [
-                          IconButton(
-                            icon: const Icon(LucideIcons.ellipsisVertical300),
-                            tooltip: l10n.modelAddLabel,
-                            onPressed: () {
-                              showModalBottomSheet(
-                                context: context,
-                                shape: const RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.vertical(
-                                    top: Radius.circular(16),
-                                  ),
-                                ),
-                                showDragHandle:
-                                    true, // 显示顶部拖拽手柄 (Flutter 3.10+)
-                                builder: (context) {
-                                  return SafeArea(
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.min, // 高度自适应内容
-                                      children: [
-                                        ListTile(
-                                          leading: const Icon(
-                                            LucideIcons.pencil300,
-                                          ),
-                                          title: Text(l10n.edit),
-                                          onTap: () {
-                                            Navigator.pop(context);
-                                            ScaffoldMessenger.of(
-                                              context,
-                                            ).showSnackBar(
-                                              const SnackBar(
-                                                content: Text("点击了编辑"),
-                                              ),
-                                            );
-                                          },
-                                        ),
-                                        ListTile(
-                                          leading: Icon(LucideIcons.trash2300),
-                                          title: Text(l10n.remove),
-                                          onTap: () {
-                                            _dao.delete(widget.id);
-                                            Navigator.pushReplacement(
-                                              context,
-                                              MaterialPageRoute(builder: (context) => UsersPage()),
-                                            );
+    ///  扩展项
+    final List<Widget> extendTiles = [
+      ListTile(
+        leading: const Icon(LucideIcons.pencil300),
+        title: Text(l10n.edit),
+        onTap: () async {
+          final result = await Navigator.popAndPushNamed(
+            context,
+            AppRoutes.mUsersEdit,
+            arguments: {"id": widget.id},
+          );
+          if (result != null) {
+            setState(() {
+              _user = result as Users;
+            });
+          }
+        },
+      ),
+      ListTile(
+        leading: Icon(LucideIcons.trash2300),
+        title: Text(l10n.remove),
+        onTap: () {
+          _dao.delete(widget.id);
 
-                                          },
-                                          iconColor: Theme.of(
-                                            context,
-                                          ).colorScheme.error,
-                                          textColor: Theme.of(
-                                            context,
-                                          ).colorScheme.error,
-                                        ),
-                                        const SizedBox(height: 10),
-                                      ],
-                                    ),
-                                  );
-                                },
-                              );
-                            },
-                          ),
-                        ],
-                        expandedHeight: 100,
-                        pinned: true,
-                        flexibleSpace: FlexibleSpaceBar(
-                          title: Text(_user.username!),
-                        ),
-                      ),
-                      SliverToBoxAdapter(
-                        child: Text(
-                          _user.nickname ?? "",
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    ];
-                  },
-                  body: ListView(
-                    padding: const EdgeInsets.all(8),
-                    physics: const BouncingScrollPhysics(),
-                    children: [
-                      _buildUserDetailTile(
-                        LucideIcons.cake300,
-                        l10n.birthday,
-                        _user.birthday?.timeZoneName,
-                      ),
-                      _buildUserDetailTile(
-                        LucideIcons.phone300,
-                        l10n.phone,
-                        _user.phone,
+          /// 关闭 bottom sheet
+          Navigator.pop(context);
+          // 返回上一级页面
+          Navigator.pop(context, true);
+        },
+        iconColor: Theme.of(context).colorScheme.error,
+        textColor: Theme.of(context).colorScheme.error,
+      ),
+    ];
+
+    return _loading
+        ? LoadingWidget()
+        : Scaffold(
+            body: NestedScrollView(
+              headerSliverBuilder: (context, innerBoxIsScrolled) {
+                return [
+                  SliverAppBar(
+                    actions: [
+                      IconButton(
+                        icon: const Icon(LucideIcons.ellipsisVertical300),
+                        tooltip: l10n.modelAddLabel,
+                        onPressed: () {
+                          buildModalBottomSheet(
+                            context: context,
+                            widgets: extendTiles,
+                          );
+                        },
                       ),
                     ],
+                    expandedHeight: 100,
+                    pinned: true,
+                    flexibleSpace: FlexibleSpaceBar(
+                      collapseMode: CollapseMode.pin,
+                      centerTitle: true,
+                      title: Text(_user.username!),
+                    ),
                   ),
-                ),
+                  SliverToBoxAdapter(
+                    child: Text(
+                      _user.nickname ?? "",
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ];
+              },
+              body: ListView(
+                padding: const EdgeInsets.all(8),
+                physics: const BouncingScrollPhysics(),
+                children: [
+                  _buildUserDetailTile(
+                    LucideIcons.cake300,
+                    l10n.birthday,
+                    _user.birthday == null
+                        ? null
+                        : FormatConfig.dateFormat.format(_user.birthday!),
+                  ),
+                  _buildUserDetailTile(
+                    LucideIcons.phone300,
+                    l10n.phone,
+                    _user.phone,
+                  ),
+                ],
               ),
             ),
-    );
+          );
   }
 
   Widget _buildUserDetailTile(IconData icon, String title, String? subtitle) {

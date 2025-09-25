@@ -112,6 +112,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get nicknameErrorFormat => 'Invalid nickname format.';
 
   @override
+  String get phoneErrorFormat => 'Invalid phone number format.';
+
+  @override
   String get usersLabel => 'Record detailed user information.';
 
   @override

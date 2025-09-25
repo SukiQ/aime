@@ -15,10 +15,14 @@ class MyApp extends StatelessWidget {
   }
 
   Future<void> doTest(BuildContext context) async {
-    UsersDao usersDao=await UsersDao.build(context);
-    usersDao.add(Users(username:'花小琪',nickname: "戚小花",phone: '18706768036',
-        birthday: DateTime.now()));
+    UsersDao usersDao = await UsersDao.build(context);
+    usersDao.add(
+      Users(
+        username: '花小琪',
+        nickname: "戚小花",
+        phone: '18706768036',
+        birthday: DateTime.now(),
+      ),
+    );
   }
-
-
 }

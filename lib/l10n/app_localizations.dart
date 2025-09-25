@@ -304,6 +304,12 @@ abstract class AppLocalizations {
   /// **'Invalid nickname format.'**
   String get nicknameErrorFormat;
 
+  /// No description provided for @phoneErrorFormat.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid phone number format.'**
+  String get phoneErrorFormat;
+
   /// No description provided for @usersLabel.
   ///
   /// In en, this message translates to:

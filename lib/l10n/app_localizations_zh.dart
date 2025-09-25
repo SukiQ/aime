@@ -111,6 +111,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get nicknameErrorFormat => '昵称格式错误';
 
   @override
+  String get phoneErrorFormat => '手机号码格式错误';
+
+  @override
   String get usersLabel => '记录用户的详细信息';
 
   @override
@@ -129,7 +132,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get errorDateFormat => '日期格式错误';
 
   @override
-  String get phone => '电话';
+  String get phone => '手机号码';
 
   @override
   String get age => '年龄';
@@ -254,6 +257,9 @@ class AppLocalizationsZhHk extends AppLocalizationsZh {
   String get nicknameErrorFormat => '暱稱格式錯誤';
 
   @override
+  String get phoneErrorFormat => '手機號碼格式錯誤';
+
+  @override
   String get usersLabel => '記錄用戶的詳細信息';
 
   @override
@@ -272,7 +278,7 @@ class AppLocalizationsZhHk extends AppLocalizationsZh {
   String get errorDateFormat => '日期格式錯誤';
 
   @override
-  String get phone => '電話';
+  String get phone => '手機號碼';
 
   @override
   String get age => '年齡';
@@ -397,6 +403,9 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get nicknameErrorFormat => '暱稱格式錯誤';
 
   @override
+  String get phoneErrorFormat => '手機號碼格式錯誤';
+
+  @override
   String get usersLabel => '記錄用戶的詳細信息';
 
   @override
@@ -415,16 +424,16 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
   String get errorDateFormat => '日期格式錯誤';
 
   @override
-  String get phone => '電話';
+  String get phone => '手機號碼';
 
   @override
-  String get age => '年龄';
+  String get age => '年齡';
 
   @override
-  String get contact => '联络';
+  String get contact => '聯絡';
 
   @override
-  String get email => '电子邮箱';
+  String get email => '電子郵箱';
 
   @override
   String get combatPower => '戰力';
