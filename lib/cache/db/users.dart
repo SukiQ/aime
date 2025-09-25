@@ -56,6 +56,24 @@ class UsersDao {
     }).toList();
   }
 
+  Future<List<Users>> page(int offset) async {
+    final List<SelectResultInterface> distinct = [];
+    distinct.add(SelectResult.expression(Meta.id).as('id'));
+    distinct.add(SelectResult.expression(Expression.property("username")));
+    distinct.add(SelectResult.expression(Expression.property("nickname")));
+
+    final query = const QueryBuilder()
+        .selectAllDistinct(distinct)
+        .from(DataSource.collection(_collection))
+        .limit(Expression.integer(12), offset: Expression.integer(offset));
+
+    final resultSet = await query.execute();
+
+    return await resultSet.asStream().map((result) {
+      return Users.fromJson(result.toPlainMap());
+    }).toList();
+  }
+
   Future<Users> details(String id) async {
     final List<SelectResultInterface> distinct = [];
     distinct.add(SelectResult.expression(Meta.id).as('id'));

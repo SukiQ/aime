@@ -23,11 +23,31 @@ class _UsersPageState extends State<UsersPage> {
   final TextEditingController _queryController = TextEditingController();
   late UsersDao _dao;
   List<Users> _users = [];
+  bool _isLoadingMore = false;
 
   @override
   void initState() {
     super.initState();
     _load();
+    _controller.addListener(() {
+      var nextPageTrigger = 0.8 * _controller.position.maxScrollExtent;
+      if (_controller.position.pixels > nextPageTrigger) {
+        _loadMore();
+      }
+    });
+  }
+
+  Future<void> _loadMore() async {
+    if (_isLoadingMore) return;
+    setState(() => _isLoadingMore = true);
+    _dao.page(_users.length).then((users) {
+      if (users.isNotEmpty) {
+        setState(() {
+          _users.addAll(users);
+          _isLoadingMore = false;
+        });
+      }
+    });
   }
 
   @override
@@ -78,7 +98,7 @@ class _UsersPageState extends State<UsersPage> {
     UsersDao.build(context)
         .then((dao) {
           _dao = dao;
-          return _dao.all();
+          return _dao.page(0);
         })
         .then((user) {
           setState(() {
