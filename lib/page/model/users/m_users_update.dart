@@ -20,7 +20,7 @@ class UsersUpdatePage extends StatefulWidget {
 class _UsersUpdatePageState extends State<UsersUpdatePage> {
   bool _loading = true;
   final _formKey = GlobalKey<FormState>();
-  late final Users _user;
+  late final UsersDetails _user;
   late final UsersDao _dao;
   late final List<Widget> _items;
 

@@ -22,7 +22,7 @@ class UsersDetailPage extends StatefulWidget {
 
 class _UsersDetailPageState extends State<UsersDetailPage> {
   bool _loading = true;
-  late Users _user;
+  late UsersDetails _user;
   late final UsersDao _dao;
 
   @override
@@ -49,7 +49,7 @@ class _UsersDetailPageState extends State<UsersDetailPage> {
           );
           if (result != null) {
             setState(() {
-              _user = result as Users;
+              _user = result as UsersDetails;
             });
           }
         },

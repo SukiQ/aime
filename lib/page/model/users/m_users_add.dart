@@ -19,7 +19,7 @@ class UsersAddPage extends StatefulWidget {
 
 class _UsersAddPageState extends State<UsersAddPage> {
   late UsersDao _dao;
-  final Users _user = Users();
+  final UsersDetails _user = UsersDetails();
   final _formKey = GlobalKey<FormState>();
   late final List<Widget> _items;
 
@@ -91,7 +91,7 @@ class _UsersAddPageState extends State<UsersAddPage> {
 
 List<Widget> buildUserAddItems({
   required BuildContext context,
-  required Users user,
+  required UsersDetails user,
 }) {
   final l10n = AppLocalizations.of(context)!;
 

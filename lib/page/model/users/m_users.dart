@@ -19,16 +19,21 @@ class UsersPage extends StatefulWidget {
   }
 }
 
+
 class _UsersPageState extends State<UsersPage> {
-  final ScrollController _controller = ScrollController();
+  final ScrollController _scrollController = ScrollController();
   final TextEditingController _queryController = TextEditingController();
   late UsersDao _dao;
   List<Users> _users = [];
+  List<Users> _search = [];
   bool _isLoadingMore = false;
 
   @override
   void initState() {
     super.initState();
+    _queryController.addListener(() {
+      setState(() {});
+    });
     _load();
     // _controller.addListener(() {
     //   var nextPageTrigger = 0.8 * _controller.position.maxScrollExtent;
@@ -36,6 +41,13 @@ class _UsersPageState extends State<UsersPage> {
     //     _loadMore();
     //   }
     // });
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    _queryController.dispose();
+    super.dispose();
   }
 
   Future<void> _loadMore() async {
@@ -55,6 +67,19 @@ class _UsersPageState extends State<UsersPage> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final _ = ScreenHelper.isWide(context);
+    _search = _users
+        .where(
+          (user) =>
+              user.username!.toLowerCase().contains(
+                _queryController.text.toLowerCase(),
+              ) ||
+              (StringHelper.isBlank(user.nickname)
+                  ? false
+                  : user.nickname!.toLowerCase().contains(
+                      _queryController.text.toLowerCase(),
+                    )),
+        )
+        .toList();
 
     return Scaffold(
       appBar: AppBar(
@@ -76,15 +101,15 @@ class _UsersPageState extends State<UsersPage> {
           SearchTextField(controller: _queryController),
           Expanded(
             child: Scrollbar(
-              controller: _controller,
+              controller: _scrollController,
               child: ListView.separated(
                 separatorBuilder: (context, index) {
                   return const ListTileDivider();
                 },
-                controller: _controller,
-                itemCount: _users.length,
+                controller: _scrollController,
+                itemCount: _search.length,
                 itemBuilder: (context, index) {
-                  return _buildUserTile(index, _users[index]);
+                  return _buildUserTile(index, _search[index]);
                 },
               ),
             ),
@@ -167,7 +192,7 @@ class _UsersPageState extends State<UsersPage> {
       case NavigatorOperation.update:
         setState(() {
           final user = navigatorResult.result as Users;
-          _users[_users.indexOf(user)] = user;
+          _users[_users.indexWhere((element) => element.id == user.id)] = user;
         });
         return;
       case NavigatorOperation.add:

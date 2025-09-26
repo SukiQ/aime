@@ -37,12 +37,12 @@ class _SearchTextFieldState extends State<SearchTextField> {
               ? IconButton(
                   icon: const Icon(LucideIcons.x300),
                   onPressed: () {
-                    setState(() => widget.controller.text = "");
+                    widget.controller.text = "";
                   },
                 )
               : null,
         ),
-        onChanged: (value) => setState(() => widget.controller.text = value),
+        onChanged: (value) => widget.controller.text = value,
       ),
     );
   }

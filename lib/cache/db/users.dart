@@ -9,25 +9,37 @@ import '../local/database.dart';
 part 'users.g.dart';
 
 @JsonSerializable()
-class Users extends Doc {
-  Users({this.username, this.nickname, this.phone, this.birthday});
+class UsersDetails extends Users {
+  UsersDetails({this.phone, this.birthday});
 
-  String? username;
-  String? nickname;
   String? phone;
   DateTime? birthday;
 
   @override
-  factory Users.fromJson(Map<String, dynamic> json) => _$UsersFromJson(json);
+  factory UsersDetails.fromJson(Map<String, dynamic> json) => _$UsersDetailsFromJson(json);
 
   @override
-  Map<String, dynamic> toJson() => _$UsersToJson(this);
+  Map<String, dynamic> toJson() => _$UsersDetailsToJson(this);
 
   @override
   String toString() {
     return 'Users{$username, nickname: $nickname, phone: $phone, birthday: $birthday, id: $id}';
   }
 }
+
+@JsonSerializable()
+class Users extends Doc {
+  Users({this.username, this.nickname});
+
+  String? username;
+  String? nickname;
+
+  @override
+  factory Users.fromJson(Map<String, dynamic> json) => _$UsersFromJson(json);
+
+  @override
+  Map<String, dynamic> toJson() => _$UsersToJson(this);
+ }
 
 class UsersDao {
   late final Collection _collection;
@@ -74,7 +86,7 @@ class UsersDao {
     }).toList();
   }
 
-  Future<Users> details(String id) async {
+  Future<UsersDetails> details(String id) async {
     final List<SelectResultInterface> distinct = [];
     distinct.add(SelectResult.expression(Meta.id).as('id'));
     distinct.add(SelectResult.expression(Expression.property("username")));
@@ -90,17 +102,17 @@ class UsersDao {
     final resultSet = await query.execute();
 
     return await resultSet.asStream().map((result) {
-      return Users.fromJson(result.toPlainMap());
+      return UsersDetails.fromJson(result.toPlainMap());
     }).first;
   }
 
-  Future<bool> add(Users users) async {
+  Future<bool> add(UsersDetails users) async {
     final doc = MutableDocument(users.toJson());
     users.id = doc.id;
     return await _collection.saveDocument(doc);
   }
 
-  Future<void> update(Users users) async {
+  Future<void> update(UsersDetails users) async {
     final doc = await _collection.document(users.id!);
     final mutableDoc = doc!.toMutable();
     users.toJson().forEach((key, value) {
