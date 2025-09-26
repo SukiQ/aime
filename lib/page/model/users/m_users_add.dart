@@ -3,6 +3,7 @@ import 'package:aime/helper/screen.dart';
 import 'package:aime/helper/string.dart';
 import 'package:aime/l10n/app_localizations.dart';
 import 'package:aime/setting/format.dart';
+import 'package:aime/system/domain/navigator.dart';
 import 'package:aime/system/widget/field/date.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
@@ -57,7 +58,7 @@ class _UsersAddPageState extends State<UsersAddPage> {
               }
               _formKey.currentState!.save();
               _dao.add(_user);
-              Navigator.pop(context, true);
+              Navigator.pop(context, NavigatorResult(operation: NavigatorOperation.add, result: _user));
             },
           ),
         ],

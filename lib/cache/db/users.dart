@@ -94,10 +94,10 @@ class UsersDao {
     }).first;
   }
 
-  Future<void> add(Users users) async {
+  Future<bool> add(Users users) async {
     final doc = MutableDocument(users.toJson());
-    print(users.toJson());
-    await _collection.saveDocument(doc);
+    users.id = doc.id;
+    return await _collection.saveDocument(doc);
   }
 
   Future<void> update(Users users) async {

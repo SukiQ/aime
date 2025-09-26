@@ -2,8 +2,9 @@ import 'package:aime/cache/db/users.dart';
 import 'package:aime/helper/screen.dart';
 import 'package:aime/helper/string.dart';
 import 'package:aime/l10n/app_localizations.dart';
-import 'package:aime/page/model/users/m_users_add.dart';
 import 'package:aime/page/model/users/m_users_detail.dart';
+import 'package:aime/setting/app_routes.dart';
+import 'package:aime/system/domain/navigator.dart';
 import 'package:aime/system/widget/divider.dart';
 import 'package:aime/system/widget/field/search.dart';
 import 'package:flutter/material.dart';
@@ -29,12 +30,12 @@ class _UsersPageState extends State<UsersPage> {
   void initState() {
     super.initState();
     _load();
-    _controller.addListener(() {
-      var nextPageTrigger = 0.8 * _controller.position.maxScrollExtent;
-      if (_controller.position.pixels > nextPageTrigger) {
-        _loadMore();
-      }
-    });
+    // _controller.addListener(() {
+    //   var nextPageTrigger = 0.8 * _controller.position.maxScrollExtent;
+    //   if (_controller.position.pixels > nextPageTrigger) {
+    //     _loadMore();
+    //   }
+    // });
   }
 
   Future<void> _loadMore() async {
@@ -63,13 +64,9 @@ class _UsersPageState extends State<UsersPage> {
             icon: const Icon(LucideIcons.userRoundPlus400),
             tooltip: l10n.modelAddLabel,
             onPressed: () async {
-              bool? result = await Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => UsersAddPage()),
+              _onNavigate(
+                await Navigator.pushNamed(context, AppRoutes.mUsersAdd),
               );
-              if (result != null && result) {
-                _load();
-              }
             },
           ),
         ],
@@ -78,15 +75,18 @@ class _UsersPageState extends State<UsersPage> {
         children: [
           SearchTextField(controller: _queryController),
           Expanded(
-            child: ListView.separated(
-              separatorBuilder: (context, index) {
-                return const ListTileDivider();
-              },
+            child: Scrollbar(
               controller: _controller,
-              itemCount: _users.length,
-              itemBuilder: (context, index) {
-                return _buildUserTile(index, _users[index]);
-              },
+              child: ListView.separated(
+                separatorBuilder: (context, index) {
+                  return const ListTileDivider();
+                },
+                controller: _controller,
+                itemCount: _users.length,
+                itemBuilder: (context, index) {
+                  return _buildUserTile(index, _users[index]);
+                },
+              ),
             ),
           ),
         ],
@@ -98,7 +98,7 @@ class _UsersPageState extends State<UsersPage> {
     UsersDao.build(context)
         .then((dao) {
           _dao = dao;
-          return _dao.page(0);
+          return _dao.all();
         })
         .then((user) {
           setState(() {
@@ -137,17 +137,43 @@ class _UsersPageState extends State<UsersPage> {
           vertical: StringHelper.isNotBlank(users.nickname) ? -2 : 2,
         ),
         onTap: () async {
-          bool? result = await Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => UsersDetailPage(id: users.id!),
+          _onNavigate(
+            await Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => UsersDetailPage(id: users.id!),
+              ),
             ),
           );
-          if (result != null && result) {
-            _load();
-          }
         },
       ),
     );
+  }
+
+  void _onNavigate(Object? result) {
+    if (result == null) {
+      return;
+    }
+    final navigatorResult = result as NavigatorResult;
+    switch (navigatorResult.operation) {
+      case NavigatorOperation.none:
+        return;
+      case NavigatorOperation.remove:
+        setState(() {
+          final user = navigatorResult.result as Users;
+          _users.remove(user);
+        });
+        return;
+      case NavigatorOperation.update:
+        setState(() {
+          final user = navigatorResult.result as Users;
+          _users[_users.indexOf(user)] = user;
+        });
+        return;
+      case NavigatorOperation.add:
+        final user = navigatorResult.result as Users;
+        _users.add(user);
+        return;
+    }
   }
 }

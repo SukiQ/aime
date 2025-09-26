@@ -3,6 +3,7 @@ import 'package:aime/helper/screen.dart';
 import 'package:aime/l10n/app_localizations.dart';
 import 'package:aime/setting/app_routes.dart';
 import 'package:aime/setting/format.dart';
+import 'package:aime/system/domain/navigator.dart';
 import 'package:aime/system/widget/loading.dart';
 import 'package:aime/system/widget/sheet.dart';
 import 'package:flutter/material.dart';
@@ -62,7 +63,7 @@ class _UsersDetailPageState extends State<UsersDetailPage> {
           /// 关闭 bottom sheet
           Navigator.pop(context);
           // 返回上一级页面
-          Navigator.pop(context, true);
+          Navigator.pop(context, NavigatorResult(operation: NavigatorOperation.remove));
         },
         iconColor: Theme.of(context).colorScheme.error,
         textColor: Theme.of(context).colorScheme.error,
@@ -76,6 +77,12 @@ class _UsersDetailPageState extends State<UsersDetailPage> {
               headerSliverBuilder: (context, innerBoxIsScrolled) {
                 return [
                   SliverAppBar(
+                    leading: IconButton(
+                      icon: const Icon(Icons.arrow_back),
+                      onPressed: () {
+                        Navigator.pop(context,NavigatorResult(operation: NavigatorOperation.update, result: _user));
+                      },
+                    ),
                     actions: [
                       IconButton(
                         icon: const Icon(LucideIcons.ellipsisVertical300),

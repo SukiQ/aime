@@ -35,8 +35,10 @@ ThemeData buildThemeData(BuildContext context, Brightness brightness) {
     inputDecorationTheme: _buildInputDecorationTheme(brightness),
     bottomSheetTheme: _buildBottomSheetTheme(),
     sliderTheme: _buildSliderTheme(),
+    scrollbarTheme: _buildScrollbarTheme(),
   );
 }
+
 
 ElevatedButtonThemeData? _buildElevatedButtonTheme() {
   return ElevatedButtonThemeData(
@@ -230,4 +232,12 @@ BottomSheetThemeData? _buildBottomSheetTheme() {
 
 SliderThemeData? _buildSliderTheme() {
   return SliderThemeData();
+}
+
+
+ScrollbarThemeData? _buildScrollbarTheme() {
+  return ScrollbarThemeData(
+    radius: const Radius.circular(12),
+    interactive: true,
+  );
 }
