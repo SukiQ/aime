@@ -1,3 +1,4 @@
+import 'package:aime/setting/database.dart';
 import 'package:cbl/cbl.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -16,7 +17,8 @@ class UsersDetails extends Users {
   DateTime? birthday;
 
   @override
-  factory UsersDetails.fromJson(Map<String, dynamic> json) => _$UsersDetailsFromJson(json);
+  factory UsersDetails.fromJson(Map<String, dynamic> json) =>
+      _$UsersDetailsFromJson(json);
 
   @override
   Map<String, dynamic> toJson() => _$UsersDetailsToJson(this);
@@ -39,7 +41,7 @@ class Users extends Doc {
 
   @override
   Map<String, dynamic> toJson() => _$UsersToJson(this);
- }
+}
 
 class UsersDao {
   late final Collection _collection;
@@ -48,7 +50,10 @@ class UsersDao {
 
   static Future<UsersDao> build(BuildContext context) async {
     final database = await context.read<LocalDatabase>().locale;
-    return UsersDao._(await database.createCollection("m_users"));
+    final collection = await database.createCollection(Tables.users);
+    final index = IndexBuilder.fullTextIndex([FullTextIndexItem.property("username"), FullTextIndexItem.property("nickname")]).ignoreAccents(false);
+    collection.createIndex(FullIndexes.users, index);
+    return UsersDao._(collection);
   }
 
   Future<List<Users>> all() async {

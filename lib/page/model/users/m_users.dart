@@ -109,7 +109,7 @@ class _UsersPageState extends State<UsersPage> {
                 controller: _scrollController,
                 itemCount: _search.length,
                 itemBuilder: (context, index) {
-                  return _buildUserTile(index, _search[index]);
+                  return buildUserTile(index, _search[index]);
                 },
               ),
             ),
@@ -132,7 +132,7 @@ class _UsersPageState extends State<UsersPage> {
         });
   }
 
-  Widget _buildUserTile(int index, Users users) {
+  Widget buildUserTile(int index, Users users) {
     return Dismissible(
       key: Key(users.id!),
       direction: DismissDirection.endToStart,

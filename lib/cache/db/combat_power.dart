@@ -37,10 +37,20 @@ class CombatPowerDao {
     locale.then((database) async {
       _database = database;
       _collection = await _database.createCollection("m_combat_power");
+      final index = FullTextIndexConfiguration(["username"]);
+      await _collection.createIndex("overviewFTSIndex", index);
+      final c = await _collection.indexes;
+      for (var value in c) {
+        print(value);
+      }
     });
   }
 
   Future<List<CombatPower>> all() async {
+    final c = await _collection.indexes;
+    for (var value in c) {
+      print(c);
+    }
     final List<SelectResultInterface> distinct = [];
     distinct.add(SelectResult.expression(Meta.id).as('id'));
     distinct.add(SelectResult.expression(Expression.property("username")));
