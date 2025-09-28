@@ -186,7 +186,7 @@ class _UsersPageState extends State<UsersPage> {
       case NavigatorOperation.remove:
         setState(() {
           final user = navigatorResult.result as Users;
-          _users.remove(user);
+          _users.removeWhere((element) => element.id == user.id);
         });
         return;
       case NavigatorOperation.update:

@@ -63,7 +63,7 @@ class _UsersDetailPageState extends State<UsersDetailPage> {
           /// 关闭 bottom sheet
           Navigator.pop(context);
           // 返回上一级页面
-          Navigator.pop(context, NavigatorResult(operation: NavigatorOperation.remove));
+          Navigator.pop(context, NavigatorResult(operation: NavigatorOperation.remove, result: _user));
         },
         iconColor: Theme.of(context).colorScheme.error,
         textColor: Theme.of(context).colorScheme.error,
