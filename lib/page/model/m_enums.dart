@@ -7,7 +7,10 @@ import 'm_combat_power.dart';
 
 enum ModelEnum {
   combatPower(LucideIcons.sword300, CombatPowerPage()),
-  users(LucideIcons.users300, UsersPage());
+  users(LucideIcons.users300, UsersPage()),
+  clothes(LucideIcons.shirt300, UsersPage()),
+  search(LucideIcons.search300, UsersPage());
+
 
   final IconData icon;
   final Widget widget;
@@ -26,6 +29,12 @@ extension ModelEnumExtension on ModelEnum {
       case ModelEnum.users:
         return l10n.users;
         break;
+        case ModelEnum.clothes:
+          return l10n.users;
+          break;
+          case ModelEnum.search:
+            return l10n.search;
+            break;
     }
   }
 }

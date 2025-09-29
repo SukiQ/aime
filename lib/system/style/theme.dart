@@ -9,6 +9,7 @@ ThemeData buildThemeData(BuildContext context, Brightness brightness) {
   return ThemeData(
     useMaterial3: true,
     elevatedButtonTheme: _buildElevatedButtonTheme(),
+    floatingActionButtonTheme: _buildFloatingActionButtonTheme(brightness),
     outlinedButtonTheme: _buildOutlinedButtonTheme(brightness),
     buttonTheme: _buildButtonThemeData(),
     colorScheme: ColorScheme(
@@ -39,6 +40,15 @@ ThemeData buildThemeData(BuildContext context, Brightness brightness) {
   );
 }
 
+FloatingActionButtonThemeData? _buildFloatingActionButtonTheme(Brightness brightness) {
+  return FloatingActionButtonThemeData(
+    backgroundColor: ColorsConfig.onPrimary.color(brightness),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(12),
+    ),
+  );
+}
+
 
 ElevatedButtonThemeData? _buildElevatedButtonTheme() {
   return ElevatedButtonThemeData(
@@ -54,9 +64,9 @@ ElevatedButtonThemeData? _buildElevatedButtonTheme() {
 OutlinedButtonThemeData? _buildOutlinedButtonTheme(Brightness brightness) {
   return OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
-      side: const BorderSide(color: Colors.blue, width: 2),
+      side: BorderSide(color: ColorsConfig.onSurface.color(brightness), width: 2),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12), // 圆角
+        borderRadius: BorderRadius.circular(20), // 圆角
       ),
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
     ),
@@ -65,6 +75,7 @@ OutlinedButtonThemeData? _buildOutlinedButtonTheme(Brightness brightness) {
 
 ButtonThemeData? _buildButtonThemeData() {
   return ButtonThemeData(
+
     shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12)),
     padding: const EdgeInsets.symmetric(horizontal: 16.0),

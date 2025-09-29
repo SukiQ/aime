@@ -13,7 +13,7 @@ enum ColorsConfig {
   onError(Color(0xFFFFFFFF), Color(0xFF000000)),
 
   /// 背景色
-  surface(Color(0xFFFFFFFF), Color(0xFF3C3C3C)),
+  surface(Color(0xFFF1F1F3), Color(0xFF3C3C3C)),
   onSurface(Color(0xFF6C6C6C), Color(0xFFFFFFFF)),
   scrim(Color(0xFFEDEDED), Color(0xFF686868));
 

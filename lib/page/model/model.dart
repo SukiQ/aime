@@ -41,7 +41,7 @@ class ModelPage extends StatelessWidget {
         child: GridView.extent(
           maxCrossAxisExtent: 150,
           children: ModelEnum.values.map((model) {
-            return OutlinedButton(
+            return Padding(padding: EdgeInsets.all(3),child: FloatingActionButton(
               onPressed: () {
                 Navigator.push(
                   context,
@@ -66,7 +66,7 @@ class ModelPage extends StatelessWidget {
                   ),
                 ],
               ),
-            );
+            ));
           }).toList(),
         ),
       ),
