@@ -9,7 +9,7 @@ ThemeData buildThemeData(BuildContext context, Brightness brightness) {
   return ThemeData(
     useMaterial3: true,
     elevatedButtonTheme: _buildElevatedButtonTheme(),
-    outlinedButtonTheme: _buildOutlinedButtonTheme(),
+    outlinedButtonTheme: _buildOutlinedButtonTheme(brightness),
     buttonTheme: _buildButtonThemeData(),
     colorScheme: ColorScheme(
       brightness: brightness,
@@ -51,21 +51,22 @@ ElevatedButtonThemeData? _buildElevatedButtonTheme() {
   );
 }
 
-OutlinedButtonThemeData? _buildOutlinedButtonTheme() {
+OutlinedButtonThemeData? _buildOutlinedButtonTheme(Brightness brightness) {
   return OutlinedButtonThemeData(
-    style: ButtonStyle(
-      side: WidgetStatePropertyAll(BorderSide.none),
-      shape: WidgetStatePropertyAll(
-        RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+    style: OutlinedButton.styleFrom(
+      side: const BorderSide(color: Colors.blue, width: 2),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12), // 圆角
       ),
-      // overlayColor: WidgetStatePropertyAll(AppColors.surfaceContainerHigh),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
     ),
   );
 }
 
 ButtonThemeData? _buildButtonThemeData() {
   return ButtonThemeData(
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+    shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12)),
     padding: const EdgeInsets.symmetric(horizontal: 16.0),
   );
 }

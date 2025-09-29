@@ -41,7 +41,7 @@ class ModelPage extends StatelessWidget {
         child: GridView.extent(
           maxCrossAxisExtent: 150,
           children: ModelEnum.values.map((model) {
-            return ElevatedButton(
+            return OutlinedButton(
               onPressed: () {
                 Navigator.push(
                   context,
