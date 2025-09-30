@@ -106,6 +106,7 @@ class _UsersPageState extends State<UsersPage> {
                 separatorBuilder: (context, index) {
                   return const ListTileDivider();
                 },
+                physics: const BouncingScrollPhysics(),
                 controller: _scrollController,
                 itemCount: _search.length,
                 itemBuilder: (context, index) {

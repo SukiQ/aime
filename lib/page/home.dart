@@ -47,40 +47,47 @@ class _MainPage extends State<MainPage> {
     );
   }
 
-  BottomNavigationBar _buildBottomNavigationBar(AppLocalizations l10n) {
-    return BottomNavigationBar(
-      currentIndex: _currentIndex,
-      onTap: (index) {
-        setState(() {
-          _currentIndex = index;
-        });
-      },
-      items: [
-        BottomNavigationBarItem(
-          activeIcon: const Icon(LucideIcons.codesandbox400),
-          icon: const Icon(LucideIcons.codesandbox300),
-          label: l10n.model,
-        ),
-        BottomNavigationBarItem(
-          activeIcon: const Icon(LucideIcons.lightbulb400),
-          icon: const Icon(LucideIcons.lightbulb300),
-          label: l10n.reasoning,
-        ),
-        BottomNavigationBarItem(
-          activeIcon: const Icon(LucideIcons.search400),
-          icon: Icon(LucideIcons.search300),
-          label: l10n.search,
-        ),
-        BottomNavigationBarItem(
-          activeIcon: const Icon(LucideIcons.libraryBig400),
-          icon: Icon(LucideIcons.libraryBig300),
-          label: l10n.learning,
-        ),
-        BottomNavigationBarItem(
-          activeIcon: const Icon(LucideIcons.cog400),
-          icon: Icon(LucideIcons.cog300),
-          label: l10n.settings,
-        ),
+  Widget _buildBottomNavigationBar(AppLocalizations l10n) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const ListTileDivider(),
+        Padding(padding: EdgeInsets.only(top: 3) ,child:
+        BottomNavigationBar(
+          currentIndex: _currentIndex,
+          onTap: (index) {
+            setState(() {
+              _currentIndex = index;
+            });
+          },
+          items: [
+            BottomNavigationBarItem(
+              activeIcon: const Icon(LucideIcons.codesandbox400),
+              icon: const Icon(LucideIcons.codesandbox300),
+              label: l10n.model,
+            ),
+            BottomNavigationBarItem(
+              activeIcon: const Icon(LucideIcons.lightbulb400),
+              icon: const Icon(LucideIcons.lightbulb300),
+              label: l10n.reasoning,
+            ),
+            BottomNavigationBarItem(
+              activeIcon: const Icon(LucideIcons.search400),
+              icon: Icon(LucideIcons.search300),
+              label: l10n.search,
+            ),
+            BottomNavigationBarItem(
+              activeIcon: const Icon(LucideIcons.libraryBig400),
+              icon: Icon(LucideIcons.libraryBig300),
+              label: l10n.learning,
+            ),
+            BottomNavigationBarItem(
+              activeIcon: const Icon(LucideIcons.cog400),
+              icon: Icon(LucideIcons.cog300),
+              label: l10n.settings,
+            ),
+          ],
+        ),),
       ],
     );
   }

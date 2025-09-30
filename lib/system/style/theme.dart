@@ -40,15 +40,14 @@ ThemeData buildThemeData(BuildContext context, Brightness brightness) {
   );
 }
 
-FloatingActionButtonThemeData? _buildFloatingActionButtonTheme(Brightness brightness) {
+FloatingActionButtonThemeData? _buildFloatingActionButtonTheme(
+  Brightness brightness,
+) {
   return FloatingActionButtonThemeData(
     backgroundColor: ColorsConfig.onPrimary.color(brightness),
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(12),
-    ),
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
   );
 }
-
 
 ElevatedButtonThemeData? _buildElevatedButtonTheme() {
   return ElevatedButtonThemeData(
@@ -64,10 +63,11 @@ ElevatedButtonThemeData? _buildElevatedButtonTheme() {
 OutlinedButtonThemeData? _buildOutlinedButtonTheme(Brightness brightness) {
   return OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
-      side: BorderSide(color: ColorsConfig.onSurface.color(brightness), width: 2),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20), // 圆角
-      ),
+      side: BorderSide(color: ColorsConfig.scrim.color(brightness), width: 0.5),
+      // shape: BeveledRectangleBorder(
+      //   // borderRadius: BorderRadius.circular(12), // 圆角
+      // ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
     ),
   );
@@ -75,9 +75,7 @@ OutlinedButtonThemeData? _buildOutlinedButtonTheme(Brightness brightness) {
 
 ButtonThemeData? _buildButtonThemeData() {
   return ButtonThemeData(
-
-    shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12)),
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
     padding: const EdgeInsets.symmetric(horizontal: 16.0),
   );
 }
@@ -95,7 +93,7 @@ ListTileThemeData _buildListTileTheme() {
 
 AppBarTheme _buildAppBarTheme() {
   return AppBarTheme(
-    toolbarHeight: 60.0,
+    toolbarHeight: 70.0,
     titleSpacing: 40.0,
     actionsPadding: const EdgeInsets.symmetric(horizontal: 10.0),
   );
@@ -104,7 +102,7 @@ AppBarTheme _buildAppBarTheme() {
 TextTheme _buildTextTheme(BuildContext context) {
   return GoogleFonts.notoSansScTextTheme(Theme.of(context).textTheme).copyWith(
     bodyLarge: GoogleFonts.notoSansSc(
-      fontWeight: FontWeight.w500,
+      fontWeight: FontWeight.w400,
       fontSize: ScreenHelper.isPhone() ? 17 : 13,
     ),
     bodyMedium: GoogleFonts.notoSansSc(
@@ -119,15 +117,18 @@ TextTheme _buildTextTheme(BuildContext context) {
     headlineMedium: GoogleFonts.notoSansSc(fontWeight: FontWeight.w200),
     headlineSmall: GoogleFonts.notoSansSc(fontWeight: FontWeight.w200),
     titleLarge: GoogleFonts.notoSansSc(
-      fontWeight: FontWeight.bold,
+      letterSpacing: 1.0,
+      fontWeight: FontWeight.w500,
       fontSize: ScreenHelper.isPhone() ? 20 : 16,
     ),
     titleMedium: GoogleFonts.notoSansSc(
-      fontWeight: FontWeight.bold,
+      letterSpacing: 1.0,
+      fontWeight: FontWeight.w500,
       fontSize: ScreenHelper.isPhone() ? 18 : 14,
     ),
     titleSmall: GoogleFonts.notoSansSc(
-      fontWeight: FontWeight.bold,
+      letterSpacing: 1.0,
+      fontWeight: FontWeight.w500,
       fontSize: ScreenHelper.isPhone() ? 16 : 12,
     ),
     displayLarge: GoogleFonts.notoSansSc(
@@ -173,10 +174,10 @@ BottomNavigationBarThemeData _buildBottomNavigationBarThemeData() {
       fontSize: 14,
       fontWeight: FontWeight.w400,
     ),
-    showSelectedLabels: true,
-    showUnselectedLabels: true,
-    selectedIconTheme: const IconThemeData(size: 32),
-    unselectedIconTheme: const IconThemeData(size: 32),
+    showSelectedLabels: false,
+    showUnselectedLabels: false,
+    selectedIconTheme: const IconThemeData(size: 34),
+    unselectedIconTheme: const IconThemeData(size: 34),
     unselectedLabelStyle: const TextStyle(
       fontSize: 14,
       fontWeight: FontWeight.w400,
@@ -245,7 +246,6 @@ BottomSheetThemeData? _buildBottomSheetTheme() {
 SliderThemeData? _buildSliderTheme() {
   return SliderThemeData();
 }
-
 
 ScrollbarThemeData? _buildScrollbarTheme() {
   return ScrollbarThemeData(

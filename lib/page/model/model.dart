@@ -15,6 +15,7 @@ class ModelPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        title: Text(l10n.model),
         actions: [
           IconButton(
             icon: const Icon(LucideIcons.plus400),
@@ -39,9 +40,10 @@ class ModelPage extends StatelessWidget {
       body: Padding(
         padding: EdgeInsets.all(isWide ? 10 : 0),
         child: GridView.extent(
+          physics: const BouncingScrollPhysics(),
           maxCrossAxisExtent: 150,
           children: ModelEnum.values.map((model) {
-            return Padding(padding: EdgeInsets.all(3),child: FloatingActionButton(
+            return Padding(padding: EdgeInsets.all(0),child: OutlinedButton(
               onPressed: () {
                 Navigator.push(
                   context,
