@@ -95,12 +95,27 @@ class _UsersDetailPageState extends State<UsersDetailPage> {
                         },
                       ),
                     ],
-                    expandedHeight: 100,
+                    expandedHeight: 200,
                     pinned: true,
                     flexibleSpace: FlexibleSpaceBar(
                       collapseMode: CollapseMode.pin,
                       centerTitle: true,
                       title: Text(_user.username!),
+                      background: Stack(
+                        fit: StackFit.expand,
+                        children: [
+                          // 背景图/渐变
+                          Container(
+                            decoration: const BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: [Color(0xFF3E5D87), Color(0xFFFFFFFF)],
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                              ),
+                            ),
+                          ),
+                        ]
+                      )
                     ),
                   ),
                   SliverToBoxAdapter(

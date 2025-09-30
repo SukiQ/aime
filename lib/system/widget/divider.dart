@@ -22,7 +22,7 @@ class ListTileDivider extends StatelessWidget {
   Widget build(BuildContext context) {
     return Divider(
       color: Theme.of(context).colorScheme.scrim,
-      thickness: 1,
+      thickness: 0.5,
       height: 1,
     );
   }

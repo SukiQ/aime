@@ -63,11 +63,11 @@ ElevatedButtonThemeData? _buildElevatedButtonTheme() {
 OutlinedButtonThemeData? _buildOutlinedButtonTheme(Brightness brightness) {
   return OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
-      side: BorderSide(color: ColorsConfig.scrim.color(brightness), width: 0.5),
+      side: BorderSide(color: ColorsConfig.scrim.color(brightness), width: 0.2),
       // shape: BeveledRectangleBorder(
       //   // borderRadius: BorderRadius.circular(12), // 圆角
       // ),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      shape: RoundedRectangleBorder(),
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
     ),
   );
