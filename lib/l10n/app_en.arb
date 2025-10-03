@@ -45,5 +45,6 @@
   "contact": "Contact",
   "email": "Email",
   "combatPower": "Combat power",
-  "combatPowerLabel": "Record target information and combat power."
+  "combatPowerLabel": "Record target information and combat power.",
+  "risk": "Risk"
 }

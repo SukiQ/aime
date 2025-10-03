@@ -19,11 +19,6 @@ class SearchTextField extends StatelessWidget {
         controller: controller,
         decoration: InputDecoration(
           filled: true,
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(12)),
-            borderSide: BorderSide(width: 1, color: Colors.transparent),
-          ),
-          fillColor: Theme.of(context).colorScheme.scrim,
           floatingLabelBehavior: FloatingLabelBehavior.never,
           hintText: l10n.search,
           contentPadding: EdgeInsets.symmetric(vertical: 10),

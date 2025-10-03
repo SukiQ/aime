@@ -45,5 +45,6 @@
   "contact": "联络",
   "email": "电子邮箱",
   "combatPower": "战力",
-  "combatPowerLabel": "记录目标信息和战力"
+  "combatPowerLabel": "记录目标信息和战力",
+  "risk": "风险"
 }

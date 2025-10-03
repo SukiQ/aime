@@ -45,5 +45,6 @@
   "contact": "聯絡",
   "email": "電子郵箱",
   "combatPower": "戰力",
-  "combatPowerLabel": "記錄目標信息和戰力"
+  "combatPowerLabel": "記錄目標信息和戰力",
+  "risk": "風險"
 }

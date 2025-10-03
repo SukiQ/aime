@@ -149,4 +149,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get combatPowerLabel => 'Record target information and combat power.';
+
+  @override
+  String get risk => 'Risk';
 }

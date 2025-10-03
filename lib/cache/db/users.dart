@@ -15,6 +15,7 @@ class UsersDetails extends Users {
 
   String? phone;
   DateTime? birthday;
+  int? risk;
 
   @override
   factory UsersDetails.fromJson(Map<String, dynamic> json) =>
@@ -25,7 +26,7 @@ class UsersDetails extends Users {
 
   @override
   String toString() {
-    return 'Users{$username, nickname: $nickname, phone: $phone, birthday: $birthday, id: $id}';
+    return 'Users{$username, nickname: $nickname, phone: $phone, birthday: $birthday, id: $id}, risk: $risk';
   }
 }
 

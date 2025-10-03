@@ -10,17 +10,17 @@ import 'package:aime/system/widget/field/search.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
-class UsersPage extends StatefulWidget {
-  const UsersPage({super.key});
+class RiskPage extends StatefulWidget {
+  const RiskPage({super.key});
 
   @override
   State<StatefulWidget> createState() {
-    return _UsersPageState();
+    return _RiskPageState();
   }
 }
 
 
-class _UsersPageState extends State<UsersPage> {
+class _RiskPageState extends State<RiskPage> {
   final ScrollController _scrollController = ScrollController();
   final TextEditingController _queryController = TextEditingController();
   late UsersDao _dao;
@@ -70,15 +70,15 @@ class _UsersPageState extends State<UsersPage> {
     _search = _users
         .where(
           (user) =>
-              user.username!.toLowerCase().contains(
-                _queryController.text.toLowerCase(),
-              ) ||
-              (StringHelper.isBlank(user.nickname)
-                  ? false
-                  : user.nickname!.toLowerCase().contains(
-                      _queryController.text.toLowerCase(),
-                    )),
-        )
+      user.username!.toLowerCase().contains(
+        _queryController.text.toLowerCase(),
+      ) ||
+          (StringHelper.isBlank(user.nickname)
+              ? false
+              : user.nickname!.toLowerCase().contains(
+            _queryController.text.toLowerCase(),
+          )),
+    )
         .toList();
 
     return Scaffold(
@@ -104,15 +104,8 @@ class _UsersPageState extends State<UsersPage> {
               controller: _scrollController,
               child: ListView.separated(
                 separatorBuilder: (context, index) {
-                  return Divider(
-                    indent: 7,
-                    endIndent: 7,
-                    color: Theme.of(context).colorScheme.scrim,
-                    thickness: 0.5,
-                    height: 1,
-                  );
+                  return const ListTileDivider();
                 },
-
                 physics: const BouncingScrollPhysics(),
                 controller: _scrollController,
                 itemCount: _search.length,
@@ -130,14 +123,14 @@ class _UsersPageState extends State<UsersPage> {
   Future<void> _load() async {
     UsersDao.build(context)
         .then((dao) {
-          _dao = dao;
-          return _dao.all();
-        })
+      _dao = dao;
+      return _dao.all();
+    })
         .then((user) {
-          setState(() {
-            _users = user;
-          });
-        });
+      setState(() {
+        _users = user;
+      });
+    });
   }
 
   Widget buildUserTile(int index, Users users) {
@@ -157,12 +150,17 @@ class _UsersPageState extends State<UsersPage> {
         });
       },
       child: ListTile(
-        minTileHeight: 60,
         leading: Icon(LucideIcons.userRound300),
         title: Text(
           StringHelper.isBlank(users.nickname)
               ? users.username!
               : users.nickname!,
+        ),
+        subtitle: StringHelper.isNotBlank(users.nickname)
+            ? Text(users.username!)
+            : null,
+        visualDensity: VisualDensity(
+          vertical: StringHelper.isNotBlank(users.nickname) ? -2 : 2,
         ),
         onTap: () async {
           _onNavigate(

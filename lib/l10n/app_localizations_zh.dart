@@ -148,6 +148,9 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get combatPowerLabel => '记录目标信息和战力';
+
+  @override
+  String get risk => '风险';
 }
 
 /// The translations for Chinese, as used in Hong Kong (`zh_HK`).
@@ -294,6 +297,9 @@ class AppLocalizationsZhHk extends AppLocalizationsZh {
 
   @override
   String get combatPowerLabel => '記錄目標信息和戰力';
+
+  @override
+  String get risk => '風險';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -440,4 +446,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get combatPowerLabel => '記錄目標信息和戰力';
+
+  @override
+  String get risk => '風險';
 }

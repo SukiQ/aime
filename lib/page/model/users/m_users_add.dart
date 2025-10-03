@@ -174,5 +174,15 @@ List<Widget> buildUserAddItems({
         }
       },
     ),
+    TextFormField(
+      autovalidateMode: AutovalidateMode.onUnfocus,
+      controller: TextEditingController(text: user.risk.toString()),
+      decoration: InputDecoration(labelText: l10n.risk),
+      onSaved: (value) {
+        if (StringHelper.isNotBlank(value)) {
+          user.risk = int.tryParse(value!);
+        }
+      },
+    ),
   ];
 }

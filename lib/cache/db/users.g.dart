@@ -15,7 +15,8 @@ UsersDetails _$UsersDetailsFromJson(Map<String, dynamic> json) =>
       )
       ..id = json['id'] as String?
       ..username = json['username'] as String?
-      ..nickname = json['nickname'] as String?;
+      ..nickname = json['nickname'] as String?
+      ..risk = (json['risk'] as num?)?.toInt();
 
 Map<String, dynamic> _$UsersDetailsToJson(UsersDetails instance) =>
     <String, dynamic>{
@@ -24,6 +25,7 @@ Map<String, dynamic> _$UsersDetailsToJson(UsersDetails instance) =>
       'nickname': instance.nickname,
       'phone': instance.phone,
       'birthday': instance.birthday?.toIso8601String(),
+      'risk': instance.risk,
     };
 
 Users _$UsersFromJson(Map<String, dynamic> json) => Users(

@@ -4,6 +4,7 @@ import 'package:aime/l10n/app_localizations.dart';
 import 'package:aime/setting/app_routes.dart';
 import 'package:aime/setting/format.dart';
 import 'package:aime/system/domain/navigator.dart';
+import 'package:aime/system/widget/divider.dart';
 import 'package:aime/system/widget/loading.dart';
 import 'package:aime/system/widget/sheet.dart';
 import 'package:flutter/material.dart';
@@ -63,7 +64,13 @@ class _UsersDetailPageState extends State<UsersDetailPage> {
           /// 关闭 bottom sheet
           Navigator.pop(context);
           // 返回上一级页面
-          Navigator.pop(context, NavigatorResult(operation: NavigatorOperation.remove, result: _user));
+          Navigator.pop(
+            context,
+            NavigatorResult(
+              operation: NavigatorOperation.remove,
+              result: _user,
+            ),
+          );
         },
         iconColor: Theme.of(context).colorScheme.error,
         textColor: Theme.of(context).colorScheme.error,
@@ -77,10 +84,17 @@ class _UsersDetailPageState extends State<UsersDetailPage> {
               headerSliverBuilder: (context, innerBoxIsScrolled) {
                 return [
                   SliverAppBar(
+                    toolbarHeight: 85,
                     leading: IconButton(
                       icon: const Icon(Icons.arrow_back),
                       onPressed: () {
-                        Navigator.pop(context,NavigatorResult(operation: NavigatorOperation.update, result: _user));
+                        Navigator.pop(
+                          context,
+                          NavigatorResult(
+                            operation: NavigatorOperation.update,
+                            result: _user,
+                          ),
+                        );
                       },
                     ),
                     actions: [
@@ -95,33 +109,38 @@ class _UsersDetailPageState extends State<UsersDetailPage> {
                         },
                       ),
                     ],
-                    expandedHeight: 200,
+                    expandedHeight: 230,
                     pinned: true,
                     flexibleSpace: FlexibleSpaceBar(
                       collapseMode: CollapseMode.pin,
                       centerTitle: true,
-                      title: Text(_user.username!),
-                      background: Stack(
-                        fit: StackFit.expand,
+                      title: Column(
+                        mainAxisSize: MainAxisSize.min,
                         children: [
-                          // 背景图/渐变
-                          Container(
-                            decoration: const BoxDecoration(
-                              gradient: LinearGradient(
-                                colors: [Color(0xFF3E5D87), Color(0xFFFFFFFF)],
-                                begin: Alignment.topCenter,
-                                end: Alignment.bottomCenter,
+                          Text(
+                            _user.username!,
+                            style: TextStyle(
+                              fontSize: 22,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 5, bottom: 5),
+                            child: Text(
+                              _user.nickname ?? "",
+                              style: TextStyle(
+                                fontSize: 11,
+                                fontWeight: FontWeight.w300,
+                                color: Theme.of(context).colorScheme.onSurface,
                               ),
                             ),
                           ),
-                        ]
-                      )
-                    ),
-                  ),
-                  SliverToBoxAdapter(
-                    child: Text(
-                      _user.nickname ?? "",
-                      textAlign: TextAlign.center,
+                        ],
+                      ),
+                      background: Stack(
+                        fit: StackFit.expand,
+                        children: [Container()],
+                      ),
                     ),
                   ),
                 ];
@@ -130,6 +149,14 @@ class _UsersDetailPageState extends State<UsersDetailPage> {
                 padding: const EdgeInsets.all(8),
                 physics: const BouncingScrollPhysics(),
                 children: [
+                  Divider(
+                    color: Theme.of(context).colorScheme.scrim,
+                    thickness: 1,
+                    height: 1,
+                    indent: 12,
+                    endIndent: 12,
+                  ),
+                  SizedBox(height: 15),
                   _buildUserDetailTile(
                     LucideIcons.cake300,
                     l10n.birthday,

@@ -381,6 +381,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Record target information and combat power.'**
   String get combatPowerLabel;
+
+  /// No description provided for @risk.
+  ///
+  /// In en, this message translates to:
+  /// **'Risk'**
+  String get risk;
 }
 
 class _AppLocalizationsDelegate

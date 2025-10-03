@@ -227,9 +227,23 @@ InputDecorationThemeData? _buildInputDecorationTheme(Brightness brightness) {
         color: ColorsConfig.secondary.color(brightness),
       ),
     ),
+    outlineBorder: BorderSide(
+      width: 1,
+      color: ColorsConfig.secondary.color(brightness),
+    ),
+      enabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(12)),
+      borderSide: BorderSide(
+        width: 1,
+        color: ColorsConfig.secondary.color(brightness),
+      ),
+    ),
     border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12),
-      borderSide: BorderSide.none,
+      borderRadius: BorderRadius.all(Radius.circular(12)),
+      borderSide: BorderSide(
+        width: 1,
+        color: ColorsConfig.secondary.color(brightness),
+      ),
     ),
   );
 }

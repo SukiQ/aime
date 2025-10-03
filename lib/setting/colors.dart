@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 enum ColorsConfig {
   primary(Color(0xFF373737), Color(0xFFFFFFFF)),
   onPrimary(Color(0xFFFFFFFF), Color(0xFF000000)),
-  secondary(Color(0xFF595959), Color(0xFFE8E8E8)),
+  secondary(Color(0xFF8E8D8D), Color(0xFFE8E8E8)),
   onSecondary(Color(0xFFFFFFFF), Color(0xFF000000)),
 
   /// 错误色
