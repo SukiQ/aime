@@ -12,6 +12,7 @@ ThemeData buildThemeData(BuildContext context, Brightness brightness) {
     floatingActionButtonTheme: _buildFloatingActionButtonTheme(brightness),
     outlinedButtonTheme: _buildOutlinedButtonTheme(brightness),
     buttonTheme: _buildButtonThemeData(),
+    cardTheme: _buildCardTheme(brightness),
     colorScheme: ColorScheme(
       brightness: brightness,
       primary: ColorsConfig.primary.color(brightness),
@@ -40,6 +41,18 @@ ThemeData buildThemeData(BuildContext context, Brightness brightness) {
   );
 }
 
+CardThemeData? _buildCardTheme(Brightness brightness) {
+  return CardThemeData(
+    elevation: 0,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(12),
+      side: BorderSide(color: ColorsConfig.scrim.color(brightness), width: 1),
+    ),
+    clipBehavior: Clip.antiAlias,
+    margin: EdgeInsets.zero,
+  );
+}
+
 FloatingActionButtonThemeData? _buildFloatingActionButtonTheme(
   Brightness brightness,
 ) {
@@ -63,12 +76,11 @@ ElevatedButtonThemeData? _buildElevatedButtonTheme() {
 OutlinedButtonThemeData? _buildOutlinedButtonTheme(Brightness brightness) {
   return OutlinedButtonThemeData(
     style: OutlinedButton.styleFrom(
-      side: BorderSide(color: ColorsConfig.scrim.color(brightness), width: 0.2),
-      // shape: BeveledRectangleBorder(
-      //   // borderRadius: BorderRadius.circular(12), // 圆角
-      // ),
-      shape: RoundedRectangleBorder(),
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+      side: BorderSide(color: ColorsConfig.scrim.color(brightness), width: 1),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
+      padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
     ),
   );
 }
@@ -76,7 +88,7 @@ OutlinedButtonThemeData? _buildOutlinedButtonTheme(Brightness brightness) {
 ButtonThemeData? _buildButtonThemeData() {
   return ButtonThemeData(
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+    padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
   );
 }
 
