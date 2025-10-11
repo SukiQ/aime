@@ -224,7 +224,7 @@ InputDecorationThemeData? _buildInputDecorationTheme(Brightness brightness) {
     constraints: const BoxConstraints(minHeight: 40),
     contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
     focusedErrorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(12)),
+      borderRadius: BorderRadius.all(Radius.circular(8)),
       borderSide: BorderSide(
         width: 1,
         color: ColorsConfig.error.color(brightness),
@@ -233,25 +233,21 @@ InputDecorationThemeData? _buildInputDecorationTheme(Brightness brightness) {
     errorStyle: TextStyle(color: ColorsConfig.error.color(brightness)),
     focusColor: ColorsConfig.secondary.color(brightness),
     focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(12)),
+      borderRadius: BorderRadius.all(Radius.circular(8)),
       borderSide: BorderSide(
         width: 1,
         color: ColorsConfig.secondary.color(brightness),
       ),
     ),
-    outlineBorder: BorderSide(
-      width: 1,
-      color: ColorsConfig.secondary.color(brightness),
-    ),
       enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(12)),
+      borderRadius: BorderRadius.all(Radius.circular(8)),
       borderSide: BorderSide(
         width: 1,
-        color: ColorsConfig.secondary.color(brightness),
+        color: ColorsConfig.scrim.color(brightness),
       ),
     ),
     border: OutlineInputBorder(
-      borderRadius: BorderRadius.all(Radius.circular(12)),
+      borderRadius: BorderRadius.all(Radius.circular(8)),
       borderSide: BorderSide(
         width: 1,
         color: ColorsConfig.secondary.color(brightness),

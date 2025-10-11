@@ -7,11 +7,11 @@ import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'm_combat_power.dart';
 
 enum ModelEnum {
-  combatPower(LucideIcons.sword300, CombatPowerPage(), Color(0xFFE4FBD0)),
-  users(LucideIcons.users300, UsersPage(), Color(0xFFFFEDE0)),
-  clothes(LucideIcons.shirt300, UsersPage(), Color(0xFFF4E7FF)),
-  risk(LucideIcons.triangleAlert300, RiskPage(), Color(0xFFF6D8E0)),
-  search(LucideIcons.search300, UsersPage(), Color(0xFFD9EBF4));
+  combatPower(LucideIcons.sword200, CombatPowerPage(), Color(0xFFF1FFF0)),
+  users(LucideIcons.contactRound200, UsersPage(), Color(0xFFFFF0F0)),
+  clothes(LucideIcons.shirt200, UsersPage(), Color(0xFFF0F3FF)),
+  risk(LucideIcons.octagonAlert200, RiskPage(), Color(0xFFFFFBF0)),
+  search(LucideIcons.search200, UsersPage(), Color(0xFFF0F0FF));
 
   final IconData icon;
   final Widget widget;

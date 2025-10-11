@@ -10,17 +10,17 @@ import 'package:aime/system/widget/field/search.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
-class UsersPage extends StatefulWidget {
-  const UsersPage({super.key});
+class TaskPage extends StatefulWidget {
+  const TaskPage({super.key});
 
   @override
   State<StatefulWidget> createState() {
-    return _UsersPageState();
+    return _TaskPageState();
   }
 }
 
 
-class _UsersPageState extends State<UsersPage> {
+class _TaskPageState extends State<TaskPage> {
   final ScrollController _scrollController = ScrollController();
   final TextEditingController _queryController = TextEditingController();
   late UsersDao _dao;
@@ -102,7 +102,17 @@ class _UsersPageState extends State<UsersPage> {
           Expanded(
             child: Scrollbar(
               controller: _scrollController,
-              child: ListView.builder(
+              child: ListView.separated(
+                separatorBuilder: (context, index) {
+                  return Divider(
+                    indent: 7,
+                    endIndent: 7,
+                    color: Theme.of(context).colorScheme.scrim,
+                    thickness: 0.5,
+                    height: 1,
+                  );
+                },
+
                 physics: const BouncingScrollPhysics(),
                 controller: _scrollController,
                 itemCount: _search.length,

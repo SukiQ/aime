@@ -45,7 +45,7 @@ class ModelPage extends StatelessWidget {
           children: ModelEnum.values.map((model) {
             return Padding(padding: EdgeInsets.all(5),child: OutlinedButton(
               style: OutlinedButton.styleFrom(
-                backgroundColor: model.color,
+                backgroundColor: Theme.of(context).colorScheme.onSecondary,
               ),
               onPressed: () {
                 Navigator.push(
@@ -64,7 +64,7 @@ class ModelPage extends StatelessWidget {
                   Divider(
                     color: Theme.of(context).colorScheme.scrim,
                     thickness: 1,
-                    height: 1,
+                    height: 0.2,
                     indent: 20,
                     endIndent: 20,
                   ),
