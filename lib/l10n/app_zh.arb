@@ -46,5 +46,10 @@
   "email": "电子邮箱",
   "combatPower": "战力",
   "combatPowerLabel": "记录目标信息和战力",
-  "risk": "风险"
+  "risk": "风险",
+  "task": "任务",
+  "taskName": "任务名称",
+  "taskProgress": "任务进度",
+  "taskNameRequired": "任务名称不能为空",
+  "addTask": "添加任务"
 }

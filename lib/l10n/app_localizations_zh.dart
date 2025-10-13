@@ -151,6 +151,18 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get risk => '风险';
+
+  @override
+  String get task => '任务';
+
+  @override
+  String get taskName => '任务名称';
+
+  @override
+  String get taskProgress => '任务进度';
+
+  @override
+  String get taskNameRequired => '任务名称不能为空';
 }
 
 /// The translations for Chinese, as used in Hong Kong (`zh_HK`).
@@ -300,6 +312,18 @@ class AppLocalizationsZhHk extends AppLocalizationsZh {
 
   @override
   String get risk => '風險';
+
+  @override
+  String get task => '任務';
+
+  @override
+  String get taskName => '任務名稱';
+
+  @override
+  String get taskProgress => '任務進度';
+
+  @override
+  String get taskNameRequired => '任務名稱不能為空';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -449,4 +473,16 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get risk => '風險';
+
+  @override
+  String get task => '任務';
+
+  @override
+  String get taskName => '任務名稱';
+
+  @override
+  String get taskProgress => '任務進度';
+
+  @override
+  String get taskNameRequired => '任務名稱不能為空';
 }

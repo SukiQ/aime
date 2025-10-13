@@ -46,5 +46,10 @@
   "email": "Email",
   "combatPower": "Combat power",
   "combatPowerLabel": "Record target information and combat power.",
-  "risk": "Risk"
+  "risk": "Risk",
+  "task": "Task",
+  "taskName": "Task name",
+  "taskProgress": "Task progress",
+  "taskNameRequired": "Task name is required",
+  "addTask": "Add task"
 }

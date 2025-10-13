@@ -1,32 +1,28 @@
-import 'package:aime/cache/db/users.dart';
+import 'package:aime/cache/db/task.dart';
 import 'package:aime/helper/screen.dart';
-import 'package:aime/helper/string.dart';
 import 'package:aime/l10n/app_localizations.dart';
-import 'package:aime/page/model/users/m_users_detail.dart';
+import 'package:aime/page/model/task/m_task_detail.dart';
 import 'package:aime/setting/app_routes.dart';
 import 'package:aime/system/domain/navigator.dart';
-import 'package:aime/system/widget/divider.dart';
 import 'package:aime/system/widget/field/search.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
-class TaskPage extends StatefulWidget {
-  const TaskPage({super.key});
+class TasksPage extends StatefulWidget {
+  const TasksPage({super.key});
 
   @override
   State<StatefulWidget> createState() {
-    return _TaskPageState();
+    return _TasksPageState();
   }
 }
 
-
-class _TaskPageState extends State<TaskPage> {
+class _TasksPageState extends State<TasksPage> {
   final ScrollController _scrollController = ScrollController();
   final TextEditingController _queryController = TextEditingController();
-  late UsersDao _dao;
-  List<Users> _users = [];
-  List<Users> _search = [];
-  bool _isLoadingMore = false;
+  late TaskDao _dao;
+  List<Task> _tasks = [];
+  List<Task> _search = [];
 
   @override
   void initState() {
@@ -35,12 +31,6 @@ class _TaskPageState extends State<TaskPage> {
       setState(() {});
     });
     _load();
-    // _controller.addListener(() {
-    //   var nextPageTrigger = 0.8 * _controller.position.maxScrollExtent;
-    //   if (_controller.position.pixels > nextPageTrigger) {
-    //     _loadMore();
-    //   }
-    // });
   }
 
   @override
@@ -50,47 +40,28 @@ class _TaskPageState extends State<TaskPage> {
     super.dispose();
   }
 
-  Future<void> _loadMore() async {
-    if (_isLoadingMore) return;
-    setState(() => _isLoadingMore = true);
-    _dao.page(_users.length).then((users) {
-      if (users.isNotEmpty) {
-        setState(() {
-          _users.addAll(users);
-          _isLoadingMore = false;
-        });
-      }
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
     final _ = ScreenHelper.isWide(context);
-    _search = _users
+    _search = _tasks
         .where(
-          (user) =>
-              user.username!.toLowerCase().contains(
-                _queryController.text.toLowerCase(),
-              ) ||
-              (StringHelper.isBlank(user.nickname)
-                  ? false
-                  : user.nickname!.toLowerCase().contains(
-                      _queryController.text.toLowerCase(),
-                    )),
+          (task) => task.name!.toLowerCase().contains(
+            _queryController.text.toLowerCase(),
+          ),
         )
         .toList();
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(l10n.users),
+        title: Text(l10n.task),
         actions: [
           IconButton(
-            icon: const Icon(LucideIcons.userRoundPlus400),
+            icon: const Icon(LucideIcons.calendarPlus200),
             tooltip: l10n.modelAddLabel,
             onPressed: () async {
               _onNavigate(
-                await Navigator.pushNamed(context, AppRoutes.mUsersAdd),
+                await Navigator.pushNamed(context, AppRoutes.mTasksAdd),
               );
             },
           ),
@@ -117,7 +88,7 @@ class _TaskPageState extends State<TaskPage> {
                 controller: _scrollController,
                 itemCount: _search.length,
                 itemBuilder: (context, index) {
-                  return buildUserTile(index, _search[index]);
+                  return buildTaskTile(index, _search[index]);
                 },
               ),
             ),
@@ -128,21 +99,21 @@ class _TaskPageState extends State<TaskPage> {
   }
 
   Future<void> _load() async {
-    UsersDao.build(context)
+    TaskDao.build(context)
         .then((dao) {
           _dao = dao;
           return _dao.all();
         })
-        .then((user) {
+        .then((tasks) {
           setState(() {
-            _users = user;
+            _tasks = tasks;
           });
         });
   }
 
-  Widget buildUserTile(int index, Users users) {
+  Widget buildTaskTile(int index, Task task) {
     return Dismissible(
-      key: Key(users.id!),
+      key: Key(task.id!),
       direction: DismissDirection.endToStart,
       background: Container(
         color: Theme.of(context).colorScheme.error,
@@ -151,25 +122,21 @@ class _TaskPageState extends State<TaskPage> {
         child: const Icon(Icons.delete, color: Colors.white),
       ),
       onDismissed: (direction) {
-        _dao.delete(users.id!);
+        _dao.delete(task.id!);
         setState(() {
-          _users.removeAt(index);
+          _tasks.removeAt(index);
         });
       },
       child: ListTile(
         minTileHeight: 60,
-        leading: Icon(LucideIcons.userRound300),
-        title: Text(
-          StringHelper.isBlank(users.nickname)
-              ? users.username!
-              : users.nickname!,
-        ),
+        leading: Icon(LucideIcons.scrollText300),
+        title: Text(task.name!),
         onTap: () async {
           _onNavigate(
             await Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => UsersDetailPage(id: users.id!),
+                builder: (context) => TaskDetailPage(id: task.id!),
               ),
             ),
           );
@@ -188,19 +155,19 @@ class _TaskPageState extends State<TaskPage> {
         return;
       case NavigatorOperation.remove:
         setState(() {
-          final user = navigatorResult.result as Users;
-          _users.removeWhere((element) => element.id == user.id);
+          final task = navigatorResult.result as Task;
+          _tasks.removeWhere((element) => element.id == task.id);
         });
         return;
       case NavigatorOperation.update:
         setState(() {
-          final user = navigatorResult.result as Users;
-          _users[_users.indexWhere((element) => element.id == user.id)] = user;
+          final task = navigatorResult.result as Task;
+          _tasks[_tasks.indexWhere((element) => element.id == task.id)] = task;
         });
         return;
       case NavigatorOperation.add:
-        final user = navigatorResult.result as Users;
-        _users.add(user);
+        final task = navigatorResult.result as Task;
+        _tasks.add(task);
         return;
     }
   }

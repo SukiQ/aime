@@ -387,6 +387,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Risk'**
   String get risk;
+
+  /// No description provided for @task.
+  ///
+  /// In en, this message translates to:
+  /// **'Task'**
+  String get task;
+
+  /// No description provided for @taskName.
+  ///
+  /// In en, this message translates to:
+  /// **'Task name'**
+  String get taskName;
+
+  /// No description provided for @taskProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'Task progress'**
+  String get taskProgress;
+
+  /// No description provided for @taskNameRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Task name is required'**
+  String get taskNameRequired;
 }
 
 class _AppLocalizationsDelegate

@@ -152,4 +152,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get risk => 'Risk';
+
+  @override
+  String get task => 'Task';
+
+  @override
+  String get taskName => 'Task name';
+
+  @override
+  String get taskProgress => 'Task progress';
+
+  @override
+  String get taskNameRequired => 'Task name is required';
 }
