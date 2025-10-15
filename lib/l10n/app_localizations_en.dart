@@ -164,4 +164,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get taskNameRequired => 'Task name is required';
+
+  @override
+  String get addTask => 'Add task';
 }

@@ -2,9 +2,7 @@ import 'package:aime/cache/db/task.dart';
 import 'package:aime/helper/screen.dart';
 import 'package:aime/helper/string.dart';
 import 'package:aime/l10n/app_localizations.dart';
-import 'package:aime/setting/format.dart';
 import 'package:aime/system/domain/navigator.dart';
-import 'package:aime/system/widget/field/date.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
@@ -57,8 +55,8 @@ class _TaskAddPageState extends State<TaskAddPage> {
                 return;
               }
               _formKey.currentState!.save();
-              _dao.add(_user);
-              Navigator.pop(context, NavigatorResult(operation: NavigatorOperation.add, result: _user));
+              _dao.add(_task);
+              Navigator.pop(context, NavigatorResult(operation: NavigatorOperation.add, result: _task));
             },
           ),
         ],
@@ -73,7 +71,7 @@ class _TaskAddPageState extends State<TaskAddPage> {
     );
   }
 
-  Widget buildTaskAddItems() {
+  Widget _buildTaskTile() {
     return ListView(
       children: _items.map((item) {
         return Padding(
@@ -89,7 +87,7 @@ class _TaskAddPageState extends State<TaskAddPage> {
   }
 }
 
-List<Widget> _buildTaskTile({
+List<Widget> buildTaskAddItems({
   required BuildContext context,
   required TaskDetails task,
 }) {

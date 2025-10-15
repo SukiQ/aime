@@ -411,6 +411,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Task name is required'**
   String get taskNameRequired;
+
+  /// No description provided for @addTask.
+  ///
+  /// In en, this message translates to:
+  /// **'Add task'**
+  String get addTask;
 }
 
 class _AppLocalizationsDelegate

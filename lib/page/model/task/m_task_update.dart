@@ -6,18 +6,18 @@ import 'package:aime/system/widget/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
-class UsersUpdatePage extends StatefulWidget {
-  const UsersUpdatePage({super.key, required this.id});
+class TaskUpdatePage extends StatefulWidget {
+  const TaskUpdatePage({super.key, required this.id});
 
   final String id;
 
   @override
   State<StatefulWidget> createState() {
-    return _UsersUpdatePageState();
+    return _TaskUpdatePageState();
   }
 }
 
-class _UsersUpdatePageState extends State<UsersUpdatePage> {
+class _TaskUpdatePageState extends State<TaskUpdatePage> {
   bool _loading = true;
   final _formKey = GlobalKey<FormState>();
   late final UsersDetails _user;

@@ -1,4 +1,6 @@
 import 'package:aime/page/home.dart';
+import 'package:aime/page/model/task/m_task_add.dart';
+import 'package:aime/page/model/task/m_task_update.dart';
 import 'package:aime/page/model/task/m_tasks.dart';
 import 'package:aime/page/model/users/m_users.dart';
 import 'package:aime/page/model/users/m_users_add.dart';
@@ -21,11 +23,11 @@ class AppRoutes {
       case AppRoutes.mTasks:
         return MaterialPageRoute(builder: (_) => TasksPage());
       case AppRoutes.mTasksAdd:
-        return MaterialPageRoute(builder: (_) => TasksAddPage());
+        return MaterialPageRoute(builder: (_) => TaskAddPage());
       case AppRoutes.mTasksEdit:
         final args = settings.arguments as Map<String, dynamic>;
         return MaterialPageRoute(
-          builder: (context) => TasksUpdatePage(id: args['id']),
+          builder: (context) => TaskUpdatePage(id: args['id']),
         );
       case AppRoutes.mUsers:
         return MaterialPageRoute(builder: (context) => UsersPage());

@@ -163,6 +163,9 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get taskNameRequired => '任务名称不能为空';
+
+  @override
+  String get addTask => '添加任务';
 }
 
 /// The translations for Chinese, as used in Hong Kong (`zh_HK`).
