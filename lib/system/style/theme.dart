@@ -7,6 +7,7 @@ import 'package:aime/setting/colors.dart';
 
 ThemeData buildThemeData(BuildContext context, Brightness brightness) {
   return ThemeData(
+    fontFamily: 'MiSans',
     useMaterial3: true,
     elevatedButtonTheme: _buildElevatedButtonTheme(),
     floatingActionButtonTheme: _buildFloatingActionButtonTheme(brightness),
@@ -78,7 +79,7 @@ OutlinedButtonThemeData? _buildOutlinedButtonTheme(Brightness brightness) {
     style: OutlinedButton.styleFrom(
       side: BorderSide(color: ColorsConfig.scrim.color(brightness), width: 1),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(15),
       ),
       padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
     ),
@@ -112,47 +113,62 @@ AppBarTheme _buildAppBarTheme() {
 }
 
 TextTheme _buildTextTheme(BuildContext context) {
-  return GoogleFonts.notoSansScTextTheme(Theme.of(context).textTheme).copyWith(
-    bodyLarge: GoogleFonts.notoSansSc(
+  return TextTheme(
+    bodyLarge: TextStyle(
       fontWeight: FontWeight.w400,
+      fontFamily: 'MiSans',
       fontSize: ScreenHelper.isPhone() ? 17 : 13,
     ),
-    bodyMedium: GoogleFonts.notoSansSc(
+    bodyMedium: TextStyle(
       fontWeight: FontWeight.w400,
+      fontFamily: 'MiSans',
       fontSize: ScreenHelper.isPhone() ? 12 : 8,
     ),
-    bodySmall: GoogleFonts.notoSansSc(
+    bodySmall: TextStyle(
       fontWeight: FontWeight.w400,
+      fontFamily: 'MiSans',
       fontSize: ScreenHelper.isPhone() ? 9 : 5,
     ),
-    headlineLarge: GoogleFonts.notoSansSc(fontWeight: FontWeight.w200),
-    headlineMedium: GoogleFonts.notoSansSc(fontWeight: FontWeight.w200),
-    headlineSmall: GoogleFonts.notoSansSc(fontWeight: FontWeight.w200),
-    titleLarge: GoogleFonts.notoSansSc(
-      letterSpacing: 1.0,
-      fontWeight: FontWeight.w500,
+    headlineLarge: TextStyle(
+      fontWeight: FontWeight.w400,
+      fontFamily: 'MiSans',
+    ),
+    headlineMedium: TextStyle(
+      fontWeight: FontWeight.w400,
+      fontFamily: 'MiSans',
+    ),
+    headlineSmall: TextStyle(
+      fontWeight: FontWeight.w400,
+      fontFamily: 'MiSans',
+    ),
+    titleLarge: TextStyle(
+      fontWeight: FontWeight.w400,
+      fontFamily: 'MiSans',
       fontSize: ScreenHelper.isPhone() ? 20 : 16,
     ),
-    titleMedium: GoogleFonts.notoSansSc(
-      letterSpacing: 1.0,
-      fontWeight: FontWeight.w500,
+    titleMedium: TextStyle(
+      fontWeight: FontWeight.w400,
+      fontFamily: 'MiSans',
       fontSize: ScreenHelper.isPhone() ? 18 : 14,
     ),
-    titleSmall: GoogleFonts.notoSansSc(
-      letterSpacing: 1.0,
-      fontWeight: FontWeight.w500,
+    titleSmall: TextStyle(
+      fontWeight: FontWeight.w400,
+      fontFamily: 'MiSans',
       fontSize: ScreenHelper.isPhone() ? 16 : 12,
     ),
-    displayLarge: GoogleFonts.notoSansSc(
-      fontWeight: FontWeight.w200,
+    displayLarge: TextStyle(
+      fontWeight: FontWeight.w400,
+      fontFamily: 'MiSans',
       fontSize: ScreenHelper.isPhone() ? 20 : 16,
     ),
-    displayMedium: GoogleFonts.notoSansSc(
-      fontWeight: FontWeight.w200,
+    displayMedium: TextStyle(
+      fontWeight: FontWeight.w400,
+      fontFamily: 'MiSans',
       fontSize: ScreenHelper.isPhone() ? 18 : 14,
     ),
-    displaySmall: GoogleFonts.notoSansSc(
-      fontWeight: FontWeight.w200,
+    displaySmall: TextStyle(
+      fontWeight: FontWeight.w400,
+      fontFamily: 'MiSans',
       fontSize: ScreenHelper.isPhone() ? 16 : 12,
     ),
   );
