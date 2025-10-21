@@ -40,12 +40,12 @@ class ModelPage extends StatelessWidget {
       body: Padding(
         padding: EdgeInsets.all(isWide ? 10 : 0),
         child: GridView.extent(
-          padding: const EdgeInsets.all(10),
+          padding: const EdgeInsets.all(20),
           childAspectRatio: 1,
-          crossAxisSpacing: 2,
-          mainAxisSpacing: 2,
+          crossAxisSpacing: 30,
+          mainAxisSpacing: 30,
           physics: const BouncingScrollPhysics(),
-          maxCrossAxisExtent: 90,
+          maxCrossAxisExtent: 150,
           children: ModelEnum.values.map((model) {
             return NeumorphicButton(
               onPressed: () {
@@ -58,28 +58,28 @@ class ModelPage extends StatelessWidget {
                 color: Theme.of(context).colorScheme.onSecondary,
                 depth: 6,
                 // 阴影深度：正数 = 外凸，负数 = 内凹
-                intensity: 0.7,
+                intensity: 10,
                 // 阴影强度
                 lightSource: LightSource.topLeft,
                 // 光源方向
                 boxShape: NeumorphicBoxShape.roundRect(
-                  BorderRadius.circular(8),
+                  BorderRadius.circular(20),
                 ),
               ),
               child:
               Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Expanded(flex: 3, child: Icon(
+                    Expanded(flex: 5, child: Icon(
                       model.icon,
-                      size: 35,
-                      color: Theme.of(context).colorScheme.primary,
+                      size: 45,
+                      color: Theme.of(context).colorScheme.secondary,
                     )),
                     Expanded(flex: 3, child: Padding(padding: EdgeInsets.only(top: 10),child: Text(
                       model.name(context),
                       style: TextStyle(
-                        fontSize: 12,
-                        color: Theme.of(context).colorScheme.primary,
+                        fontSize: 15,
+                        color: Theme.of(context).colorScheme.secondary,
                       ),
                     )))
                   ],
