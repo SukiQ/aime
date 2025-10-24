@@ -3,19 +3,22 @@ import 'package:aime/page/model/risk/m_risk.dart';
 import 'package:aime/page/model/task/m_tasks.dart';
 import 'package:aime/page/model/users/m_users.dart';
 import 'package:flutter/material.dart';
-import 'package:lucide_icons_flutter/lucide_icons.dart';
+import 'package:iconify_flutter/icons/clarity.dart';
+import 'package:iconify_flutter/icons/el.dart';
+import 'package:iconify_flutter/icons/mingcute.dart';
+import 'package:iconify_flutter/icons/ph.dart';
+import 'package:iconify_flutter/icons/ic.dart';
 
 import 'm_combat_power.dart';
 
 enum ModelEnum {
-  combatPower(LucideIcons.sword300, CombatPowerPage()),
-  users(LucideIcons.bookUser300, UsersPage()),
-  clothes(LucideIcons.shirt300, UsersPage()),
-  risk(LucideIcons.octagonAlert300, RiskPage()),
-  search(LucideIcons.search300, UsersPage()),
-  tasks(LucideIcons.scrollText300, TasksPage());
+  users(Ph.users_fill , UsersPage()),
+  clothes(Mingcute.t_shirt_fill, UsersPage()),
+  risk(Clarity.warning_standard_solid, RiskPage()),
+  search(El.search, UsersPage()),
+  tasks(Ic.baseline_task, TasksPage());
 
-  final IconData icon;
+  final String icon;
   final Widget widget;
 
   const ModelEnum(this.icon, this.widget);
@@ -26,8 +29,6 @@ extension ModelEnumExtension on ModelEnum {
     final l10n = AppLocalizations.of(context)!;
 
     switch (this) {
-      case ModelEnum.combatPower:
-        return l10n.combatPower;
       case ModelEnum.risk:
         return l10n.risk;
       case ModelEnum.users:
