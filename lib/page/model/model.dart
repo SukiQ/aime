@@ -1,7 +1,7 @@
 import 'package:aime/helper/screen.dart';
 import 'package:aime/l10n/app_localizations.dart';
+import 'package:aime/system/widget/button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
@@ -41,38 +41,26 @@ class ModelPage extends StatelessWidget {
       body: Padding(
         padding: EdgeInsets.all(isWide ? 10 : 0),
         child: GridView.extent(
-          padding: const EdgeInsets.all(30),
-          childAspectRatio: 1.0,
+          padding: const EdgeInsets.all(5),
+          childAspectRatio: 1.2,
           crossAxisSpacing: 5,
           mainAxisSpacing: 5,
           physics: const BouncingScrollPhysics(),
           maxCrossAxisExtent: 150,
           children: ModelEnum.values.map((model) {
+
             return Column(
               children: [
-                NeumorphicButton(
-                  padding: const EdgeInsets.all(10),
+                DottedBorderButton(
                   onPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => model.widget),
                     );
                   },
-                  style: NeumorphicStyle(
-                    color: Theme.of(context).colorScheme.onSecondary,
-                    depth: 8,
-                    // 阴影深度：正数 = 外凸，负数 = 内凹
-                    intensity: 10,
-                    // 阴影强度
-                    lightSource: LightSource.topLeft,
-                    // 光源方向
-                    boxShape: NeumorphicBoxShape.roundRect(
-                      BorderRadius.circular(12),
-                    ),
-                  ),
                   child: SizedBox(
-                    width: 70,
-                    height: 70,
+                    width: 130,
+                    height: 90,
                     child: Center(child: Iconify(
                       model.icon,
                       size: 40,

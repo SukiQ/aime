@@ -273,6 +273,14 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "3.1.1"
+  dotted_border:
+    dependency: "direct main"
+    description:
+      name: dotted_border
+      sha256: "99b091ec6891ba0c5331fdc2b502993c7c108f898995739a73c6845d71dad70c"
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "3.1.0"
   fake_async:
     dependency: transitive
     description:
@@ -339,14 +347,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.4.6"
-  flutter_neumorphic_plus:
-    dependency: "direct main"
-    description:
-      name: flutter_neumorphic_plus
-      sha256: "39fb64ebaf60efec654c7bd3dd8fc56a3265e1b15e925f1d321f1f30ad090fbc"
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "3.5.0"
   flutter_spinkit:
     dependency: "direct main"
     description:
