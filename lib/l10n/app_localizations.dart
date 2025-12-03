@@ -417,6 +417,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Add task'**
   String get addTask;
+
+  /// No description provided for @profiling.
+  ///
+  /// In en, this message translates to:
+  /// **'Profiling'**
+  String get profiling;
 }
 
 class _AppLocalizationsDelegate

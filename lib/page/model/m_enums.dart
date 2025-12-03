@@ -8,17 +8,18 @@ import 'package:iconify_flutter/icons/el.dart';
 import 'package:iconify_flutter/icons/mingcute.dart';
 import 'package:iconify_flutter/icons/ph.dart';
 import 'package:iconify_flutter/icons/ic.dart';
+import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 import 'm_combat_power.dart';
 
 enum ModelEnum {
-  users(Ph.users_fill , UsersPage()),
-  clothes(Mingcute.t_shirt_fill, UsersPage()),
-  risk(Clarity.warning_standard_solid, RiskPage()),
-  search(El.search, UsersPage()),
-  tasks(Ic.baseline_task, TasksPage());
+  users(LucideIcons.users300 , UsersPage()),
+  clothes(LucideIcons.shirt300, UsersPage()),
+  risk(LucideIcons.batteryWarning300, RiskPage()),
+  search(LucideIcons.search300, UsersPage()),
+  tasks(LucideIcons.file300, TasksPage());
 
-  final String icon;
+  final IconData icon;
   final Widget widget;
 
   const ModelEnum(this.icon, this.widget);
@@ -32,7 +33,7 @@ extension ModelEnumExtension on ModelEnum {
       case ModelEnum.risk:
         return l10n.risk;
       case ModelEnum.users:
-        return l10n.users;
+        return l10n.profiling;
       case ModelEnum.clothes:
         return l10n.users;
       case ModelEnum.search:

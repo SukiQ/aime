@@ -51,5 +51,6 @@
   "taskName": "任务名称",
   "taskProgress": "任务进度",
   "taskNameRequired": "任务名称不能为空",
-  "addTask": "添加任务"
+  "addTask": "添加任务",
+  "profiling": "画像"
 }

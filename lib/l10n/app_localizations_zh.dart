@@ -166,6 +166,9 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get addTask => '添加任务';
+
+  @override
+  String get profiling => '画像';
 }
 
 /// The translations for Chinese, as used in Hong Kong (`zh_HK`).
@@ -327,6 +330,9 @@ class AppLocalizationsZhHk extends AppLocalizationsZh {
 
   @override
   String get taskNameRequired => '任務名稱不能為空';
+
+  @override
+  String get profiling => '画像';
 }
 
 /// The translations for Chinese, as used in Taiwan (`zh_TW`).
@@ -488,4 +494,7 @@ class AppLocalizationsZhTw extends AppLocalizationsZh {
 
   @override
   String get taskNameRequired => '任務名稱不能為空';
+
+  @override
+  String get profiling => '画像';
 }

@@ -167,4 +167,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get addTask => 'Add task';
+
+  @override
+  String get profiling => 'Profiling';
 }

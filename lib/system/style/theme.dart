@@ -115,59 +115,59 @@ AppBarTheme _buildAppBarTheme() {
 TextTheme _buildTextTheme(BuildContext context) {
   return TextTheme(
     bodyLarge: TextStyle(
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.w300,
       fontFamily: 'MiSans',
       fontSize: ScreenHelper.isPhone() ? 17 : 13,
     ),
     bodyMedium: TextStyle(
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.w300,
       fontFamily: 'MiSans',
       fontSize: ScreenHelper.isPhone() ? 12 : 8,
     ),
     bodySmall: TextStyle(
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.w300,
       fontFamily: 'MiSans',
       fontSize: ScreenHelper.isPhone() ? 9 : 5,
     ),
     headlineLarge: TextStyle(
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.w300,
       fontFamily: 'MiSans',
     ),
     headlineMedium: TextStyle(
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.w300,
       fontFamily: 'MiSans',
     ),
     headlineSmall: TextStyle(
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.w300,
       fontFamily: 'MiSans',
     ),
     titleLarge: TextStyle(
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.w300,
       fontFamily: 'MiSans',
       fontSize: ScreenHelper.isPhone() ? 20 : 16,
     ),
     titleMedium: TextStyle(
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.w300,
       fontFamily: 'MiSans',
       fontSize: ScreenHelper.isPhone() ? 18 : 14,
     ),
     titleSmall: TextStyle(
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.w300,
       fontFamily: 'MiSans',
       fontSize: ScreenHelper.isPhone() ? 16 : 12,
     ),
     displayLarge: TextStyle(
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.w300,
       fontFamily: 'MiSans',
       fontSize: ScreenHelper.isPhone() ? 20 : 16,
     ),
     displayMedium: TextStyle(
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.w300,
       fontFamily: 'MiSans',
       fontSize: ScreenHelper.isPhone() ? 18 : 14,
     ),
     displaySmall: TextStyle(
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.w300,
       fontFamily: 'MiSans',
       fontSize: ScreenHelper.isPhone() ? 16 : 12,
     ),
@@ -180,11 +180,11 @@ NavigationRailThemeData _buildNavigationRailThemeData() {
     labelType: NavigationRailLabelType.none,
     unselectedLabelTextStyle: const TextStyle(
       fontSize: 15,
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.w300,
     ),
     selectedLabelTextStyle: const TextStyle(
       fontSize: 15,
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.w300,
     ),
     unselectedIconTheme: const IconThemeData(size: 28),
     selectedIconTheme: IconThemeData(size: 28),
@@ -200,7 +200,7 @@ BottomNavigationBarThemeData _buildBottomNavigationBarThemeData() {
     type: BottomNavigationBarType.fixed,
     selectedLabelStyle: const TextStyle(
       fontSize: 14,
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.w300,
     ),
     showSelectedLabels: false,
     showUnselectedLabels: false,
@@ -208,7 +208,7 @@ BottomNavigationBarThemeData _buildBottomNavigationBarThemeData() {
     unselectedIconTheme: const IconThemeData(size: 34),
     unselectedLabelStyle: const TextStyle(
       fontSize: 14,
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.w300,
     ),
   );
 }

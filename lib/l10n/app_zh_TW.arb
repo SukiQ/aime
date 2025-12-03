@@ -50,5 +50,6 @@
   "task": "任務",
   "taskName": "任務名稱",
   "taskProgress": "任務進度",
-  "taskNameRequired": "任務名稱不能為空"
+  "taskNameRequired": "任務名稱不能為空",
+  "profiling": "画像"
 }

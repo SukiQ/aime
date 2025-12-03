@@ -51,5 +51,6 @@
   "taskName": "Task name",
   "taskProgress": "Task progress",
   "taskNameRequired": "Task name is required",
-  "addTask": "Add task"
+  "addTask": "Add task" ,
+  "profiling": "Profiling"
 }

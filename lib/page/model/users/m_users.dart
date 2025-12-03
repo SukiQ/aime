@@ -83,7 +83,7 @@ class _UsersPageState extends State<UsersPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(l10n.users),
+        title: Text(l10n.profiling),
         actions: [
           IconButton(
             icon: const Icon(LucideIcons.userRoundPlus400),

@@ -2,7 +2,6 @@ import 'package:aime/helper/screen.dart';
 import 'package:aime/l10n/app_localizations.dart';
 import 'package:aime/system/widget/button.dart';
 import 'package:flutter/material.dart';
-import 'package:iconify_flutter/iconify_flutter.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 
 import 'm_enums.dart';
@@ -48,7 +47,6 @@ class ModelPage extends StatelessWidget {
           physics: const BouncingScrollPhysics(),
           maxCrossAxisExtent: 150,
           children: ModelEnum.values.map((model) {
-
             return Column(
               children: [
                 DottedBorderButton(
@@ -58,27 +56,76 @@ class ModelPage extends StatelessWidget {
                       MaterialPageRoute(builder: (context) => model.widget),
                     );
                   },
-                  child: SizedBox(
-                    width: 130,
-                    height: 90,
-                    child: Center(child: Iconify(
-                      model.icon,
-                      size: 40,
-                      color: Theme.of(context).colorScheme.secondary,
-                    )),
+                  child: Container(
+                    padding: const EdgeInsets.only(
+                      top: 12,
+                      bottom: 12,
+                      left: 10,
+                      right: 10,
+                    ),
+                    // 内边距
+                    height: 100,
+                    color: Theme.of(context).colorScheme.surface,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          flex: 5,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center, // 左对齐
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                model.name(context),
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w300,
+                                  color: Theme.of(
+                                    context,
+                                  ).colorScheme.onSurface,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        VerticalDivider(
+                          color: Theme.of(context).colorScheme.scrim,
+                          thickness: 0.8,
+                          indent: 3,
+                          endIndent: 3,
+                        ),
+                        Expanded(
+                          flex: 5,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            // 左对齐
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              DecoratedBox(
+                                decoration: BoxDecoration(
+                                  color: Theme.of(
+                                    context,
+                                  ).colorScheme.primary.withOpacity(0.15),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsets.all(5),
+                                  child: Icon(
+                                    model.icon,
+                                    color: Theme.of(
+                                      context,
+                                    ).colorScheme.primary,
+                                    size: 23, // Icon大小
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-                // Padding(
-                //   padding: EdgeInsets.only(top: 5),
-                //   child: Text(
-                //     model.name(context),
-                //     style: TextStyle(
-                //       fontSize: 12,
-                //       fontWeight: FontWeight.w300,
-                //       color: Theme.of(context).colorScheme.secondary,
-                //     ),
-                //   ),
-                // ),
               ],
             );
           }).toList(),
